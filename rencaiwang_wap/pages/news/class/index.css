@@ -1,0 +1,5 @@
+.news-class{padding: 60upx 40upx;}
+.news-class .class-lists{margin-bottom: 10upx;}
+.news-class .class-lists /deep/.dxi-list-cell{border: 2upx #aaa solid;border-radius: 12upx;}
+.news-class .class-lists:nth-child(2n) /deep/.dxi-list-cell{background-color: #e6e6e6;}
+.news-class .class-lists .circle{width: 24upx;height: 24upx;border: 6upx #777 solid;border-radius: 50%;}

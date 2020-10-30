@@ -1,0 +1,4 @@
+.feedback-lists .item{padding: 8upx 0;position: relative;}
+.feedback-lists .item::after{content: '';display: block;position: absolute;bottom: 0;left: 60upx;right: 60upx;border-bottom: 1upx #eee solid;}
+.feedback-lists .item:nth-child(2n) /deep/.dxi-list-cell{background-color: #e6e6e6;}
+.feedback-lists .item .dxi-list-cell::after{display: none;}

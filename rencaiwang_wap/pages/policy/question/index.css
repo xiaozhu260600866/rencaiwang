@@ -1,0 +1,8 @@
+.question{font-size: 28upx;color: #737373;}
+.que-item{}
+.que-item .topic{text-align: justify;border-bottom: 1upx #e6e6e6 solid;padding-bottom: 20upx;}
+
+.answer{padding-top: 20upx;}
+.radio-group{display: flex;justify-content: center;align-items: center;}
+.radio-group .radio-item{display: flex;align-items: center;flex: 1;width: 100%;justify-content: center;}
+.radio-group .uni-radio-input{width: 40upx;height: 40upx;}

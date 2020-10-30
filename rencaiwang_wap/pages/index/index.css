@@ -1,0 +1,16 @@
+/* 用户信息 */
+.index-user-info{margin: 30upx 0;border-top: 2upx solid #eaeef1;}
+.index-user-info /deep/.dxi-list-msg .info{font-size: 28upx;color: #bababa;line-height: 1.2;}
+.index-user-info /deep/.dxi-list-msg .msg-border{left: 0!important;right: 0!important;transform: scaleY(1);}
+
+/* 导航 */
+.index-nav{margin: 40upx;}
+.index-nav .nav-box{box-shadow: 0 4upx 10upx #d4d4d4}
+.index-nav .nav-title{padding: 20upx 40upx 0;color: #999;font-size: 30upx;}
+
+/* 广告 */
+.index-ad{margin: 60upx 40upx 40upx;}
+.index-ad .img{width: 100%;display: flex;}
+
+/* 导航2 */
+.index-nav2{margin: 0 40upx;}

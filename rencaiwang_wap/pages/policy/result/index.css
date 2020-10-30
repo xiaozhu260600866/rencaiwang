@@ -1,0 +1,16 @@
+/* 块 */
+.result-box .shadow-block{padding: 0 30upx;}
+.shadow-block /deep/.dxi-list-cell{min-height: auto;}
+
+/* 标题 */
+.title .circle{width: 26upx;height: 26upx;border: 9upx #e94f47 solid;border-radius: 50%;}
+.tit-blue .circle{border-color: #419cf5;}
+
+/* 内容 */
+.result .content{max-height: 520upx;overflow-y: auto;padding: 30upx 0;}
+.result .content .box{font-size: 28upx;line-height: 1.6;color: #737373;text-align: justify;}
+
+/* 咨询 */
+.consult{margin: 30upx;}
+.consult .item{border: 1upx solid #d5d5d5;border-radius: 12upx;margin-bottom: 30upx;}
+.consult /deep/.dx-cell{border-bottom: 0;}

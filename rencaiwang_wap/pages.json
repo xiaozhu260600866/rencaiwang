@@ -1,0 +1,128 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "人才网",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/into/index",
+			"style": {
+				"navigationBarTitleText": "人才网",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/user/index/index",
+			"style": {
+				"navigationBarTitleText": "会员中心",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/news/lists/index",
+			"style": {
+				"navigationBarTitleText": "最新资讯",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/news/class/index",
+			"style": {
+				"navigationBarTitleText": "最新资讯",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/news/show/index",
+			"style": {
+				"navigationBarTitleText": "最新资讯",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/video/lists/index",
+			"style": {
+				"navigationBarTitleText": "视频列表",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/policy/lists/index",
+			"style": {
+				"navigationBarTitleText": "政策发布",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/policy/show/index",
+			"style": {
+				"navigationBarTitleText": "政策发布",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/policy/class/index",
+			"style": {
+				"navigationBarTitleText": "政策分类",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/policy/result/index",
+			"style": {
+				"navigationBarTitleText": "匹配结果",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/activity/lists/index",
+			"style": {
+				"navigationBarTitleText": "活动报名",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/activity/show/index",
+			"style": {
+				"navigationBarTitleText": "活动报名",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/feedback/lists/index",
+			"style": {
+				"navigationBarTitleText": "意见往集",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/feedback/create_edit/index",
+			"style": {
+				"navigationBarTitleText": "意见往集",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/service/index",
+			"style": {
+				"navigationBarTitleText": "服务跳转",
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "人才网",
+		"navigationBarBackgroundColor": "#419cf5",
+		"backgroundColor": "#419cf5"
+	},
+	"tabBar": {
+		"selectedColor": "#419cf5",
+		"list": [
+		]
+	}
+}

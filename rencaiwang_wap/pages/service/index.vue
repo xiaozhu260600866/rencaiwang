@@ -1,0 +1,84 @@
+<template>
+	<view>
+		<!-- <page :parentData="data" :formAction="formAction"></page> -->
+		<view>
+			<!-- 头部 -->
+			<top-header></top-header>
+			
+			<!-- 搜索 -->
+			<search></search>
+			
+			<view class="skip">
+				<view class="shadow-block skip-item" v-for="item in skipLists">
+					<view class="left">
+						<image class="img" :src="item.cover"></image>
+					</view>
+					<view class="right">
+						<view class="title fc-3">
+							<view class="name fs-15 fw-bold nowrap">{{item.title}}</view>
+							<view class="dxi-icon pl15 fs-14" :class="item.showMore?'dxi-icon-top':'dxi-icon-down'" @click="item.showMore=!item.showMore"></view>
+						</view>
+						<view class="content fs-13 fc-7 mt10" :class="item.showMore == true ? '':'wrap2'">{{item.content}}</view>
+					</view>
+				</view>
+			</view>
+			
+			<!-- 脚部 -->
+			<down-footer></down-footer>
+		</view>
+	</view>
+</template>
+
+<script>
+	import topHeader from '@/components/topHeader';
+	import downFooter from '@/components/downFooter';
+	import search from '@/components/search';
+	export default {
+		components:{topHeader,downFooter,search},
+		data() {
+			return {
+				formAction: '/shop/product/class',
+				mpType: 'page', //用来分清父和子组件
+				data: this.formatData(this),
+				getSiteName: this.getSiteName(),
+				skipLists:[{
+					cover:'/static/images/index-ad.jpg',
+					title:'网络安全大赛成功举办',
+					showMore: false,
+					content:'动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。'
+				},{
+					cover:'/static/images/index-ad.jpg',
+					title:'网络安全大赛成功举办',
+					showMore: false,
+					content:'动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。'
+				},{
+					cover:'/static/images/index-ad.jpg',
+					title:'网络安全大赛成功举办',
+					showMore: false,
+					content:'动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全知识，引导群众广泛参与，提升社会网络安全意识和防护技能。'
+				}]
+			}
+		},
+		onReachBottom() {
+			this.hasMore(this);
+		},
+		onPullDownRefresh() {
+			this.data.nextPage = 1;
+			this.ajax();
+		},
+		onShareAppMessage() {
+			return this.shareSource(this, '人才网');
+		},
+		onLoad(options) {
+			//this.ajax();
+		},
+		methods: {
+			ajax() {
+				
+			}
+		}
+	}
+</script>
+<style scoped="">
+@import url("./index.css");
+</style>

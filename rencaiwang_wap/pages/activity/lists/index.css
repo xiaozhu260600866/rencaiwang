@@ -1,0 +1,23 @@
+/* 导航tab */
+.tab-group{margin: 0 40upx;display: flex;border-bottom: 2upx #dfdfdf solid;}
+.tab-group /deep/.dxi-tabs-view{width: 100%;}
+.tab-group /deep/.dxi-tabs-item{position: relative;}
+.tab-group /deep/.dxi-tabs-item::before{content: '';display: block;position: absolute;right: 0;top: 50%;margin-top: -20upx;height: 40upx;width: 2upx;background-color: #dfdfdf;}
+.tab-group /deep/.dxi-tabs-fixed::before,.tab-group /deep/.dxi-tabs-relative::before{display: none;}
+.tab-group /deep/.dxi-tabs-slider{display: none;}
+.tab-group .right-icon{display: flex;width: 100upx;justify-content: center;align-items: center;}
+
+/* 主资讯 */
+.main_activity{margin: 0 40upx 30upx;border: 1upx #969696 solid;border-radius: 12upx;padding: 30upx;}
+.main_activity .content{font-size: 36upx;color: #777;line-height: 1.5;flex: 1;text-align: justify;}
+
+/* 资讯列表 */
+.activity_lists{padding: 40upx;padding: 10upx 0;position: relative;}
+.activity_lists::before{content: '';display: block;position: absolute;left: 40upx;right: 40upx;bottom: 0;border-bottom: 2upx #dfdfdf solid;}
+.activity_lists .lists_box{padding: 40upx;}
+.activity_lists .title{line-height: 44upx;}
+.activity_lists .sign-date{padding-bottom: 20upx;}
+.activity_lists .fb-info .head{width: 40upx;height: 40upx;display: flex;border-radius: 50%;}
+.activity_lists .fb-info .name{font-size: 24upx;font-weight: bold;color: #444;margin-left: 16upx;}
+.activity_lists .content{font-size: 36upx;color: #777;line-height: 1.5;flex: 1;text-align: justify;}
+.activity_lists .img{width: 200upx;height: 150upx;display: flex;margin-left: 20upx;}

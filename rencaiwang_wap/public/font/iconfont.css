@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 567607 */
+  src: url('//at.alicdn.com/t/font_567607_6vrxzw1381f.eot');
+  src: url('//at.alicdn.com/t/font_567607_6vrxzw1381f.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_567607_6vrxzw1381f.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_567607_6vrxzw1381f.woff') format('woff'),
+  url('//at.alicdn.com/t/font_567607_6vrxzw1381f.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_567607_6vrxzw1381f.svg#iconfont') format('svg');
+}
+
+/* 有车纷享 */
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-vip-add:before{content: "\e646";}/* 开卡 */
+.icon-vip-lists:before{content: "\e623";}/* 会员 */
+
+
+.icon-:before{content: "\e";}/*  */
+.icon-:before{content: "\e";}/*  */

@@ -1,0 +1,6 @@
+.skip-item{display: flex;align-items: flex-start;}
+.skip-item:nth-child(2n){background-color: #e6e6e6;}
+.skip-item .img{width: 160upx;height: 160upx;display: flex;margin-right: 30upx;}
+.skip-item .right{flex: 1;}
+.skip-item .title{display: flex;align-items: center;justify-content: space-between;}
+.skip-item .title .name{flex: 1;border-bottom: 1upx #eee solid;padding-bottom: 5px;}

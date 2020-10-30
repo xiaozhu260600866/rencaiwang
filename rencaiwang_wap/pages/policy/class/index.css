@@ -1,0 +1,4 @@
+.policy-class{padding: 30upx;}
+.policy-class .class-lists{margin-bottom: 20upx;}
+.policy-class .class-lists /deep/.dxi-list-msg{border: 2upx #aaa solid;border-radius: 12upx;box-shadow: 0 2px 5px 0 hsla(0,6%,58%,.6)}
+.policy-class .class-lists:nth-child(2n) /deep/.dxi-list-msg{background-color: #e6e6e6;}
