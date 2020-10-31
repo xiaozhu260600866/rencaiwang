@@ -13,13 +13,9 @@ import userRouter from './modules/user'
 import articleRouter from './modules/article'
 import videoRouter from './modules/video'
 // import activityRouter from './modules/activity'
-import merchantRouter from './modules/merchant'
-import horseRouter from './modules/horse'
-import deliverRouter from './modules/deliver'
-import feedbackRouter from './modules/feedback'
-import disRouter from './modules/dis'
-import integralRouter from './modules/integral'
 import roleRouter from './modules/role'
+import policyRouter from './modules/policy'
+import staffRouter from './modules/staff'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -105,13 +101,15 @@ export const asyncRoutes = [
    articleRouter,
    videoRouter,
    roleRouter,
-  // feedbackRouter,
+  policyRouter,
+  staffRouter,
   // merchantRouter,
   // horseRouter,
   // deliverRouter,
   // disRouter,
   // integralRouter,
   settingRouter,
+
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
