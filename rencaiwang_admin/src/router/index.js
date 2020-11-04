@@ -15,6 +15,7 @@ import videoRouter from './modules/video'
 // import activityRouter from './modules/activity'
 import roleRouter from './modules/role'
 import policyRouter from './modules/policy'
+import policyMatchRouter from './modules/policy_matchs'
 import staffRouter from './modules/staff'
 
 /**
@@ -102,6 +103,7 @@ export const asyncRoutes = [
    videoRouter,
    roleRouter,
   policyRouter,
+  policyMatchRouter,
   staffRouter,
   // merchantRouter,
   // horseRouter,
