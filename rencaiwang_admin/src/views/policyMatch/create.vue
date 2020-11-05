@@ -1,44 +1,35 @@
 <template>
-  <div>
+  <div v-if="data.show" class="bg-f p20">
+    <el-form ref="ruleForm" :model="ruleForm" label-width="100px" class="demo-ruleForm pb50">
+      <el-form-item label="请选择分类" prop="fclass" :rules="[{ required: true, message: '分类不能为空'},]">
+        <el-cascader v-model="ruleForm.fclass" placeholder="请输入分类" expand-trigger="hover" :options="data.fclass" />
+      </el-form-item>
+      <el-form-item label="请选择区县" prop="town" :rules="[{ required: true, message: '区县不能为空'},]">
+        <el-select v-model="ruleForm.town" placeholder="请选择" multiple>
+          <el-option
+            v-for="item in data.townFclass"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+      </el-form-item>
+    </el-form>
+    <h3 id="shou-feng-qin-xiao-guo">问题与答案</h3>
     <el-tree :data="questions" :props="defaultProps" node-key="id" default-expand-all :expand-on-click-node="false" :render-content="renderContent" />
-
-    <el-button @click="createQuestion(questions)">新建问题</el-button>
-    <el-dialog title="新建或编辑问题" :visible.sync="questionDiag">
-      <el-form ref="ruleForm" :model="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="问题" prop="question" :rules="[{ required: true, message: '问题不能为空'},]">
-          <el-input v-model="ruleForm.question" />
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="questionDiag = false">取 消</el-button>
-        <el-button type="primary" @click="questionCreateSubmit">确 定</el-button>
-      </span>
-    </el-dialog>
-    <el-dialog title="新建或编辑答案" :visible.sync="answerDiag">
-      <el-form ref="ruleForm" :model="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="问题">
-          <el-input v-model="question.label" :disabled="true" />
-        </el-form-item>
-        <el-form-item label="答案">
-          <el-input v-model="ruleForm.answer" />
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="answerDiag = false">取 消</el-button>
-        <el-button type="primary" @click="answerCreateSubmit">确 定</el-button>
-      </span>
-    </el-dialog>
+    <el-button class="mt20" @click="createQuestion(questions)">新建1级问题</el-button>
+    <createQuestion ref="createQuestion" :rule-form="ruleForm" :append-question-data="appendQuestionData" />
+    <createAnswer ref="createAnswer" :policy-arr="data.policy" :benefit-arr="data.benefitFclass" :rule-form="ruleForm" :append-question-data="appendQuestionData" :question="question" :questions="questions" />
   </div>
 </template>
 <script type="text/javascript">
+  import createQuestion from './layouts/createQuestion.vue'
+  import createAnswer from './layouts/createAnswer.vue'
   import text from './layouts/text.js'
   export default {
-    components: {},
+    components: { createQuestion, createAnswer },
     data() {
       return {
-        questionDiag: false,
-        answerDiag: false,
-        ruleForm: { question: '1' },
+        ruleForm: { question: '1', benefit: [], town: [] },
         formAction: '/admin/policyMatch/create',
         data: this.formatData(this),
         siteName: this.getSiteName(),
@@ -64,41 +55,12 @@
       '$route': 'ajax'
     },
     mounted() {
-      // this.ajax()
-
+      this.ajax()
     },
     methods: {
-
-        renderContent(h, { node, data, store }) {
-            if (data.type == 'question') {
-              return (
-                <span style='flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 14px; padding-right: 8px;'>
-                  <span>
-                   <span style='color:red'> [问题]{node.label}</span>
-
-                  </span>
-
-                  <span>
-                    <el-button style='font-size: 12px;color:green' type='text' on-click={ () => this.appendAnswer(node, data) }>新增答案</el-button>
-                    <el-button style='font-size: 12px;' type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
-                  </span>
-                </span>)
-            } else if (data.type == 'answer') {
-                return (
-                  <span style='flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 14px; padding-right: 8px;'>
-                    <span>
-                      <span style='color:green'>[答案] {node.label}</span>
-                    </span>
-                    <span>
-                      <el-button style='font-size: 12px;color:res' type='text' on-click={ () => this.appendQuestion(data) }>新增问题</el-button>
-                      <el-button style='font-size: 12px;' type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
-                    </span>
-                  </span>)
-            }
-        },
        appendAnswer(node, data) {
           this.question = data
-          this.answerDiag = true
+          this.$refs.createAnswer.create()
       },
       remove(node, data) {
         const parent = node.parent
@@ -106,50 +68,23 @@
         const index = children.findIndex(d => d.id === data.id)
         children.splice(index, 1)
       },
-      questionCreateSubmit() {
-          this.appendQuestionData.push({
-             label: this.ruleForm.question,
-             type: 'question'
-          })
-          this.questionDiag = false
-      },
-      answerCreateSubmit() {
-           const res = this.getChildren(this.questions, this.question.label)
-           if (!res.children) {
-              this.$set(res, 'children', [])
-           }
-           res.children.push(
-              { label: this.ruleForm.answer, type: 'answer' }
-           )
-          this.answerDiag = false
-      },
+
       createQuestion(appendQuestionData) {
-        console.log(appendQuestionData)
         this.ruleForm.question = ''
         this.appendQuestionData = appendQuestionData
-        this.questionDiag = true
+
+        this.$refs.createQuestion.create()
       },
       appendQuestion(appendQuestionData) {
           this.$set(appendQuestionData, 'children', [])
           this.createQuestion(appendQuestionData.children)
       },
-      getChildren(data, label) {
-          var res // 定义一个不不赋值的变量
-          var find = function(data, label) {
-              data.forEach((item) => { // 利用foreach循环遍历
-                   if (item.label == label)// 判断递归结束条件
-                   {
-                     console.log(item.label)
-                       res = item
-                       return item
-                   } else if (item.children && item.children.length > 0) // 判断chlidren是否有数据
-                   {
-                       find(item.children, label) // 递归调用
-                   }
-              })
-          }
-           find(data, label)
-           return res
+      editQuestion(row) {
+           console.log(row)
+           this.$refs.createQuestion.edit(row)
+      },
+      editAnswer(row) {
+        this.$refs.createAnswer.edit(row)
       },
       ajax() {
         this.getAjax(this, {}, msg => {
@@ -157,7 +92,43 @@
             this.$refs.createEdit.ajax(msg.detail ? msg.detail : '', this.data, this.globalData.data.formFields)
           })
         })
-      }
+      },
+      renderContent(h, { node, data, store }) {
+          if (data.type == 'question') {
+            return (
+              <span style='flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 20px; padding-right: 8px;'>
+                <span>
+                 <span style='color:red'> [问题]{node.label}</span>
+                </span>
+                <span>
+                  <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.editQuestion(data) }>修改问题</el-button>
+                  <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.appendAnswer(node, data) }>新增答案</el-button>
+                  <el-button style='font-size: 16px;' type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
+                </span>
+              </span>)
+          } else if (data.type == 'answer') {
+              return (
+                <span style='flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 20px; padding-right: 8px;'>
+                  <span>
+                    <span style='color:green'>[答案] {node.label}</span>
+                  </span>
+                  <span>
+                    <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.editAnswer(data) }>修改答案</el-button>
+                    <el-button style='font-size: 16px;color:res' type='text' on-click={ () => this.appendQuestion(data) }>新增问题</el-button>
+                    <el-button style='font-size: 16px;' type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
+                  </span>
+                </span>)
+          }
+       }
     }
   }
 </script>
+<style>
+ .el-tree-node__content{
+      height:56px;
+      border:1px solid #ccc;
+ }
+ #shou-feng-qin-xiao-guo{
+     margin: 55px 0 20px;
+ }
+ </style>
