@@ -11,7 +11,7 @@
       <div class="flex-center flex-middle" style="height: 50px;" @click="createBenefit"><el-button type="mini">新增福利</el-button></div>
       <div v-for="(benefit,benefitKey) in ruleForm.benefitArr" class="p20" style="border:1px solid #ccc;position: relative;margin-bottom: 10px;">
         <div style="position: absolute;right: 10px;top:0" @click="ruleForm.benefitArr.splice(benefitKey,1)"><i class="el-icon-close" /></div>
-        <el-form-item label="福利">
+        <el-form-item label="福利" :rules="[{ required: true, message: '答案不能为空'},]">
           <el-select v-model="benefit.benefitCategory" placeholder="请选择">
             <el-option
               v-for="item in benefitArr"
@@ -20,10 +20,10 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="福利标题">
+        <el-form-item label="福利标题" :rules="[{ required: true, message: '答案不能为空'},]">
           <el-input v-model="benefit.benefitTitle" />
         </el-form-item>
-        <el-form-item label="福利内容">
+        <el-form-item label="福利内容" :rules="[{ required: true, message: '答案不能为空'},]">
           <el-input v-model="benefit.benefitContent" type="textarea" />
         </el-form-item>
         <el-form-item label="政策">
@@ -35,7 +35,7 @@
             <template slot="append">条款</template>
           </el-input>
         </el-form-item>
-        <el-form-item label="隐藏/显示">
+        <el-form-item label="隐藏/显示" :rules="[{ required: true, message: '答案不能为空'},]">
           <el-switch v-model="benefit.show " on-text="" off-text="" :active-value="1" :inactive-value="0" />
         </el-form-item>
       </div>
@@ -145,6 +145,21 @@
            this.$refs.searchAll.ajax(row, this.ruleForm.policy)
         },
         answerCreateSubmit() {
+          if (!this.ruleForm.label) {
+              return this.getError('你还没有填写答案')
+          }
+         for (const v of this.ruleForm.benefitArr) {
+                if (!v.benefitCategory) {
+                    return this.getError('福利分类还没有选择')
+                }
+                if (!v.benefitTitle) {
+                   return this.getError('福利标题还没有选择')
+                }
+                if (!v.benefitContent) {
+                   return this.getError('福利内容还没有选择')
+                }
+         }
+
           if (this.type == 'create') {
             const res = this.getChildren(this.questions, this.question.label)
             if (!res.children) {

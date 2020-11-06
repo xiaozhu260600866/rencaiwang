@@ -43,22 +43,8 @@ export default {
        //      }]
        //  },
         "tableFields": [
-            {
-                "name": "",
-                "prop": "title",
-                "minWidth": "180",
-                "width": "",
-                "append_table_": 0,
-                "label": "文章名称"
-            },
-            {
-                "name": "",
-                "prop": "unit",
-                "minWidth": "180",
-                "width": "",
-                "append_table_": 0,
-                "label": "单位"
-            },
+
+
             {
                 "name": "",
                 "prop": "fclassname",
@@ -67,10 +53,18 @@ export default {
                 "append_table_": 0,
                 "label": "分类"
             },
+            {
+                "name": "",
+                "prop": "town",
+                "minWidth": "",
+                "width": "180",
+                "append_table_": 0,
+                "label": "区县"
+            },
              { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/article/editField', 'append_table_': 0, 'label': '隐藏/显示' },
             {
                 "name": "",
-                "prop": "published_at",
+                "prop": "created_at",
                 "minWidth": "",
                 "width": "120",
                 "append_table_": 0,

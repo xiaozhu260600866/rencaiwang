@@ -17,8 +17,10 @@
     <h3 id="shou-feng-qin-xiao-guo">问题与答案</h3>
     <el-tree :data="questions" :props="defaultProps" node-key="id" default-expand-all :expand-on-click-node="false" :render-content="renderContent" />
     <el-button class="mt20" @click="createQuestion(questions)">新建1级问题</el-button>
-    <createQuestion ref="createQuestion" :rule-form="ruleForm" :append-question-data="appendQuestionData" />
+    <createQuestion ref="createQuestion" :rule-form="ruleForm" :append-question-data="appendQuestionData" :questions="questions" />
     <createAnswer ref="createAnswer" :policy-arr="data.policy" :benefit-arr="data.benefitFclass" :rule-form="ruleForm" :append-question-data="appendQuestionData" :question="question" :questions="questions" />
+    <el-button @click="stickQuestion(questions,1)">粘贴问题</el-button>
+    <el-button @click="submit">提交</el-button>
   </div>
 </template>
 <script type="text/javascript">
@@ -29,7 +31,7 @@
     components: { createQuestion, createAnswer },
     data() {
       return {
-        ruleForm: { question: '1', benefit: [], town: [] },
+        ruleForm: { town: [], fclass: [] },
         formAction: '/admin/policyMatch/create',
         data: this.formatData(this),
         siteName: this.getSiteName(),
@@ -45,6 +47,7 @@
 
           // ] }
         ],
+        copyQuestionData: {},
         defaultProps: {
           children: 'children',
           label: 'label'
@@ -58,6 +61,41 @@
       this.ajax()
     },
     methods: {
+        submit() {
+           if (this.ruleForm.fclass == 0) {
+             return this.getError('分类还没有选择')
+           }
+           if (this.ruleForm.town.length == 0) {
+             return this.getError('区县不能为空')
+           }
+           if (this.questions.length == 0) {
+              return this.getError('问题不能为空')
+           }
+           this.ruleForm.questions = this.questions
+           if (this.data.query.id) {
+              this.ruleForm.id = this.data.query.id
+           }
+           this.postAjax(this.data.query.id ? '/admin/policyMatch/edit' : '/admin/policyMatch/create', this.ruleForm).then(msg => {
+              if (msg.data.status == 2) {
+                  return this.goto('/policyMatch/lists')
+              }
+           })
+        },
+        stickQuestion(appendQuestionData, parent) {
+          if (parent) {
+             appendQuestionData.push(this.copyQuestionData)
+          } else {
+            if (!appendQuestionData.children) {
+               this.$set(appendQuestionData, 'children', [])
+            }
+             appendQuestionData.children.push(this.copyQuestionData)
+          }
+           this.getSuccess('操作成功')
+        },
+       copyQuestion(node) {
+           this.copyQuestionData = JSON.parse(JSON.stringify(node))
+           this.getSuccess('复制成功')
+       },
        appendAnswer(node, data) {
           this.question = data
           this.$refs.createAnswer.create()
@@ -70,27 +108,42 @@
       },
 
       createQuestion(appendQuestionData) {
+        console.log(appendQuestionData)
         this.ruleForm.question = ''
-        this.appendQuestionData = appendQuestionData
+         this.appendQuestionData = appendQuestionData
 
-        this.$refs.createQuestion.create()
+        this.$refs.createQuestion.create(this.appendQuestionData)
       },
       appendQuestion(appendQuestionData) {
-          this.$set(appendQuestionData, 'children', [])
+          if (!appendQuestionData.children) {
+             this.$set(appendQuestionData, 'children', [])
+          }
+
           this.createQuestion(appendQuestionData.children)
       },
       editQuestion(row) {
            console.log(row)
+            // this.question = data
            this.$refs.createQuestion.edit(row)
       },
-      editAnswer(row) {
+      editAnswer(row, node) {
+        this.question = node.parent.data
         this.$refs.createAnswer.edit(row)
       },
       ajax() {
         this.getAjax(this, {}, msg => {
-          this.$nextTick(() => {
-            this.$refs.createEdit.ajax(msg.detail ? msg.detail : '', this.data, this.globalData.data.formFields)
-          })
+              if (msg.detail) {
+                 this.questions = []
+                  this.ruleForm.fclass = msg.detail.fclassArr
+                  this.ruleForm.town = msg.detail.townArr
+                  msg.detail.getQuestions.forEach(v => {
+                    const question = JSON.parse(v.content)
+                    question.id = v.id
+                    this.questions.push(
+                         question
+                    )
+                  })
+              }
         })
       },
       renderContent(h, { node, data, store }) {
@@ -101,6 +154,7 @@
                  <span style='color:red'> [问题]{node.label}</span>
                 </span>
                 <span>
+                 <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.copyQuestion(data) }>复制问题</el-button>
                   <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.editQuestion(data) }>修改问题</el-button>
                   <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.appendAnswer(node, data) }>新增答案</el-button>
                   <el-button style='font-size: 16px;' type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
@@ -113,8 +167,9 @@
                     <span style='color:green'>[答案] {node.label}</span>
                   </span>
                   <span>
-                    <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.editAnswer(data) }>修改答案</el-button>
-                    <el-button style='font-size: 16px;color:res' type='text' on-click={ () => this.appendQuestion(data) }>新增问题</el-button>
+                    <el-button style='font-size: 16px;color:green' type='text' on-click={ () => this.editAnswer(data, node) }>修改答案</el-button>
+                    <el-button style='font-size: 16px;color:res' type='text' on-click={ () => this.appendQuestion(data) }>后续问题</el-button>
+                    <el-button style='font-size: 16px;color:res' type='text' on-click={ () => this.stickQuestion(data, 0) }>粘贴问题</el-button>
                     <el-button style='font-size: 16px;' type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
                   </span>
                 </span>)
