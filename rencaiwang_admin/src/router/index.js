@@ -12,7 +12,7 @@ import settingRouter from './modules/setting'
 import userRouter from './modules/user'
 import articleRouter from './modules/article'
 import videoRouter from './modules/video'
-// import activityRouter from './modules/activity'
+import activityRouter from './modules/activity'
 import roleRouter from './modules/role'
 import policyRouter from './modules/policy'
 import policyMatchRouter from './modules/policy_matchs'
@@ -105,6 +105,7 @@ export const asyncRoutes = [
   policyRouter,
   policyMatchRouter,
   staffRouter,
+  activityRouter,
   // merchantRouter,
   // horseRouter,
   // deliverRouter,

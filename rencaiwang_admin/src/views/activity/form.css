@@ -1,0 +1,48 @@
+/*上方*/
+label.sheet-label {
+    font-size: 14px;
+    color: #2e2e2e;
+    margin-right: 20px;
+    width: 80px;
+    text-align: center;
+}
+.sheet-bar {
+    width: 360px;
+}
+
+/*左边*/
+.tabs-box {min-width: 150px;font-size: 14px;text-align: center;border: 1px solid #e4e7ed!important;background: #fff;padding-bottom: 70px;
+}
+.tabs-box h3 {height: 50px;line-height: 52px;font-size: 16px;color: #2e2e2e;border-bottom: 1px solid #e4e7ed;
+}
+.ivu-tabs {-webkit-box-sizing: border-box;box-sizing: border-box;position: relative;overflow: hidden;color: #495060;zoom: 1;}
+.ivu-tabs .ivu-tabs-content-animated {display: -ms-flexbox;display: -webkit-box;display: flex;-ms-flex-direction: row;-webkit-box-orient: horizontal;-webkit-box-direction: normal;flex-direction: row;will-change: transform;-webkit-transition: -webkit-transform .3s ease-in-out;transition: -webkit-transform .3s ease-in-out;transition: transform .3s ease-in-out;transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;}
+.ivu-tabs .ivu-tabs-tabpane {-ms-flex-negative: 0;flex-shrink: 0;width: 100%;-webkit-transition: opacity .3s;transition: opacity .3s;opacity: 1;}
+.tabs-box .coms-item {height: 60px;width: 100%;line-height: 60px;font-size: 14px;color: #5c5c5c;border-bottom: 1px solid #e4e7ed;text-align: left;padding-left: 36px;}
+.coms-item:nth-child(odd) {border-right: 0;}
+.tabs-box {width: 220px;border-radius: 0px !important;border: 0px !important;-webkit-box-shadow: 3px 0 20px 0 rgba(209, 209, 209, 0.5) !important;box-shadow: 3px 0 20px 0 rgba(209, 209, 209, 0.5) !important;}
+.tabs-box .coms-item:hover{cursor:pointer;background:#ccc}
+/*左边结束*/
+
+
+/*中间开始*/
+.phone-model {width: 375px;margin: 0px auto!important;position: relative;z-index: 2;}
+.phone-box {padding-bottom: 0;border-bottom: 1px solid #e4e7ed;border-top: 1px solid #e4e7ed;}
+.phone-box {overflow: auto;height: 100%;width: 100%;padding-bottom: 130px;background-color: #f0f0f0;position: relative;}
+.show_all {position: absolute;width: 100%;top: 0;left: 0;height: 100%;z-index: 1;overflow-x: hidden;}
+.phone-model {width: 375px;margin: 0px auto;margin-top: 80px;position: relative;z-index: 2;}
+.wp-config {position: relative;text-align: center;font-size: 16px;color: #FFFFFF;background: #1F2D3D;height: 41.5px;line-height: 41.5px;}
+.wp-config img {display: block;position: absolute;right: 12px;top: 9px;width: 80px;}
+.design-content {margin-bottom: 25px;border: 1px solid #c1cddb;border-top: 0;}
+.noOne {-webkit-box-sizing: border-box;box-sizing: border-box;text-align: center;padding-top: 70px;position: absolute;top: -265px;bottom: 0;left: 0;right: 0;margin: auto;height: 200px;}
+/*中间结束*/
+
+.edit-box{max-width: 400px;border: 0;height: 100%;min-width: 400px!important;overflow: auto;overflow-x: hidden;}
+.edit-box .edit-shop-header {text-align: center;height: 40px;line-height: 26px;background-color: #fff;border-bottom: 1px solid #E1E1E1 !important;border-radius: 0px !important;}
+.edit-page-content, .edit-shop-content {position: relative;min-height: 44px;padding: 15px 30px;border: 1px solid #dddee1;border-top: none;background-color: #fff;}
+.edit-page-header h3, .edit-shop-header h3 {display: inline-block;margin: 0 15px 0 0;font-size: 14px;line-height: 20px;font-weight: 400;}
+
+
+
+
+

@@ -49,7 +49,8 @@ Vue.component(
 
 import checkPermission from 'xiaozhu/vue/packages/admin/permisson.js' //引入自定义方法
 Vue.use(checkPermission)
-
+import 'xiaozhu/wechatapp/css/global_new.css'
+import 'xiaozhu/wechatapp/css/global.css'
 //xiaozhu end
 
 /**
