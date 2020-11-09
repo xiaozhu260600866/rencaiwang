@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view>
+		<page :parentData="data" :formAction="formAction" ref="page"></page>
+		<view v-if="data.show"> 
 			<top-header></top-header>
 			<view class="index-user-info">
 				<dx-list-msg imgSrc="/static/images/header-pic.png" name="Dr.Carol J.McLean" nameColor="#757575" last padding="30rpx 40rpx">
@@ -50,7 +50,7 @@
 		components:{topHeader,downFooter,dxListMsg,dxNavClass},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/wapindex',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -74,7 +74,13 @@
 				return this.goto(v.url,v.type);
 			},
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+					this.$nextTick(()=>{
+						
+						this.$refs.page.share("123");
+					})
+					
+				});
 			}
 		}
 	}

@@ -7,13 +7,27 @@ const feedbackRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'feedback',
-    meta: { title: '留言管理', icon: 'wechat' },
-    children: [{
-        path: 'lists',
+    meta: { title: '意见反馈管理', icon: 'dx-setting',roles:["feedback","admin"] },
+    children: [
+    {
+        path: 'feedback',
         component: () => import('@/views/feedback/lists'),
-        name: 'feedbackLists',
-        meta: { title: '留言列表', icon: 'wechat', params: { status: 0 }}
-    }]
+         name: 'feedback',
+         meta: { title: '意见反馈', icon: 'dx-sales-order', params: { role: 3 },roles:["feedback.lists","admin"]},
+         children:[
+             {
+               path: 'lists-show',
+               hidden: true,
+               meta: { title: '查看意见反馈', icon: 'dx-hr-info',roles:['feedback.lists.show']  },
+             },
+             {
+               path: 'lists-del',
+               hidden: true,
+               meta: { title: '删除意见反馈', icon: 'dx-hr-info',roles:['feedback.lists.del']  },
+             }
+         ]
+     },
+   ]
 }
 
 export default feedbackRouter

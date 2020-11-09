@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import App from './App'
 import myfun from 'xiaozhu/uniapp/js/myfun.js' //引入自定义方法
-
+import filter from 'xiaozhu/uniapp/js/filter.js' //引入自定义方法
+import myfun2 from './public/js/myfun.js' //引入自定义方法
+import ajax from 'xiaozhu/uniapp/js/ajax.js' //引入自定义方法
+import message from 'xiaozhu/uniapp/js/message.js' //引入自定义方法
+import date from 'xiaozhu/uniapp/js/date.js' //引入自定义方法
+import vaildate from 'xiaozhu/uniapp/js/vaildate.js' //引入自定义方法
 import hasMore from 'xiaozhu/uniapp/components/hasMore'
 Vue.component(
 	'hasMore',
@@ -25,12 +30,24 @@ Vue.component(
 	'dxftButton',
 	dxftButton
 );
+import page from 'xiaozhu/uniapp/components/default'
+Vue.component(
+	'page',
+	page
+);
 
 Vue.config.productionTip = false
 Vue.use(myfun);
+Vue.use(ajax);
+Vue.use(myfun2);
+Vue.use(message);
+Vue.use(date);
+Vue.use(filter);
+Vue.use(vaildate);
+
 
 App.mpType = 'app'
-
+import 'provider.js';
 import '@/public/css/app.css';
 import "doxinui/css/global_upx.css";
 import "doxinui/css/global_icon.css";
