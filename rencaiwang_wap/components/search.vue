@@ -3,7 +3,7 @@
 		<view class="search" :style="{padding:padding}" v-if="selectArea == false">
 			<view class="search-box">
 				<view class="dxi-icon dxi-icon-search2"></view>
-				<input class="input" type="text" :placeholder="placeholder" />
+				<input class="input" type="text" :placeholder="placeholder" v-model="searchVal" @confirm="callBack"/>
 				<slot></slot>
 				<view class="area" v-if="areaShow" @click="$emit('step');selectArea = true">市区县<text class="dxi-icon dxi-icon-down"></text></view>
 			</view>
@@ -49,6 +49,7 @@
 		data() {
 			return {
 				selectArea: false,
+				searchVal:'',
 				ruleform:{},
 				selectAreaArr: [
 					{value: 0,label:'江门市'},
@@ -63,7 +64,9 @@
 			}
 		},
 		methods: {
-			
+			callBack(){
+				this.$emit("callBack",this.searchVal);
+			}
 		}
 	}
 </script>

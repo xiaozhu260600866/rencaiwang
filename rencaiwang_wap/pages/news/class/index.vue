@@ -6,7 +6,7 @@
 			<view class="news-class">
 				<view class="fc-4 fs-16 fw-bold mb15">工作动态</view>
 				<view>
-					<view class="class-lists" v-for="(item,key) in classLists">
+					<view class="class-lists" v-for="(item,key) in data.children" @click="goto('/pages/news/lists/index?fid='+item.id+'&lev=2')">
 						<dx-list-cell :name="item.name" nameColor="#777" slotLeft arrow padding="12rpx 20rpx" noborder>
 							<view slot="left" class="circle"></view>
 						</dx-list-cell>
@@ -26,7 +26,7 @@
 		components:{topHeader,downFooter,dxListCell},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/article/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -53,11 +53,16 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			ajax() {
-				
+				this.classLists = [];
+				this.getAjax(this).then(msg => {
+						
+						this.data.children.splice(0,1)
+					
+				});
 			}
 		}
 	}

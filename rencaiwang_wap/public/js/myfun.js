@@ -1,13 +1,21 @@
 const myfun = function() {};
 myfun.install = (Vue, options) => {
-	Vue.prototype.cancelAfterOrder = (order,callBack)=>{
-		Vue.prototype.getConfirm("是否确认取消售后？",msg=>{
-			Vue.prototype.postAjax("/shop/order/cancel-after",{id:order.id}).then(msg=>{
-				if(msg.data.status == 2){
-					callBack(msg);
-				}
-			});
+	Vue.prototype.getClassName = (getClassName)=>{
+		let res = "";
+		if(getClassName.length){
+			getClassName.forEach(v=>{
+				res+=v[v.length-1]+',';
+			})
+		}
+		return res;
+	},
+	Vue.prototype.getFileArr = (fileString)=>{
+		let res = []
+		fileString.split(",").forEach(file=>{
+			name:res.push({name:file});
 		})
+		console.log(res)
+		return res;
 	},
 	Vue.prototype.updateHistory=()=>{
 		Vue.prototype.updateUrl(["/pages/shop/index/index","/pages/shop/product/class/index","/pages/shop/user/cart/index",'/pages/shop/user/index/index','/pages/index/main']);
