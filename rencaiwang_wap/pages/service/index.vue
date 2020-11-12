@@ -1,24 +1,24 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view>
+		<page :parentData="data" :formAction="formAction"></page>
+		<view v-if="data.show">
 			<!-- 头部 -->
 			<top-header></top-header>
 			
 			<!-- 搜索 -->
-			<search></search>
+			<search @callBack="searchTitle"></search>
 			
 			<view class="skip">
-				<view class="shadow-block skip-item" v-for="item in skipLists">
-					<view class="left">
-						<image class="img" :src="item.cover"></image>
+				<view class="shadow-block skip-item" v-for="item in data.lists.data" >
+					<view class="left" @click="gotoUrl(item)">
+						<image class="img" :src="item.firstCover"></image>
 					</view>
-					<view class="right">
+					<view class="right" >
 						<view class="title fc-3">
-							<view class="name fs-15 fw-bold nowrap">{{item.title}}</view>
+							<view class="name fs-15 fw-bold nowrap" @click="gotoUrl(item)">{{item.title}}</view>
 							<view class="dxi-icon pl15 fs-14" :class="item.showMore?'dxi-icon-top':'dxi-icon-down'" @click="item.showMore=!item.showMore"></view>
 						</view>
-						<view class="content fs-13 fc-7 mt10" :class="item.showMore == true ? '':'wrap2'">{{item.content}}</view>
+						<view class="content fs-13 fc-7 mt10" :class="item.showMore == true ? '':'wrap2'" >{{item.content}}</view>
 					</view>
 				</view>
 			</view>
@@ -37,7 +37,7 @@
 		components:{topHeader,downFooter,search},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/redirectArticle/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -70,11 +70,20 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
+			searchTitle(res){
+				this.data.query.title = res;
+				this.ajax();
+			},
+			gotoUrl(item){
+				window.location.href=item.url;
+			},
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+					
+				});
 			}
 		}
 	}

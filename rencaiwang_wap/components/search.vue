@@ -1,14 +1,18 @@
 <template>
 	<view>
-		<view class="search" :style="{padding:padding}" v-if="selectArea == false">
+		<view class="search" :style="{padding:padding}">
 			<view class="search-box">
 				<view class="dxi-icon dxi-icon-search2"></view>
 				<input class="input" type="text" :placeholder="placeholder" v-model="searchVal" @confirm="callBack"/>
 				<slot></slot>
-				<view class="area" v-if="areaShow" @click="$emit('step');selectArea = true">市区县<text class="dxi-icon dxi-icon-down"></text></view>
+				<view class="area flex" v-if="areaShow" >
+					<picker :value="actIndex" class="order-picker fs12 font_grey" :range="selectAreaArr"  range-key="label" @change="selectRes">
+						{{  actIndex == -1 ? '市区县' : selectAreaArr[actIndex].label }}</picker>
+					<text class="dxi-icon dxi-icon-down"></text>
+				</view>
 			</view>
 		</view>
-		<view class="select-area" v-if="selectArea == true">
+		<!-- <view class="select-area" v-if="selectArea == true">
 			<view class="area-box">
 				<view class="top flex-between flex-middle">
 					<view class="left flex-middle">
@@ -26,7 +30,7 @@
 			<view class="flex-center">
 				<dx-button type="danger" myclass="plr50" round>提 交</dx-button>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -41,6 +45,10 @@
 				type:String,
 				default:'60rpx 40rpx 40rpx'
 			},
+			selectAreaArr:{
+				type:Array,
+				default:[]
+			},
 			areaShow:{
 				type: Boolean,
 				default: false
@@ -50,20 +58,16 @@
 			return {
 				selectArea: false,
 				searchVal:'',
+				actIndex:-1,
 				ruleform:{},
-				selectAreaArr: [
-					{value: 0,label:'江门市'},
-					{value: 1,label:'蓬江区'},
-					{value: 2,label:'江海区'},
-					{value: 3,label:'新会区'},
-					{value: 4,label:'台山市'},
-					{value: 5,label:'恩平市'},
-					{value: 6,label:'鹤山市'},
-					{value: 7,label:'开平市'},
-				],
+				
 			}
 		},
 		methods: {
+			selectRes(event) {
+			    	this.actIndex = event.mp.detail.value;
+			    	this.$emit('callBackTown',this.selectAreaArr[this.actIndex]);
+			    },
 			callBack(){
 				this.$emit("callBack",this.searchVal);
 			}

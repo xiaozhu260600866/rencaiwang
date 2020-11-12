@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view class="pb30">
+		<page :parentData="data" :formAction="formAction"></page>
+		<view class="pb30" v-if="data.show">
 			<!-- 头部 -->
 			<top-header></top-header>
 			
@@ -12,12 +12,12 @@
 			
 			<!-- 搜索 -->
 			<view class="feedback-search flex-between flex-middle pl30 pt30 pb20">
-				<view class="flex1 w-b100"><search padding="0"></search></view>
+				<view class="flex1 w-b100"><search padding="0" @callBack="searchTitle"></search></view>
 				<view class="flex-center" @click="goto('/pages/feedback/create_edit/index',1)"><view class="dxi-icon dxi-icon-add-circle fs-26 fc-6 pl15 pr30"></view></view>
 			</view>
 			
 			<view class="feedback-lists">
-				<view class="item" v-for="item in feedbackLists">
+				<view class="item" v-for="item in data.lists.data" @click="goto('/pages/feedback/create_edit/index?id='+item.id,1)">
 					<dx-list-cell :name="item.title" padding="30rpx 60rpx">
 						<view slot="right" class="fc-7 Arial fs-14">{{item.created_at}}</view>
 					</dx-list-cell>
@@ -39,7 +39,7 @@
 		components:{topHeader,downFooter,search,dxListCell},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/feedback/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -64,11 +64,20 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
+		},
+		onShow(){
+			this.ajax();
 		},
 		methods: {
+			searchTitle(res){
+				this.data.query.title = res;
+				this.ajax();
+			},
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+					
+				});
 			}
 		}
 	}

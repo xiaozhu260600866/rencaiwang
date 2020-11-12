@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view>
+		 <page :parentData="data" :formAction="formAction"></page>
+		<view v-if="data.show">
 			<!-- 头部 -->
 			<top-header></top-header>
 			
@@ -11,9 +11,9 @@
 			</view>
 			
 			<!-- 搜索 -->
-			<search areaShow @step="step = false"></search>
+			<search areaShow  :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle"></search>
 			
-			<view class="step1" v-if="step == true">
+			<view class="step1" >
 				
 				<!-- 导航 -->
 				<view class="index-nav plr20">
@@ -27,11 +27,11 @@
 				
 				<!-- 列表 -->
 				<view class="release-lists pt20">
-					<dx-list-cell :name="item.name" padding="30rpx" v-for="item in releaseLists" @click="goto('/pages/policy/show/index',1)">
+					<dx-list-cell :name="item.title" padding="30rpx" v-for="item in data.lists.data" @click="goto('/pages/policy/show/index?id='+item.id,1)">
 						<view slot="right">
 							<view class="right-box flex-baseline">
-								<view class="area fs-12">{{ item.area }}</view>
-								<view class="time Arial fs-13">{{ item.created_at }}</view>
+								<view class="area fs-12">{{ getClassName(item.townname) }}</view>
+								<view class="time Arial fs-13">{{ item.published_at }}</view>
 							</view>
 						</view>
 					</dx-list-cell>
@@ -57,17 +57,15 @@
 		components:{topHeader,downFooter,search,dxNavClass,dxListCell},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/policy/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform:{},
-				releaseLists:[
-					{name:'网络安全大赛成功在广州举行',area:'蓬江区',created_at:'2020-10-20'},
-					{name:'网络安全大赛成功在广州举行',area:'蓬江区',created_at:'2020-10-20'},
-					{name:'网络安全大赛成功在广州举行',area:'蓬江区',created_at:'2020-10-20'}
+				selectAreaArr: [
+					
 				],
-				step: true,
+				
 			}
 		},
 		onReachBottom() {
@@ -81,14 +79,24 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
+			searchTown(res){
+				this.data.query.town = res.value;
+				this.ajax();
+			},
+			searchTitle(res){
+				this.data.query.content = res;
+				this.ajax();
+			},
 			checkAuth(v){
 				return this.goto(v.url,v.type);
 			},
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+					this.selectAreaArr = msg.town	
+				});
 			}
 		}
 	}
