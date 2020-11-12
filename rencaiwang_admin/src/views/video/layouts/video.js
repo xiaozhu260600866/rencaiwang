@@ -116,24 +116,25 @@ export default {
                "append_form_": 0,
                "label": "图片"
            },
-           {
-               "prop": "upload_file",
-               allowUpLoadNum:1,
-               upurl:'article',
-               "type": "uploadFile",
-               "append_form_": 0,
-                action:'/admin/article/upload-file',
-                allowSuffix:[".doc",".docx",".xls",".xlsx",".et",".pdf",".jpg",".png",".zip",".rar"],
-                accept:"image/*",
-               "label": "上传附件"
-           },
            // {
-           //     "name": "",
-           //     "prop": "video_url",
-           //     "type": "text",
+           //     "prop": "upload_file",
+           //     allowUpLoadNum:1,
+           //     upurl:'article',
+           //     "type": "uploadFile",
            //     "append_form_": 0,
-           //     "label": "视频地址"
+           //      action:'/admin/article/upload-file',
+           //      allowSuffix:[".doc",".docx",".xls",".xlsx",".et",".pdf",".jpg",".png",".zip",".rar"],
+           //      accept:"image/*",
+           //     "label": "上传附件"
            // },
+           {
+               "name": "",
+               "datatype": "require",
+               "prop": "video_url",
+               "type": "text",
+               "append_form_": 0,
+               "label": "视频地址"
+           },
         {
             "name": "",
             "prop": "published_at",

@@ -126,14 +126,23 @@ export default {
            //     "append_form_": 0,
            //     "label": "视频地址"
            // },
+           {
+               "name": "",
+               "prop": "start_at",
+               "datatype": "require",
+               "type": "dateTime",
+               "append_form_": 0,
+
+               "label": "开始时间"
+           },
         {
             "name": "",
             "prop": "end_at",
             "datatype": "require",
-            "type": "date",
+            "type": "dateTime",
             "append_form_": 0,
 
-            "label": "起止期限"
+            "label": "结束时间"
         },
         {
             "name": "",
@@ -162,14 +171,6 @@ export default {
             "label": "图片"
         },
         {
-            "name": "",
-            "prop": "content",
-            "datatype": "require",
-            "type": "editor",
-            "append_form_": 0,
-            "label": ""
-        },
-        {
             "prop": "upload_file",
             allowUpLoadNum:1,
             upurl:'policy',
@@ -180,6 +181,15 @@ export default {
              accept:"image/*",
             "label": "上传附件"
         },
+        {
+            "name": "",
+            "prop": "content",
+            "datatype": "require",
+            "type": "editor",
+            "append_form_": 0,
+            "label": ""
+        },
+
         // {
         //     "prop": "pic",
         //     "datatype": "array",
