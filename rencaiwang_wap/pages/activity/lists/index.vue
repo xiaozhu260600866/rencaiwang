@@ -1,12 +1,12 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view>
+		<page :parentData="data" :formAction="formAction"></page>
+		<view v-if="data.show">
 			<!-- 头部 -->
 			<top-header></top-header>
 			
 			<!-- 搜索 -->
-			<search areaShow @step="step = false"></search>
+			<search areaShow  :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle"></search>
 			
 			<view v-if="step == true">
 				<!-- 切换 -->
@@ -15,35 +15,35 @@
 						{value: 0,name: '全部活动'},
 						{value: 1,name: '已报名'}
 					]" :height="88" :sliderWidth="170" :sliderHeight="60" bottom="50%" selectedColor="#fff" sliderBgColor="#419cf5" color="#404040" size="32"
-					 @change="change" v-model="tabsStatus" unlined></dx-tabs>
+					 @change="ajax" v-model="data.query.status" unlined></dx-tabs>
 				 </view>
 				
 				<!-- 列表 -->
 				<view class="activity">
-					<view class="main_activity" v-for="(v,key) in activityLists" v-if="key == 0" @click="goto('/pages/activity/show/index')">
+					<view class="main_activity" v-for="(v,key) in data.lists.data" v-if="key == 0" @click="goto('/pages/activity/show/index?id='+v.id,1)">
 						<view class="title fc-4 fs-15 fw-bold nowrap">{{ v.title }}</view>
-						<view class="sign-date fs-14 fc-5 pb15">报名日期：<text class="Arial">{{v.signup_at}}</text></view>
-						<view class="cover ptb15" v-if="v.cover">
-							<image class="img w-b100" :src="v.cover" mode="aspectFill"></image>
+						<view class="sign-date fs-14 fc-5 pb15">报名日期：<text class="Arial">{{v.start_at}}</text></view>
+						<view class="cover ptb15" v-if="v.firstCover">
+							<image class="img w-b100" :src="v.firstCover" mode="aspectFill"></image>
 						</view>
-						<view class="content fc-7 fs-14 wrap3">{{v.content}}</view>
+						<view class="content fc-7 fs-14 wrap3" v-html="v.content"></view>
 						<view class="flex-between flex-middle fs-12 fc-7 pt15">
-							<view class="name">{{ v.getUser.name }}</view>
+							<view class="name">{{ v.unit_name }}</view>
 							<view class="date Arial">{{ v.created_at }}</view>
 						</view>
 					</view>
-					<view class="activity_lists" v-for="(v,key) in activityLists" v-if="key > 0" @click="goto('/pages/activity/show/index')">
+					<view class="activity_lists" v-for="(v,key) in  data.lists.data" v-if="key > 0" @click="goto('/pages/activity/show/index?id='+v.id,1)">
 						<view class="lists_box">
 							<view class="title fc-4 fs-15 fw-bold nowrap">{{ v.title }}</view>
-							<view class="sign-date fs-14 fc-5">报名日期：<text class="Arial">{{v.signup_at}}</text></view>
+							<view class="sign-date fs-14 fc-5">报名日期：<text class="Arial">{{v.start_at}}</text></view>
 							<view class="fb-info flex-middle">
-								<image class="head" :src="v.getUser.headerPic"></image>
-								<view class="name fs-12 fw-bold fc-4">{{ v.getUser.name }}</view>
+							<!-- 	<image class="head" :src="v.firstCover"></image> -->
+								<view class="name fs-12 fw-bold fc-4">{{ v.unit_name }}</view>
 							</view>
 							<view class="activity_info flex-start ptb10">
 								<view class="content fc-7 fs-13 wrap4">{{v.content}}</view>
-								<view class="cover" v-if="v.cover">
-									<image class="img" :src="v.cover" mode="aspectFill"></image>
+								<view class="cover" v-if="v.firstCover">
+									<image class="img" :src="v.firstCover" mode="aspectFill"></image>
 								</view>
 							</view>
 						</view>
@@ -66,10 +66,11 @@
 		components:{topHeader,downFooter,search,dxTabs},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/activity/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
+				selectAreaArr:[],
 				tabsStatus: 0,
 				step: true,
 				activityLists:[{
@@ -126,11 +127,21 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
+			searchTown(res){
+				this.data.query.town = res.value;
+				this.ajax();
+			},
+			searchTitle(res){
+				this.data.query.content = res;
+				this.ajax();
+			},
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+					this.selectAreaArr = msg.town	
+				});
 			}
 		}
 	}

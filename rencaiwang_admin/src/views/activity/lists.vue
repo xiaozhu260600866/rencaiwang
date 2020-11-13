@@ -1,9 +1,12 @@
 <template>
   <div>
-    <dx-table :data="data" :global-data="globalData" :operate-width="180" @submitBeforeCallBack="submitBeforeCallBack">
+    <dx-table :data="data" :global-data="globalData" :operate-width="300" @submitBeforeCallBack="submitBeforeCallBack">
 
       <div slot="operate" slot-scope="scope">
         <div>
+          <el-button v-if="checkPermission(['activity.order'])" type="primary" size="mini" @click="goto('/activity/order?activity_id='+scope.row.id)">查看用户报名数据</el-button>
+        </div>
+        <div class="ml20">
           <el-button v-if="checkPermission(['activity.edit'])" type="primary" size="mini" @click="goto('/activity/edit?id='+scope.row.id)">编辑</el-button>
         </div>
       </div>

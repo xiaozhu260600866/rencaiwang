@@ -133,6 +133,7 @@ export default {
 					v.checked = false
 				}
 			})
+         console.log(this.$parent.ruleForm)
 		},
 
 		toDown(index) {
@@ -157,7 +158,7 @@ export default {
 		},
 		add(type) {
 			if (type == '标题') {
-				this.lists.push({ title: '标题', icon: 1, type: '标题', authDiag: false, checked: true, background: 1 })
+				this.lists.push({ title: '标题', icon: 1, type: '标题', isRequire: 1, authDiag: false, checked: true, background: 1 })
 			}
 			if (type == '文本') {
 				this.lists.push({ title: '姓名', icon: 1, type: '文本', isRequire: 1, datatype: 'name', authDiag: false, checked: true, background: 1 })

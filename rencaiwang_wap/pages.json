@@ -93,6 +93,13 @@
 			}
 		},
 		{
+			"path": "pages/activity/signup/index",
+			"style": {
+				"navigationBarTitleText": "活动报名",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/feedback/lists/index",
 			"style": {
 				"navigationBarTitleText": "意见往集",

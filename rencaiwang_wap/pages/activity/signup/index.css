@@ -1,0 +1,6 @@
+.activity-show .cover .img{width: 100%;}
+
+/* 活动说明 */
+.explain{padding: 30upx;border: 1upx #969696 solid;border-radius: 12upx;}
+.explain .title{font-size: 32upx;padding-bottom: 20upx;}
+.explain .detail{font-size: 30upx;color: #777;text-align: justify;text-indent: 2em;line-height: 1.6;margin-bottom: 30upx;}

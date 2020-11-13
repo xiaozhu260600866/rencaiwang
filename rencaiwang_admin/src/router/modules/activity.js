@@ -6,12 +6,12 @@ const activityRouter = {
     path: '/activity',
     component: Layout,
     redirect: 'noRedirect',
-    name: 'Article',
+    name: 'Activity',
     meta: {title: '活动发布', icon: 'dx-hr',roles:['activity']},
     children: [{
         path: 'lists',
         component: () => import('@/views/activity/lists'),
-        name: 'ArticleLists',
+        name: 'ActivityLists',
         meta: { title: '活动列表', icon: 'dx-hr-info',roles:['activity.lists']  },
         children:[
           {
@@ -29,14 +29,33 @@ const activityRouter = {
         path: 'create',
         component: () => import('@/views/activity/create'),
         hidden: true,
-        name: 'ArticleCreate',
+        name: 'ActivityCreate',
         meta: { title: '发布活动',roles:['activity.create'] }
     },{
         path: 'edit',
         component: () => import('@/views/activity/create'),
         hidden: true,
-        name: 'ArticleEdit',
+        name: 'ActivityEdit',
         meta: { title: '编辑活动',roles:['activity.edit'] }
+    },
+    {
+        path: 'order',
+        component: () => import('@/views/activity/order'),
+        hidden: true,
+        name: 'ActivityOrder',
+        meta: { title: '查看用户报名数据',roles:['activity.order'],},
+        children:[
+          {
+            path: 'order-show',
+            hidden: true,
+            meta: { title: '查看活动', icon: 'dx-hr-info',roles:['activity.order.show']  },
+          },
+            {
+              path: 'order-del',
+              hidden: true,
+              meta: { title: '删除活动', icon: 'dx-hr-info',roles:['activity.order.del']  },
+            }
+        ]
     }]
 }
 
