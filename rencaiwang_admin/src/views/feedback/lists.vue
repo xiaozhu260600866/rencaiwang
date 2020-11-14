@@ -26,6 +26,13 @@
             }, 200)
         },
         methods: {
+          handel(row, status) {
+            this.postAjax('/admin/feedback/orderStatus', { id: row.id, status: status }).then(msg => {
+              if (msg.data.status == 2) {
+                  this.ajax()
+              }
+            })
+          },
             ajax() {
                 this.getAjax(this, {}, msg => {
 

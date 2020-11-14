@@ -8,7 +8,8 @@ const policyMatchRouter = {
     redirect: 'noRedirect',
     name: 'Policy',
     meta: {title: '政策匹配发布', icon: 'dx-hr',roles:['policyMatch']},
-    children: [{
+    children: [
+      {
         path: 'lists',
         component: () => import('@/views/policyMatch/lists'),
         name: 'PolicyLists',
@@ -25,7 +26,28 @@ const policyMatchRouter = {
               meta: { title: '删除政策匹配', icon: 'dx-hr-info',roles:['policyMatch.lists.del']  },
             }
         ]
-    },{
+    },
+
+    {
+        path: 'order',
+        component: () => import('@/views/policyMatch/order'),
+        name: 'PolicyOrderLists',
+        meta: { title: '政策咨询查看', icon: 'dx-hr-info',roles:['policyMatch.order'],params:{status:0}  },
+        children:[
+          {
+            path: 'order-show',
+            hidden: true,
+            meta: { title: '查看咨询查看', icon: 'dx-hr-info',roles:['policyMatch.order.show']  },
+          },
+            {
+              path: 'order-del',
+              hidden: true,
+              meta: { title: '删除政策咨询查看', icon: 'dx-hr-info',roles:['policyMatch.order.del']  },
+            }
+        ]
+    },
+
+    {
         path: 'create',
         component: () => import('@/views/policyMatch/create'),
         hidden: true,

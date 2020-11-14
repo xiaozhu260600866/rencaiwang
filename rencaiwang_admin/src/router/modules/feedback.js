@@ -13,7 +13,7 @@ const feedbackRouter = {
         path: 'feedback',
         component: () => import('@/views/feedback/lists'),
          name: 'feedback',
-         meta: { title: '意见反馈', icon: 'dx-sales-order', params: { role: 3 },roles:["feedback.lists","admin"]},
+         meta: { title: '意见反馈', icon: 'dx-sales-order', params: { status: 0 },roles:["feedback.lists","admin"]},
          children:[
              {
                path: 'lists-show',

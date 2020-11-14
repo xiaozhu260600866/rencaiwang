@@ -1,0 +1,20 @@
+
+.search-box{display: flex;align-items: center;border-radius: 8upx;border: 2upx #999 solid;height: 88upx;padding: 0 20upx;}
+.search-box .dxi-icon{font-size: 32upx;color: #737373;padding-right: 20upx;}
+.search-box .input{display: block;flex: 1;}
+.search-box .area{padding-left: 30upx;position: relative;font-size: 28upx;color: #737373;}
+.search-box .area .dxi-icon{font-size: 24upx;padding-left: 30upx;}
+.search-box .area::before{content: '';display: block;position: absolute;left: 0;top: 50%;margin-top: -24upx;height: 48upx;width: 2upx;background-color: #bfbfbf;}
+
+
+/* 选择区域 */
+.select-area{margin: 60upx 40upx 40upx;}
+.select-area .area-box{padding: 0 20upx 20upx;border: 1upx solid #999;border-radius: 8upx;box-shadow: 0 2px 10px 0 hsla(0,6%,58%,.6)}
+.select-area .top{border-bottom: 1upx #e6e6e6 solid;height: 100upx;}
+.select-area .top .img{width: 40upx;height: 40upx;margin-right: 10upx;display: flex;}
+.select-area .con{max-height: 520upx;overflow-y: auto;}
+.select-area /deep/.dx-cell{padding: 10upx 0 0;border-bottom: 0;font-size: 32upx;}
+.select-area /deep/.dx-check_label{margin: 10upx 0;}
+.select-area /deep/.uni-checkbox-input{width: 52upx;height: 52upx;border: 4upx #404040 solid;}
+
+
