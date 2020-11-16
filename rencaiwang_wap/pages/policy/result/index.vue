@@ -10,31 +10,37 @@
 				<image class="w-b100 flex" src="/static/images/index-ad.jpg" mode="widthFix"></image>
 			</view>
 			
-			<view class="shadow-block result">
+			<view class="shadow-block result" v-for="benefit in benefitArr">
 				<view class="title">
-					<dx-list-cell name="经济福利" slotLeft last>
+					<dx-list-cell :name="benefit.name" slotLeft last>
 						<view slot="left"><view class="circle"></view></view>
-						<view slot="right" class="fs-15 fc-6"><text class="Arial">1</text>条</view>
+						<view slot="right" class="fs-15 fc-6"><text class="Arial">{{benefit.children.length}}</text>条</view>
 					</dx-list-cell>
 				</view>
-				<view class="lists">
-					<dx-list-cell name="最高1亿元的综合资助" nameColor="#626262" noborder iconName="success" iconSize="13" iconColor="#626262">
-						<view slot="right"><view class="dxi-icon fs-14 fc-6" :class="showMore?'dxi-icon-top':'dxi-icon-down'" @click="showMore=!showMore"></view></view>
-					</dx-list-cell>
+				<view v-for="v in benefit.children">
+					<view class="lists">
+						<dx-list-cell :name="v.benefitTitle" nameColor="#626262" noborder iconName="success" iconSize="13" iconColor="#626262">
+							<view slot="right"><view class="dxi-icon fs-14 fc-6" :class="v.show?'dxi-icon-top':'dxi-icon-down'" @click="v.show=!v.show"></view></view>
+						</dx-list-cell>
+					</view>
+					<view class="content" v-if="v.show==true">
+						<view class="box">
+							<span >{{v.benfitNum}}条</span>
+								{{v.benefitContent}}
+						</view>
+					</view>
 				</view>
-				<view class="content" v-if="showMore==true">
-					<view class="box">日前，省人才工作领导小组办公室发出公告，启动2017年珠江人才计划、广东特支计划、扬帆计划申报工作，入选团队和人才可享受广东省和我市相关政策待遇。梅州市人才工作领导小组办公室要求，各负责单位要按照所负责项目申报要求、规定时限做好申报工作。据了解，“珠江人才计划”聚焦重点产业、核心技术，突出高精尖缺，大力引进集聚海外高层次人才，给予每个创新创业团队1000万元至1亿元的资助资金，资助海（境）外专家来粤短期工作和海（境）外博士来粤开展博士后研究。日前，省人才工作领导小组办公室发出公告，启动2017年珠江人才计划、广东特支计划、扬帆计划申报工作，入选团队和人才可享受广东省和我市相关政策待遇。梅州市人才工作领导小组办公室要求，各负责单位要按照所负责项目申报要求、规定时限做好申报工作。据了解，“珠江人才计划”聚焦重点产业、核心技术，突出高精尖缺，大力引进集聚海外高层次人才，给予每个创新创业团队1000万元至1亿元的资助资金，资助海（境）外专家来粤短期工作和海（境）外博士来粤开展博士后研究</view>
-				</view>
+				
 			</view>
 			
-			<view class="shadow-block r-policy">
-				<view class="title">
+			<view class="shadow-block r-policy" >
+				<view class="title" >
 					<dx-list-cell name="相关政策" slotLeft last>
 						<view slot="left"><view class="circle"></view></view>
 					</dx-list-cell>
 				</view>
 				<view class="rp-list p15 pr0">
-					<dx-list-cell arrow :name="item.name" noborder padding="10rpx 0" nameColor="#737373" :nameSize="14" v-for="item in policyList"></dx-list-cell>
+					<dx-list-cell arrow :name="item.title" noborder padding="10rpx 0" nameColor="#737373" :nameSize="14" v-for="item in policyArr"></dx-list-cell>
 				</view>
 			</view>
 			
@@ -48,14 +54,14 @@
 			
 			<view class="consult">
 				<view class="item">
-					<weui-input v-model="ruleform.name" placeholder="联系方式" type="text" name="name" datatype="require"></weui-input>
+					<weui-input v-model="ruleform.phone" placeholder="联系方式" type="text" name="phone" datatype="require|phone"></weui-input>
 				</view>
 				<view class="item">
 					<weui-input v-model="ruleform.remark" placeholder="咨询内容" type="textarea" name="remark" datatype="require"></weui-input>
 				</view>
 			</view>
 			
-			<view class="pt10 text-center">
+			<view class="pt10 text-center" @click="submit">
 				<dx-button type="danger" myclass="plr50" round >提 交</dx-button>
 			</view>
 			
@@ -73,17 +79,17 @@
 		components:{topHeader,downFooter,dxListCell},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/policy/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform:{},
+				vaildate:{},
+				policyArr:[],
+				benefitArr:[],
 				showMore: false,
-				policyList:[
-					{name:'社会发展网络安全的重要性及推广必要性'},
-					{name:'社会发展推动网络安全产业发展'},
-					{name:'提升社会网络安全意识与防护'}
-				]
+				question:[],
+				answerResult:[],
 			}
 		},
 		onReachBottom() {
@@ -97,12 +103,47 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
+			this.question = uni.getStorageSync('question', this.question_copy);
+			this.answerResult = uni.getStorageSync('answerResult', this.answerResult);
+			let policyArr = [];
+			let benefitArr = [];
+			this.answerResult.forEach(question=>{
+				if(question.children){
+					question.children.forEach(answer=>{
+						 if(answer.benefitArr.length){
+							 answer.benefitArr.forEach(benfit=>{
+								 policyArr.push(benfit.policy_id);
+								 benefitArr.push({show:false,benefitCategory:benfit.benefitCategory,benefitTitle:benfit.benefitTitle,benefitContent:benfit.benefitContent,benfitNum:benfit.policyNum});
+							 });
+						 }
+					})
+				}
+			})
+			
+			if(policyArr.length){
+				console.log(policyArr)
+				this.getAjax(this,{ids:policyArr}).then(msg => {
+					this.policyArr = msg.lists.data;
+				});
+				this.postAjax("/policyMatch/benefit",{benefitArr:benefitArr}).then(msg=>{
+					this.benefitArr = msg.data.res;
+				});
+			}
+			
+			
 			//this.ajax();
 		},
 		methods: {
-			
-			ajax() {
-				
+			submit(){
+				this.vaildForm(this, res => {
+					if(res){
+						this.postAjax("/policyMatch/order", this.ruleform).then(msg => {
+							if (msg.data.status == 2) {
+								this.back();
+							}
+						});
+					}
+				})
 			}
 		}
 	}

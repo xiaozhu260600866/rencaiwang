@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view>
+		<page :parentData="data" :formAction="formAction"></page>
+		<view v-if="data.show">
 			<!-- 头部 -->
 			<top-header></top-header>
 			
@@ -11,8 +11,8 @@
 			</view>
 			
 			<view class="policy-class">
-				<view class="class-lists" v-for="item in policyClass">
-					<dx-list-msg :imgSrc="item.cover" :name="item.name" :content="item.remark" arrow padding="12rpx 30rpx" nameColor="#404040"
+				<view class="class-lists" v-for="item in data.class" @click="goto('/pages/policy/town/index?class_id='+item.id,1)">
+					<dx-list-msg :imgSrc="item.getcover" :name="item.name" :content="item.remark" arrow padding="12rpx 30rpx" nameColor="#404040"
 					 conColor="#737373" :conTop="0"></dx-list-msg>
 				</view>
 			</view>
@@ -31,7 +31,7 @@
 		components:{topHeader,downFooter,dxListMsg},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/policyMatch/class',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -56,11 +56,13 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+						
+				});
 			}
 		}
 	}

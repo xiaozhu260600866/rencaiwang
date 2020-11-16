@@ -11,20 +11,20 @@
 			</view>
 			
 			<view class="question">
-				<view class="que-item shadow-block" v-for='(v,key) in questionArr'>
-					<view class="topic"><text class="Arial">{{key+1}}</text>、{{v.title}}</view>
+				<view class="que-item shadow-block" v-for='(v,questionKey) in question'>
+					<view class="topic"><text class="Arial">{{questionKey+1}}</text>、{{v.label}}</view>
 					<view class="answer">
 						<radio-group class="radio-group" @change="radioChange">
-							<label class="radio-item" v-for="(item, index) in v.answerArr" :key="item.value">
+							<label class="radio-item" v-for="(item, answerKey) in v.children" :key="answerKey">
 								<view>
-									<radio :value="item.value" :checked="index === current" />
+									<radio :value="questionKey + ':' + answerKey" :checked="item.checked" :data-answerkey="answerKey" :data-questionkey="questionKey"/>
 								</view>
 								<view>{{item.label}}</view>
 							</label>
 						</radio-group>
 					</view>
 				</view>
-				<view class="pt10 text-center">
+				<view class="pt10 text-center" @click="submit">
 					<dx-button type="danger" myclass="plr50" round >提 交</dx-button>
 				</view>
 			</view>
@@ -42,29 +42,15 @@
 		components:{topHeader,downFooter},
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/policyMatch/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform:{},
-				questionArr:[{
-					title:'活动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全意识，引导群众广泛参与，提升社会网络安全意识和防护功能。活动正式举办？',
-					answerArr:[
-						{value: 1,label: '是'},
-					]
-				},{
-					title:'活动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全意识，引导群众广泛参与，提升社会网络安全意识和防护功能。活动正式举办？',
-					answerArr:[
-						{value: 1,label: '是'},
-						{value: 2,label: '否'},
-						{value: 3,label: '都不是'},
-					]
-				},{
-					title:'活动正式举办，本次活动突出展示了网络安全，在国家安全、社会发展推动网络安全产业发展，普及网络安全意识，引导群众广泛参与，提升社会网络安全意识和防护功能。活动正式举办？',
-					answerArr:[
-						{value: 1,label: '否'},
-					]
-				}],
+				question:[],
+				answerResult:[],
+				question_copy:[]
+				
 			}
 		},
 		onReachBottom() {
@@ -78,19 +64,78 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
-			radioChange: function(evt) {
-				for (let i = 0; i < this.items.length; i++) {
-					if (this.items[i].value === evt.target.value) {
-						this.current = i;
-						break;
+			submit(){
+				let nextQuestion = [];
+				for (let question of this.question) {
+					let canVaild = false;
+					for (let answer of question.children) {
+						if(answer.checked){
+							canVaild = true;
+							this.answerResult.push(question);
+							if(answer.children){
+								answer.children.forEach(children=>{
+									nextQuestion.push(children);
+								})
+							}
+						}
+					}
+					if(!canVaild){
+						return this.getError(question.label+'未填写');
 					}
 				}
+				if(nextQuestion.length >0){
+					this.question = nextQuestion
+				}else{
+					uni.setStorageSync('question', this.question_copy);
+					uni.setStorageSync('answerResult', this.answerResult);
+					this.postAjax('/policyMatch/visit',{id:this.data.lists.data[0].id}).then(msg=>{
+						this.goto('/pages/policy/result/index',1);
+					});
+					
+					
+					// this.postAjax('/policyMatch/order',{question:this.question_copy,answerResult:this.answerResult});
+					// console.log(this.question_copy)
+					// this.answerResult.forEach(v=>{
+					// 	this.reSetDataCopy(this.question_copy,v.uid);
+					// })
+					// console.log(this.question_copy)
+				}
+				
+			},
+			radioChange: function(evt) {
+				let res = evt.detail.value.split(":");
+				this.$set(this.question[res[0]].children[res[1]],"checked",true);
+			},
+			reSetDataCopy(content,uid){
+				content.forEach(v=>{
+					if(v.uid == uid){
+						v.checked = true;
+					}
+					if(content.children){
+					  this.reSetDataCopy(content.children,uid);
+					}
+				})
+				return content;
+			},
+			
+			reSetData(content){
+				content.uid = Math.ceil(Math.random()*100);
+			    if(content.children){
+				  this.reSetData(content.children);
+			    }
+				return content;
 			},
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+					this.data.lists.data[0].getQuestions.forEach(msg=>{
+						let content =this.reSetData(JSON.parse(msg.content));
+						this.question.push(content);
+						this.question_copy.push(content);
+					})
+				});
 			}
 		}
 	}
