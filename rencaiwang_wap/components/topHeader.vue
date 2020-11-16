@@ -1,6 +1,6 @@
 <template>
 	<view class="top_header main-bg">
-		<view class="head_left icon">
+		<view class="head_left icon" @click="back">
 			<image class="img" src="../static/images/return-icon.png"></image>
 		</view>
 		<view class="head_right icon" @click="goto('/pages/index/index',1)">
@@ -16,7 +16,14 @@
 		},
 		data() {
 			return {
+				currentPageTitle:''
 			}
+		},
+		created(){
+			var pages = getCurrentPages();  
+			var page = pages[pages.length - 1];  
+			var currentPageTitle = page.$holder.navigationBarTitleText;
+			this.currentPageTitle = currentPageTitle;
 		},
 		methods: {
 			

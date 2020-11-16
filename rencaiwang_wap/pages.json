@@ -72,6 +72,20 @@
 			}
 		},
 		{
+			"path": "pages/policy/town/index",
+			"style": {
+				"navigationBarTitleText": "选择区县",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/policy/question/index",
+			"style": {
+				"navigationBarTitleText": "选择问题",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/policy/result/index",
 			"style": {
 				"navigationBarTitleText": "匹配结果",

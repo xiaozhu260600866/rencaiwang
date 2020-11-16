@@ -27,6 +27,25 @@ const policyMatchRouter = {
             }
         ]
     },
+    {
+        path: 'visit',
+        component: () => import('@/views/policyMatch/visit'),
+         name: 'SettingPhone',
+         meta: { title: '访问量', icon: 'dx-sales-order', params: { table_name: 'policy_matchs' },roles:["policyMatch.visit","admin"]},
+         children:[
+             {
+               path: 'lists-show',
+               hidden: true,
+               meta: { title: '查看', icon: 'dx-hr-info',roles:['policyMatch.visit.show']  },
+             },
+
+             {
+               path: 'lists-del',
+               hidden: true,
+               meta: { title: '删除', icon: 'dx-hr-info',roles:['policyMatch.visit.del']  },
+             }
+         ]
+     },
 
     {
         path: 'order',

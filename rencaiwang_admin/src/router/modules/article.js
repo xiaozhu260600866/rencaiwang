@@ -37,7 +37,28 @@ const articleRouter = {
         hidden: true,
         name: 'ArticleEdit',
         meta: { title: '编辑信息',roles:['article.edit'] }
-    }]
+    },
+    {
+        path: 'visit',
+        component: () => import('@/views/article/visit'),
+         name: 'SettingPhone',
+         meta: { title: '访问量', icon: 'dx-sales-order', params: { table_name: 'articles' },roles:["article.visit","admin"]},
+         children:[
+             {
+               path: 'lists-show',
+               hidden: true,
+               meta: { title: '查看', icon: 'dx-hr-info',roles:['article.visit.show']  },
+             },
+
+             {
+               path: 'lists-del',
+               hidden: true,
+               meta: { title: '删除', icon: 'dx-hr-info',roles:['article.visit.del']  },
+             }
+         ]
+     },
+
+    ]
 }
 
 export default articleRouter

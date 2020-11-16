@@ -37,7 +37,26 @@ const policyRouter = {
         hidden: true,
         name: 'PolicyEdit',
         meta: { title: '编辑政策',roles:['policy.edit'] }
-    }]
+    },
+    {
+        path: 'visit',
+        component: () => import('@/views/policy/visit'),
+         name: 'SettingPhone',
+         meta: { title: '访问量', icon: 'dx-sales-order', params: { table_name: 'policys' },roles:["policy.visit","admin"]},
+         children:[
+             {
+               path: 'lists-show',
+               hidden: true,
+               meta: { title: '查看', icon: 'dx-hr-info',roles:['policy.visit.show']  },
+             },
+    
+             {
+               path: 'lists-del',
+               hidden: true,
+               meta: { title: '删除', icon: 'dx-hr-info',roles:['policy.visit.del']  },
+             }
+         ]
+     },]
 }
 
 export default policyRouter

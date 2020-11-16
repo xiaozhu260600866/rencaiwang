@@ -53,7 +53,7 @@ const actions = {
         data.user.expire = expire;
         let user = JSON.stringify(data.user);
         localStorage.setItem("userInfo", user);
-        resolve()
+        resolve(response)
 
       }).catch(error => {
         reject(error)

@@ -18,7 +18,29 @@ const settingRouter = {
         path: 'phone',
         component: () => import('@/views/phone/lists'),
          name: 'SettingPhone',
-         meta: { title: '电话设置', icon: 'dx-sales-order', params: { type: 1 },roles:["setting.phone","admin"]}
+         meta: { title: '电话设置', icon: 'dx-sales-order', params: { type: 1 },roles:["setting.phone","admin"]},
+         children:[
+             {
+               path: 'lists-show',
+               hidden: true,
+               meta: { title: '查看', icon: 'dx-hr-info',roles:['setting.phone.show']  },
+             },
+             {
+               path: 'lists-create',
+               hidden: true,
+               meta: { title: '新建', icon: 'dx-hr-info',roles:['setting.phone.create']  },
+             },
+             {
+               path: 'lists-edit',
+               hidden: true,
+               meta: { title: '编辑', icon: 'dx-hr-info',roles:['setting.phone.edit']  },
+             },
+             {
+               path: 'lists-del',
+               hidden: true,
+               meta: { title: '删除', icon: 'dx-hr-info',roles:['setting.phone.del']  },
+             }
+         ]
      },
     
     ]

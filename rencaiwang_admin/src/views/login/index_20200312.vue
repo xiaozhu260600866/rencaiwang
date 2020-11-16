@@ -1,40 +1,44 @@
 <template>
-	<div class="login-main">
-		<div class="login-body" :style="'background:url('+bgImg+')'">
-			<div class="wrap">
-				<div class="login-side">
-					<div class="content">
-						<div class="login-form">
-							<p class="logo"><img class="img" src="../../assets/login_images/logo.png"></p>
-							<p class="form-desc">登录系统</p>
-							<el-form ref="loginForm" :model="formData">
-								<el-form-item prop="username" :rules="[{ required: true, message: '登录账号不能为空'}]">
-									<el-input v-model="formData.username" placeholder="账号" prefix-icon="el-icon-user-solid" />
-								</el-form-item>
-								<el-form-item prop="password" :rules="[{ required: true, message: '登录密码不能为空'}]">
-									<el-input v-model="formData.password" :type="passwordType" placeholder="密码" prefix-icon="el-icon-lock" @keyup.enter.native="handleLogin" />
-									<span class="show-pwd" @click="showPwd"><svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" /></span>
-								</el-form-item>
-								<el-button type="primary" :loading="loading" @click.native.prevent="handleLogin">登录系统</el-button>
-							</el-form>
-						</div>
-					</div>
-					<div class="bottom">
-						<p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市锋云信息技术有限公司</a></p>
-						<p align="center"><a href="http://www.beian.miit.gov.cn/" target="_blank">备案编号：粤ICP备19035012号-1</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="login-main">
+    <qrcode ref="qrcode" @callBack="verify" />
+    <div class="login-body" :style="'background:url('+bgImg+')'">
+      <div class="wrap">
+        <div class="login-side">
+          <div class="content">
+            <div class="login-form">
+              <p class="logo"><img class="img" src="../../assets/login_images/logo.png"></p>
+              <p class="form-desc">登录系统</p>
+              <el-form ref="loginForm" :model="formData">
+                <el-form-item prop="username" :rules="[{ required: true, message: '登录账号不能为空'}]">
+                  <el-input v-model="formData.username" placeholder="账号" prefix-icon="el-icon-user-solid" />
+                </el-form-item>
+                <el-form-item prop="password" :rules="[{ required: true, message: '登录密码不能为空'}]">
+                  <el-input v-model="formData.password" :type="passwordType" placeholder="密码" prefix-icon="el-icon-lock" @keyup.enter.native="handleLogin" />
+                  <span class="show-pwd" @click="showPwd"><svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" /></span>
+                </el-form-item>
+                <el-button type="primary" :loading="loading" @click.native.prevent="handleLogin">登录系统</el-button>
+              </el-form>
+            </div>
+          </div>
+          <div class="bottom">
+            <p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市锋云信息技术有限公司</a></p>
+            <p align="center"><a href="http://www.beian.miit.gov.cn/" target="_blank">备案编号：粤ICP备19035012号-1</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
 
 import bgimg from '@/assets/login_images/bg5.jpg'
+import qrcode from './components/qrcode.vue'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 export default {
 	name: 'Login',
+  components: { qrcode },
 	data() {
 		return {
 				passwordType: 'password',
@@ -46,7 +50,11 @@ export default {
 	},
 
 	methods: {
-
+    verify() {
+      console.log('u')
+      this.$router.push({ path: '/login' || '/', query: this.otherQuery })
+      this.loading = false
+    },
 			showPwd() {
 			if (this.passwordType === 'password') {
 				this.passwordType = ''
@@ -63,9 +71,10 @@ export default {
 						if (valid) {
 							this.loading = true
 							this.$store.dispatch('user/login', this.formData)
-								.then(() => {
-									this.$router.push({ path: '/login' || '/', query: this.otherQuery })
-									this.loading = false
+								.then(msg => {
+                  this.$refs.qrcode.init(this.getSiteName() + '/upload/images/qrcode/' + msg.data.user.id + '.svg', msg.data.user)
+									// this.$router.push({ path: '/login' || '/', query: this.otherQuery })
+									// this.loading = false
 								})
 								.catch(() => {
 									this.loading = false

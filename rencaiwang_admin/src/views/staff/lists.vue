@@ -1,6 +1,11 @@
 <template>
   <div>
-    <dx-table :data="data" :global-data="globalData" :operate-width="160" @submitBeforeCallBack="submitBeforeCallBack" />
+    <dx-table :data="data" :global-data="globalData" :operate-width="160" @submitBeforeCallBack="submitBeforeCallBack">
+      <div slot="append_table_wechat" slot-scope="scope">
+        <span v-if="scope.row.openid" @click="cancel(scope.row)"><el-button>已绑定</el-button></span>
+        <span v-else><el-button>未绑定</el-button></span>
+      </div>
+    </dx-table>
   </div>
 </template>
 <script type="text/javascript">
@@ -27,7 +32,15 @@
             }, 100)
         },
         methods: {
-
+            cancel(row) {
+              this.getConfirm('是否取消绑定', () => {
+                  this.postAjax('/admin/staff/cancelWechat', row).then(msg => {
+                       if (msg.data.status == 2) {
+                          this.ajax()
+                       }
+                  })
+              })
+            },
             submitBeforeCallBack(ruleform) {
                delete ruleform.api_token
                 this.$set(ruleform, 'type', this.data.query.type)

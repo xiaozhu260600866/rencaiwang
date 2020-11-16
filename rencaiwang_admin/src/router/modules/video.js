@@ -37,7 +37,28 @@ const videoRouter = {
         hidden: true,
         name: 'VideoEdit',
         meta: { title: '编辑视频',roles:["video.edit","admin"] }
-    }]
+    },
+    {
+        path: 'visit',
+        component: () => import('@/views/video/visit'),
+         name: 'SettingPhone',
+         meta: { title: '访问量', icon: 'dx-sales-order', params: { table_name: 'videos' },roles:["video.visit","admin"]},
+         children:[
+             {
+               path: 'lists-show',
+               hidden: true,
+               meta: { title: '查看', icon: 'dx-hr-info',roles:['video.visit.show']  },
+             },
+    
+             {
+               path: 'lists-del',
+               hidden: true,
+               meta: { title: '删除', icon: 'dx-hr-info',roles:['video.visit.del']  },
+             }
+         ]
+     },
+    
+    ]
 }
 
 export default videoRouter
