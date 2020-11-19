@@ -56,7 +56,7 @@ export default {
             },
             {
                 "name": "",
-                "prop": "getUnit",
+                "prop": "unit_name",
                 "minWidth": "180",
                 "width": "",
                 "append_table_": 0,
@@ -102,7 +102,7 @@ export default {
                 "append_table_": 0,
                 "label": "结束时间"
             },
-             { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/article/editField', 'append_table_': 0, 'label': '隐藏/显示' },
+             { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/activity/editField', 'append_table_': 0, 'label': '隐藏/显示' },
 
         ],
         "formFields": [

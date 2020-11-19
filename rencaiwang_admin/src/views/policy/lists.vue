@@ -17,8 +17,8 @@
     </dx-table>
     <qrcode ref="qrcode" />
 
-    <my-class ref="category1" top="2%" type="0" form-action="/admin/policy/" :sizearr="300" :class-children-hidden="true" :canupload="true" />
-    <my-class ref="category2" top="2%" type="1" form-action="/admin/policy/" :sizearr="300" :class-children-hidden="true" :canupload="true" no="true" />
+    <my-class ref="category1" top="2%" type="0" form-action="/admin/policy/" :sizearr="300" :class-children-hidden="true" :canupload="false" no="true" />
+    <my-class ref="category2" top="2%" type="1" form-action="/admin/policy/" :sizearr="300" :class-children-hidden="true" :canupload="false" no="true" />
   </div>
 </template>
 <script type="text/javascript">

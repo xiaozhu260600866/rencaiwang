@@ -5,6 +5,7 @@ export default {
         "canCreate": 0,
         "canEdit": 0,
         "tableName": "videos",
+        classno:true,
         "createAction": "/admin/video/create",
         "editAction": "/admin/video/edit",
         classAction:'/admin/video/',
@@ -55,7 +56,7 @@ export default {
             },
             {
                 "name": "",
-                "prop": "unit",
+                "prop": "unit_name",
                 "minWidth": "180",
                 "width": "",
                 "append_table_": 0,

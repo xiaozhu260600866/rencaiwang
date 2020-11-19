@@ -5,6 +5,7 @@ export default {
         "pageSize": 15,
         "canCreate": 0,
         "canEdit": 0,
+        classno:true,
         "tableName": "policys",
         "createAction": "/admin/policy/create",
         "editAction": "/admin/policy/edit",
@@ -67,7 +68,7 @@ export default {
                 "append_table_": 0,
                 "label": "分类"
             },
-             { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/article/editField', 'append_table_': 0, 'label': '隐藏/显示' },
+             { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/policy/editField', 'append_table_': 0, 'label': '隐藏/显示' },
             {
                 "name": "",
                 "prop": "published_at",

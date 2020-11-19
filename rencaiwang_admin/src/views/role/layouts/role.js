@@ -11,7 +11,7 @@ export default {
         "searchFields": [
             {
             "name": "",
-            "prop": "title",
+            "prop": "name",
             "type": "text",
             "label": "角色名称"
             },

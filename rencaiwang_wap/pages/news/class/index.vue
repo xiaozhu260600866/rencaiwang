@@ -1,14 +1,16 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view>
+	 <page :parentData="data" :formAction="formAction"></page>
+		<view v-if="data.show">
 			<top-header></top-header>
 			<view class="news-class">
-				<view class="fc-4 fs-16 fw-bold mb15">工作动态</view>
+				<view class="fc-4 fs-16 fw-bold mb15">{{data.parent.name}}</view>
 				<view>
 					<view class="class-lists" v-for="(item,key) in data.children" @click="goto('/pages/news/lists/index?fid='+item.id+'&lev=2')">
 						<dx-list-cell :name="item.name" nameColor="#777" slotLeft arrow padding="12rpx 20rpx" noborder>
-							<view slot="left" class="circle"></view>
+							<view slot="left" >
+								<img :src="item.getcover" alt="" mode="widthFix"/>
+							</view>
 						</dx-list-cell>
 					</view>
 				</view>

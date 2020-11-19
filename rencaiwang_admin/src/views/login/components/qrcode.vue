@@ -34,7 +34,7 @@
                       this.$emit('callBack')
                   }
                 }, 'notloing')
-              }, 1000)
+              }, 2000)
             },
              handleClose(done) {
                 this.dialogVisible = false

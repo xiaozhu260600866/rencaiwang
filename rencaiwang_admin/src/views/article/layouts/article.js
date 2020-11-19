@@ -5,6 +5,7 @@ export default {
         "pageSize": 15,
         "canCreate": 0,
         "canEdit": 0,
+        "classno":true,
         "tableName": "articles",
         "createAction": "/admin/article/create",
         "editAction": "/admin/article/edit",
@@ -54,7 +55,7 @@ export default {
             },
             {
                 "name": "",
-                "prop": "unit",
+                "prop": "unit_name",
                 "minWidth": "180",
                 "width": "",
                 "append_table_": 0,

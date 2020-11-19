@@ -10,14 +10,9 @@ export default {
         "editAction": "/admin/policyMatch/edit",
         "checkAll": true,
         "searchFields": [
+
             {
-            "name": "",
-            "prop": "title",
-            "type": "text",
-            "label": "政策名称"
-            },
-            {
-            "prop": "fclass",
+            "prop": "class_value",
             "type": "manyselect",
             "datakey":'fclass',
             "label": "分类"
