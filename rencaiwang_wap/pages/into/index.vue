@@ -1,11 +1,11 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
+		<page :parentData="data" :formAction="formAction"></page> 
 		<view>
 			<view class="index-bg">
 				<image class="img" src="../../static/images/index-bg.jpg" mode="aspectFill"></image>
 			</view>
-			<view class="into">
+			<view class="into" @click="goto('/pages/index/index',1)">
 				<dx-button type="danger" myclass="plr30" round>点击进入</dx-button>
 			</view>
 		</view>

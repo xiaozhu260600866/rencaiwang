@@ -28,7 +28,10 @@
 				this.dialogVisible = true
 				this.timer = setInterval(() => {
 					this.postAjax('/checkVerify', { user_id: user.id }, msg => {
-
+            if (msg.data.status == 2) {
+                    clearInterval(this.timer)
+                    this.$emit('callBack')
+                  }
 					}, 'notloing')
 				}, 2000)
 			},

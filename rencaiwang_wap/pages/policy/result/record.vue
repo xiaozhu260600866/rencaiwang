@@ -1,19 +1,15 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view class="result-box">
+		<page :parentData="data" :formAction="formAction"></page>
+		<view class="result-box" v-if="data.show">
 			<!-- 头部 -->
 			<top-header></top-header>
-			
-			
-			<view class="question-record">
-				<view class="shadow-block ptb12">
-					<view class="content">世界儿童日（11月20日）是一个由联合国发起的纪念日，其目的是为促进儿童保护、福利和教育等事业的发展。旨在就儿童问题促进国际共识，提高全世界儿童的权利意识，改善儿童福祉。1954年12月14日，联合国大会通过第836(IX)号决议，建议所有国家设立世界儿童</view>
-					<view class="time pt8 fs-13 fc-9">咨询日期：<text class="Arial">2020-11-20 11:41:23</text></view>
+			<view class="question-record" >
+				<view class="shadow-block ptb12" v-for="v in data.lists.data">
+					<view class="content">{{v.remark}}</view>
+					<view class="time pt8 fs-13 fc-9">咨询日期：<text class="Arial">{{v.created_at}}</text></view>
 				</view>
 			</view>
-			
-			
 			<!-- 脚部 -->
 			<down-footer></down-footer>
 		</view>
@@ -29,7 +25,7 @@
 		components:{topHeader,downFooter,dxListCell,dxPrompt},
 		data() {
 			return {
-				formAction: '/policy/lists',
+				formAction: '/policyMatch/order-lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -48,11 +44,14 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
-			
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
-			
+			ajax() {
+				this.getAjax(this).then(msg => {
+						
+				});
+			}
 		}
 	}
 </script>

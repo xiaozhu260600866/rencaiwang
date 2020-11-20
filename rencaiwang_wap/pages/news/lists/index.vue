@@ -5,13 +5,13 @@
 			<view class="bg-f" style="position: relative;z-index: 12;">
 				<!-- 头部 -->
 				<top-header></top-header>
-				
+
 				<!-- 搜索 -->
 				<search @callBack="searchCallBack"></search>
 			</view>
-			
+
 			<!-- 导航tab -->
-			<view class="tab-group">
+			<!-- <view class="tab-group">
 				<view class="group-box">
 					<view class="flex1"><dx-tabs :tabs="children" selectedColor="#419cf5" sliderBgColor="#419cf5" @change="change" v-model="data.query.fid" :padding="0"></dx-tabs></view>
 					<view class="right-icon" @click="showMoreTabs"><view class="dxi-icon dxi-icon-down"></view></view>
@@ -23,8 +23,10 @@
 						</view>
 					</scroll-view>
 				</view>
-			</view>
-			
+			</view> -->
+			<dx-tabs-scroll :tabs="children" selectedColor="#419cf5" sliderBgColor="#419cf5" @change="change" v-model="data.query.fid"
+			 :padding="0"></dx-tabs-scroll>
+
 			<!-- 列表 -->
 			<view class="news">
 				<view class="news_lists" v-for="v in data.lists.data" @click="goto('/pages/news/show/index?id='+v.id,1)">
@@ -47,7 +49,7 @@
 					</view>
 				</view>
 			</view>
-			
+
 			<!-- 脚部 -->
 			<down-footer></down-footer>
 		</view>
@@ -58,31 +60,61 @@
 	import topHeader from '@/components/topHeader';
 	import downFooter from '@/components/downFooter';
 	import search from '@/components/search';
+	import dxTabsScroll from "doxinui/components/tabs/tabs_scroll"
 	import dxTabs from "doxinui/components/tabs/tabs"
 	export default {
-		components:{topHeader,downFooter,search,dxTabs},
+		components: {
+			topHeader,
+			downFooter,
+			search,
+			dxTabsScroll,
+			dxTabs
+		},
 		data() {
 			return {
 				formAction: '/article/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
-				children:[],
+				children: [],
 				tabsStatus: 0,
-				showPopup:false,
-				popLists:[
-					{name:'项目一'},
-					{name:'项目二'},
-					{name:'项目三'},
-					{name:'项目四'},
-					{name:'项目一'},
-					{name:'项目二'},
-					{name:'项目三'},
-					{name:'项目四'},
-					{name:'项目一'},
-					{name:'项目二'},
-					{name:'项目三'},
-					{name:'项目四'},
+				showPopup: false,
+				popLists: [{
+						name: '项目一'
+					},
+					{
+						name: '项目二'
+					},
+					{
+						name: '项目三'
+					},
+					{
+						name: '项目四'
+					},
+					{
+						name: '项目一'
+					},
+					{
+						name: '项目二'
+					},
+					{
+						name: '项目三'
+					},
+					{
+						name: '项目四'
+					},
+					{
+						name: '项目一'
+					},
+					{
+						name: '项目二'
+					},
+					{
+						name: '项目三'
+					},
+					{
+						name: '项目四'
+					},
 				]
 			}
 		},
@@ -100,28 +132,28 @@
 			this.ajax();
 		},
 		methods: {
-			searchCallBack(val){
-				this.data.query.title=val;
+			searchCallBack(val) {
+				this.data.query.title = val;
 				this.ajax();
 			},
-			change(){
+			change() {
 				this.ajax();
 			},
-			showMoreTabs(n){
-				if(showPopup !='order')
-				this.showPopup = true;
+			showMoreTabs(n) {
+				if (showPopup != 'order')
+					this.showPopup = true;
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {
-						if(this.children.length == 0){
-							this.children = msg.children;
-						}
-					
+					if (this.children.length == 0) {
+						this.children = msg.children;
+					}
+
 				});
 			}
 		}
 	}
 </script>
 <style scoped="">
-@import url("./index.css");
+	@import url("./index.css");
 </style>
