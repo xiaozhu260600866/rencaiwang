@@ -3,7 +3,7 @@
 		<page :parentData="data" :formAction="formAction" ref="page"></page>
 		<view v-if="data.show"> 
 			<top-header></top-header>
-			<view class="index-user-info">
+			<view class="index-user-info" v-if="data.user.nickname">
 				<dx-list-msg :imgSrc="data.user.headimgurl" :name="data.user.nickname" nameColor="#757575" last padding="30rpx 40rpx">
 					
 				</dx-list-msg>
@@ -23,10 +23,10 @@
 				</view>
 			</view>
 			<view class="index-ad">
-				<image class="img" src="../../static/images/index-ad.jpg" mode="widthFix"></image>
+				<image class="img" src="https://rencaiwang.doxinsoft.com/images/wap/banner-rc.jpg" mode="widthFix"></image>
 			</view>
 			<view class="index-nav2">
-				<dx-nav-class :data="data.policyMatchClass" @click="checkAuth" :imgWidth="70" :imgHeight="70" :namePTop="5" nameColor="#404040" :nameSize="14" :num="3" :lrPadding="0"
+				<dx-nav-class :data="data.policyMatchClass" @click="checkAuth" :imgWidth="70" :imgR="35" :imgHeight="70" :namePTop="5" nameColor="#404040" :nameSize="14" :num="3" :lrPadding="0"
 				:tbPadding="0"></dx-nav-class>
 			</view>
 			<down-footer></down-footer>

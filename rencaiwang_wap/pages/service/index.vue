@@ -5,6 +5,11 @@
 			<!-- 头部 -->
 			<top-header></top-header>
 			
+			<!-- 广告位 -->
+			<view class="ad">
+				<image class="w-b100 flex" src="https://rencaiwang.doxinsoft.com/images/wap/banner-tz.jpg" mode="widthFix"></image>
+			</view>
+			
 			<!-- 搜索 -->
 			<search @callBack="searchTitle"></search>
 			

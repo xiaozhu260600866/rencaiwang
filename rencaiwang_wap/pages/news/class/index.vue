@@ -9,7 +9,8 @@
 					<view class="class-lists" v-for="(item,key) in data.children" @click="goto('/pages/news/lists/index?fid='+item.id+'&lev=2')">
 						<dx-list-cell :name="item.name" nameColor="#777" slotLeft arrow padding="12rpx 20rpx" noborder>
 							<view slot="left" >
-								<img :src="item.getcover" alt="" mode="widthFix"/>
+								<image class="img" :src="item.getcover" alt="" mode="widthFix" v-if="item.getcover"></image>
+								<view class="circle" v-else></view>
 							</view>
 						</dx-list-cell>
 					</view>

@@ -14,3 +14,6 @@
 .consult{margin: 30upx;}
 .consult .item{border: 1upx solid #d5d5d5;border-radius: 12upx;margin-bottom: 30upx;}
 .consult /deep/.dx-cell{border-bottom: 0;}
+
+/* 我的咨询 */
+.question-record .content{text-align: justify;font-size: 28upx;line-height: 1.6;color: #636363;}

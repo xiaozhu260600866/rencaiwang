@@ -7,7 +7,7 @@
 			
 			<!-- 广告位 -->
 			<view class="ad">
-				<image class="w-b100 flex" src="/static/images/index-ad.jpg" mode="widthFix"></image>
+				<image class="w-b100 flex" src="https://rencaiwang.doxinsoft.com/images/wap/banner-yj.jpg" mode="widthFix"></image>
 			</view>
 			
 			<!-- 搜索 -->

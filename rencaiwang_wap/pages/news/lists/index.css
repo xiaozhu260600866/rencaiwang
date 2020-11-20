@@ -1,5 +1,6 @@
 /* 导航tab */
-.tab-group{margin: 0 40upx;display: flex;border-bottom: 2upx #dfdfdf solid;}
+.tab-group{padding: 0 40upx;position: relative;background-color: #fff;}
+.tab-group .group-box{display: flex;border-bottom: 2upx #dfdfdf solid;position: relative;z-index: 12;background-color: #fff;}
 .tab-group /deep/.dxi-tabs-view{width: 100%;}
 .tab-group /deep/.dxi-tabs-item{position: relative;}
 .tab-group /deep/.dxi-tabs-item::before{content: '';display: block;position: absolute;right: 0;top: 50%;margin-top: -20upx;height: 40upx;width: 2upx;background-color: #dfdfdf;}
@@ -7,13 +8,18 @@
 .tab-group /deep/.dxi-tabs-slider{display: none;}
 .tab-group .right-icon{display: flex;width: 100upx;justify-content: center;align-items: center;}
 
+.tab_popup{position: absolute;top: 80upx;left: 0;width: 100%;background-color: #fff;border-top: 1upx #eee solid;box-shadow: 0 4px 8px 0 hsla(0,6%,58%,.3);z-index: 9;transition: all 0.3s ease-in-out;transform: translate3d(0, -100%, 0);transform-origin: center;visibility: hidden;}
+.tab_popup .box{display: flex;align-items: center;flex-wrap: wrap;height: 300upx;padding: 20upx 0;}
+.tab_popup .pop{padding: 12upx;font-size: 28upx;width: 33.33%;text-align: center;color: #636363;}
+.show_popup{transform: translate3d(0, 0, 0);visibility: visible;}
+
 /* 资讯列表 */
 .news_lists{padding: 40upx;padding: 10upx 0;position: relative;}
 .news_lists::before{content: '';display: block;position: absolute;left: 40upx;right: 40upx;bottom: 0;border-bottom: 2upx #dfdfdf solid;}
 .news_lists .lists_box{padding: 40upx;}
 .news_lists:nth-child(2n) .lists_box{background-color: #e6e6e6;}
 .news_lists .title{line-height: 44upx;padding-bottom: 20upx;}
-.news_lists .fb-info .head{width: 40upx;height: 40upx;display: flex;border-radius: 50%;}
-.news_lists .fb-info .name{font-size: 24upx;font-weight: bold;color: #444;margin-left: 16upx;}
+.news_lists .fb-info .head{width: 40upx;height: 40upx;display: flex;border-radius: 50%;margin-right: 16upx;}
+.news_lists .fb-info .name{font-size: 24upx;font-weight: bold;color: #444;}
 .news_lists .content{font-size: 36upx;color: #777;line-height: 1.5;flex: 1;text-align: justify;}
 .news_lists .img{width: 200upx;height: 140upx;display: flex;margin-left: 20upx;}

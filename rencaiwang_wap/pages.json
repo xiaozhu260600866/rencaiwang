@@ -93,6 +93,13 @@
 			}
 		},
 		{
+			"path": "pages/policy/result/record",
+			"style": {
+				"navigationBarTitleText": "咨询记录",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/activity/lists/index",
 			"style": {
 				"navigationBarTitleText": "活动报名",

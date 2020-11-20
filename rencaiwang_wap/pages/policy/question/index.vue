@@ -7,11 +7,11 @@
 			
 			<!-- 广告位 -->
 			<view class="ad">
-				<image class="w-b100 flex" src="/static/images/index-ad.jpg" mode="widthFix"></image>
+				<image class="w-b100 flex" src="https://rencaiwang.doxinsoft.com/images/wap/banner-wd.jpg" mode="widthFix"></image>
 			</view>
 			
 			<view class="question">
-				<view class="que-item shadow-block" v-for='(v,questionKey) in question'>
+				<view class="que-item shadow-block pb0" v-for='(v,questionKey) in question'>
 					<view class="topic"><text class="Arial">{{questionKey+1}}</text>、{{v.label}}</view>
 					<view class="answer">
 						<radio-group class="radio-group" @change="radioChange">

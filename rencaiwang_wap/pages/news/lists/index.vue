@@ -2,16 +2,27 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<!-- 头部 -->
-			<top-header></top-header>
-			
-			<!-- 搜索 -->
-			<search @callBack="searchCallBack"></search>
+			<view class="bg-f" style="position: relative;z-index: 12;">
+				<!-- 头部 -->
+				<top-header></top-header>
+				
+				<!-- 搜索 -->
+				<search @callBack="searchCallBack"></search>
+			</view>
 			
 			<!-- 导航tab -->
 			<view class="tab-group">
-				<view class="flex1"><dx-tabs :tabs="children" selectedColor="#419cf5" sliderBgColor="#419cf5" @change="change" v-model="data.query.fid" :padding="0"></dx-tabs></view>
-				<view class="right-icon"><view class="dxi-icon dxi-icon-down"></view></view>
+				<view class="group-box">
+					<view class="flex1"><dx-tabs :tabs="children" selectedColor="#419cf5" sliderBgColor="#419cf5" @change="change" v-model="data.query.fid" :padding="0"></dx-tabs></view>
+					<view class="right-icon" @click="showMoreTabs"><view class="dxi-icon dxi-icon-down"></view></view>
+				</view>
+				<view class="tab_popup" :class="{'show_popup':showPopup}">
+					<scroll-view scroll-y>
+						<view class="box">
+							<view class="pop" v-for="tabs in popLists" @click="showPopup = false">{{tabs.name}}</view>
+						</view>
+					</scroll-view>
+				</view>
 			</view>
 			
 			<!-- 列表 -->
@@ -57,7 +68,22 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				children:[],
-				tabsStatus: 0
+				tabsStatus: 0,
+				showPopup:false,
+				popLists:[
+					{name:'项目一'},
+					{name:'项目二'},
+					{name:'项目三'},
+					{name:'项目四'},
+					{name:'项目一'},
+					{name:'项目二'},
+					{name:'项目三'},
+					{name:'项目四'},
+					{name:'项目一'},
+					{name:'项目二'},
+					{name:'项目三'},
+					{name:'项目四'},
+				]
 			}
 		},
 		onReachBottom() {
@@ -80,6 +106,10 @@
 			},
 			change(){
 				this.ajax();
+			},
+			showMoreTabs(n){
+				if(showPopup !='order')
+				this.showPopup = true;
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {

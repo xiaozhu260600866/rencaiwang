@@ -25,7 +25,7 @@
 					</view>
 					<view class="content" v-if="v.show==true">
 						<view class="box">
-							<span >{{v.benfitNum}}条</span>
+							<span class="main-color pr15 fw-bold fs-15">第{{v.benfitNum}}条</span>
 								{{v.benefitContent}}
 						</view>
 					</view>
@@ -43,7 +43,6 @@
 					<dx-list-cell arrow :name="item.title" noborder padding="10rpx 0" nameColor="#737373" :nameSize="14" v-for="item in policyArr"></dx-list-cell>
 				</view>
 			</view>
-			
 			<view class="shadow-block">
 				<view class="title tit-blue">
 					<dx-list-cell name="咨询申报" slotLeft last>
@@ -61,12 +60,18 @@
 				</view>
 			</view>
 			
-			<view class="pt10 text-center" @click="submit">
-				<dx-button type="danger" myclass="plr50" round >提 交</dx-button>
+			<view class="pt10 flex-center plr15">
+				<view class="w-b100 mr5">
+					<dx-button type="success" myclass="plr50" round block @click="goto('/pages/policy/result/record',1)">咨询记录</dx-button>
+				</view>
+				<view class="w-b100 ml5">
+					<dx-button type="danger" myclass="plr50" round block @click="submit">提 交</dx-button>
+				</view>
 			</view>
 			
 			<!-- 脚部 -->
 			<down-footer></down-footer>
+			<dx-prompt :open="submitSuccess" content="提交成功" :cancel="false" @confirmCallBack="goto('/pages/index/index',1)"></dx-prompt>
 		</view>
 	</view>
 </template>
@@ -75,8 +80,9 @@
 	import topHeader from '@/components/topHeader';
 	import downFooter from '@/components/downFooter';
 	import dxListCell from "doxinui/components/list-cell/list-cell"
+	import dxPrompt from "doxinui/components/diag/prompt"
 	export default {
-		components:{topHeader,downFooter,dxListCell},
+		components:{topHeader,downFooter,dxListCell,dxPrompt},
 		data() {
 			return {
 				formAction: '/policy/lists',
@@ -90,6 +96,7 @@
 				showMore: false,
 				question:[],
 				answerResult:[],
+				submitSuccess: false,
 			}
 		},
 		onReachBottom() {
@@ -137,11 +144,12 @@
 			submit(){
 				this.vaildForm(this, res => {
 					if(res){
-						this.postAjax("/policyMatch/order", this.ruleform).then(msg => {
-							if (msg.data.status == 2) {
-								this.back();
-							}
-						});
+						// this.postAjax("/policyMatch/order", this.ruleform).then(msg => {
+						// 	if (msg.data.status == 2) {
+						// 		this.back();
+						// 	}
+						// });
+						this.submitSuccess = true;
 					}
 				})
 			}
