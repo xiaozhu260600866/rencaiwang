@@ -6,7 +6,7 @@
         <div class="login-side">
           <div class="content">
             <div class="login-form">
-              <p class="logo"><img class="img" src="../../assets/login_images/logo.png"></p>
+              <p class="logo"><img class="img" src="../../assets/login_images/logo.jpg"></p>
               <p class="form-desc">登录系统</p>
               <el-form ref="loginForm" :model="formData">
                 <el-form-item prop="username" :rules="[{ required: true, message: '登录账号不能为空'}]">
@@ -21,8 +21,8 @@
             </div>
           </div>
           <div class="bottom">
-            <p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市锋云信息技术有限公司</a></p>
-            <p align="center"><a href="http://www.beian.miit.gov.cn/" target="_blank">备案编号：粤ICP备19035012号-1</a></p>
+            <p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市东信技术有限公司</a></p>
+            <p align="center"><a href="http://www.beian.miit.gov.cn/" target="_blank">备案编号：粤ICP备14075094号-1</a></p>
           </div>
         </div>
       </div>
@@ -33,12 +33,11 @@
 
 <script>
 
-import bgimg from '@/assets/login_images/bg5.jpg'
+import bgimg from '@/assets/login_images/bg4.jpg'
 import qrcode from './components/qrcode.vue'
-import { getToken, setToken, removeToken } from '@/utils/auth'
 export default {
 	name: 'Login',
-  components: { qrcode },
+	components: { qrcode },
 	data() {
 		return {
 				passwordType: 'password',
@@ -50,11 +49,11 @@ export default {
 	},
 
 	methods: {
-    verify() {
-      console.log('u')
-      this.$router.push({ path: '/login' || '/', query: this.otherQuery })
-      this.loading = false
-    },
+		verify() {
+			console.log('u')
+			this.$router.push({ path: '/login' || '/', query: this.otherQuery })
+			this.loading = false
+		},
 			showPwd() {
 			if (this.passwordType === 'password') {
 				this.passwordType = ''
@@ -72,7 +71,7 @@ export default {
 							this.loading = true
 							this.$store.dispatch('user/login', this.formData)
 								.then(msg => {
-                  this.$refs.qrcode.init(this.getSiteName() + '/upload/images/qrcode/' + msg.data.user.id + '.svg', msg.data.user)
+									this.$refs.qrcode.init(this.getSiteName() + '/upload/images/qrcode/' + msg.data.user.id + '.svg', msg.data.user)
 									// this.$router.push({ path: '/login' || '/', query: this.otherQuery })
 									// this.loading = false
 								})

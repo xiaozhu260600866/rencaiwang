@@ -7,32 +7,32 @@ const roleRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'Role',
-    meta: {title: '角色列表', icon: 'dx-hr',roles:['role','admin']},
+    meta: { title: '角色列表', icon: 'dx-hr', roles: ['role', 'admin'] },
     children: [{
         path: 'lists',
         component: () => import('@/views/role/lists'),
         name: 'RoleLists',
-        meta: { title: '角色列表', icon: 'dx-hr-info',roles:['role.lists','admin']  },
-        children:[
+        meta: { title: '角色列表', icon: '', roles: ['role.lists', 'admin'] },
+        children: [
             {
               path: 'lists-show',
               hidden: true,
-              meta: { title: '查看角色', icon: 'dx-hr-info',roles:['role.lists.show']  },
+              meta: { title: '查看角色', icon: '', roles: ['role.lists.show'] }
             },
             {
               path: 'lists-create',
               hidden: true,
-              meta: { title: '新建角色', icon: 'dx-hr-info',roles:['role.lists.create']  },
+              meta: { title: '新建角色', icon: '', roles: ['role.lists.create'] }
             },
             {
               path: 'lists-edit',
               hidden: true,
-              meta: { title: '编辑角色', icon: 'dx-hr-info',roles:['role.lists.edit']  },
+              meta: { title: '编辑角色', icon: '', roles: ['role.lists.edit'] }
             },
             {
               path: 'lists-del',
               hidden: true,
-              meta: { title: '删除角色', icon: 'dx-hr-info',roles:['role.lists.del']  },
+              meta: { title: '删除角色', icon: '', roles: ['role.lists.del'] }
             }
         ]
     }]

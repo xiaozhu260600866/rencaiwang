@@ -7,26 +7,26 @@ const feedbackRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'feedback',
-    meta: { title: '意见反馈管理', icon: 'dx-setting',roles:["feedback","admin"] },
+    meta: { title: '意见反馈管理', icon: 'edit', roles: ['feedback', 'admin'] },
     children: [
     {
         path: 'feedback',
         component: () => import('@/views/feedback/lists'),
          name: 'feedback',
-         meta: { title: '意见反馈', icon: 'dx-sales-order', params: { status: 0 },roles:["feedback.lists","admin"]},
-         children:[
+         meta: { title: '意见反馈', icon: '', params: { status: 0 }, roles: ['feedback.lists', 'admin'] },
+         children: [
              {
                path: 'lists-show',
                hidden: true,
-               meta: { title: '查看意见反馈', icon: 'dx-hr-info',roles:['feedback.lists.show']  },
+               meta: { title: '查看意见反馈', icon: '', roles: ['feedback.lists.show'] }
              },
              {
                path: 'lists-del',
                hidden: true,
-               meta: { title: '删除意见反馈', icon: 'dx-hr-info',roles:['feedback.lists.del']  },
+               meta: { title: '删除意见反馈', icon: '', roles: ['feedback.lists.del'] }
              }
          ]
-     },
+     }
    ]
 }
 

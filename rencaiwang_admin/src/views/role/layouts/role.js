@@ -1,20 +1,20 @@
 export default {
     data: {
-        "listsAction": "",
-        "pageSize": 15,
-        "canCreate": 1,
-        "canEdit": 1,
-        "tableName": "roles",
-        "createAction": "/admin/role/create",
-        "editAction": "/admin/role/edit",
-        "checkAll": true,
-        "searchFields": [
+        'listsAction': '',
+        'pageSize': 15,
+        'canCreate': 1,
+        'canEdit': 1,
+        'tableName': 'roles',
+        'createAction': '/admin/role/create',
+        'editAction': '/admin/role/edit',
+        'checkAll': true,
+        'searchFields': [
             {
-            "name": "",
-            "prop": "name",
-            "type": "text",
-            "label": "角色名称"
-            },
+            'name': '',
+            'prop': 'name',
+            'type': 'text',
+            'label': '角色名称'
+            }
         ],
        // "tarbars": {
        //      "prop": "type",
@@ -35,42 +35,42 @@ export default {
        //          "label": "首页导航"
        //      }]
        //  },
-        "tableFields": [
+        'tableFields': [
             {
-                "name": "",
-                "prop": "name",
-                "minWidth": "180",
-                "width": "",
-                "append_table_": 0,
-                "label": "角色名称"
+                'name': '',
+                'prop': 'name',
+                'minWidth': '180',
+                'width': '',
+                'append_table_': 0,
+                'label': '角色名称'
             },
 
             {
-                "name": "",
-                "prop": "created_at",
-                "minWidth": "",
-                "width": "120",
-                "append_table_": 0,
-                "label": "发布日期"
-            },
+                'name': '',
+                'prop': 'created_at',
+                'minWidth': '',
+                'width': '170',
+                'append_table_': 0,
+                'label': '发布日期'
+            }
         ],
-        "formFields": [
+        'formFields': [
             {
-                "name": "",
-                "prop": "name",
-                "datatype": "require",
-                "type": "text",
-                "append_form_": 0,
-                "label": "角色名称"
+                'name': '',
+                'prop': 'name',
+                'datatype': 'require',
+                'type': 'text',
+                'append_form_': 0,
+                'label': '角色名称'
             },
             {
-                "name": "",
-                "prop": "role_menus",
-                "datatype": "",
-                "type": "text",
-                "append_form_role_menus": 1,
-                "label": "角色菜单"
-            },
+                'name': '',
+                'prop': 'role_menus',
+                'datatype': '',
+                'type': 'text',
+                'append_form_role_menus': 1,
+                'label': '角色菜单'
+            }
 
         ]
     }

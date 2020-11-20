@@ -7,23 +7,23 @@ const policyMatchRouter = {
     component: Layout,
     redirect: 'noRedirect',
     name: 'Policy',
-    meta: {title: '政策匹配发布', icon: 'dx-hr',roles:['policyMatch']},
+    meta: { title: '政策匹配发布', icon: 'skill', roles: ['policyMatch'] },
     children: [
       {
         path: 'lists',
         component: () => import('@/views/policyMatch/lists'),
         name: 'PolicyLists',
-        meta: { title: '政策匹配列表', icon: 'dx-hr-info',roles:['policyMatch.lists']  },
-        children:[
+        meta: { title: '政策匹配列表', icon: '', roles: ['policyMatch.lists'] },
+        children: [
           {
             path: 'lists-show',
             hidden: true,
-            meta: { title: '查看政策匹配', icon: 'dx-hr-info',roles:['policyMatch.lists.show']  },
+            meta: { title: '查看政策匹配', icon: '', roles: ['policyMatch.lists.show'] }
           },
             {
               path: 'lists-del',
               hidden: true,
-              meta: { title: '删除政策匹配', icon: 'dx-hr-info',roles:['policyMatch.lists.del']  },
+              meta: { title: '删除政策匹配', icon: '', roles: ['policyMatch.lists.del'] }
             }
         ]
     },
@@ -31,18 +31,18 @@ const policyMatchRouter = {
         path: 'visit',
         component: () => import('@/views/policyMatch/visit'),
          name: 'SettingPhone',
-         meta: { title: '访问量', icon: 'dx-sales-order', params: { table_name: 'policy_matchs' },roles:["policyMatch.visit","admin"]},
-         children:[
+         meta: { title: '访问量', icon: '', params: { table_name: 'policy_matchs' }, roles: ['policyMatch.visit', 'admin'] },
+         children: [
              {
                path: 'lists-show',
                hidden: true,
-               meta: { title: '查看', icon: 'dx-hr-info',roles:['policyMatch.visit.show']  },
+               meta: { title: '查看', icon: '', roles: ['policyMatch.visit.show'] }
              },
 
              {
                path: 'lists-del',
                hidden: true,
-               meta: { title: '删除', icon: 'dx-hr-info',roles:['policyMatch.visit.del']  },
+               meta: { title: '删除', icon: '', roles: ['policyMatch.visit.del'] }
              }
          ]
      },
@@ -51,17 +51,17 @@ const policyMatchRouter = {
         path: 'order',
         component: () => import('@/views/policyMatch/order'),
         name: 'PolicyOrderLists',
-        meta: { title: '政策咨询查看', icon: 'dx-hr-info',roles:['policyMatch.order'],params:{status:0}  },
-        children:[
+        meta: { title: '政策咨询查看', icon: '', roles: ['policyMatch.order'], params: { status: 0 }},
+        children: [
           {
             path: 'order-show',
             hidden: true,
-            meta: { title: '查看咨询查看', icon: 'dx-hr-info',roles:['policyMatch.order.show']  },
+            meta: { title: '查看咨询查看', icon: '', roles: ['policyMatch.order.show'] }
           },
             {
               path: 'order-del',
               hidden: true,
-              meta: { title: '删除政策咨询查看', icon: 'dx-hr-info',roles:['policyMatch.order.del']  },
+              meta: { title: '删除政策咨询查看', icon: '', roles: ['policyMatch.order.del'] }
             }
         ]
     },
@@ -71,13 +71,13 @@ const policyMatchRouter = {
         component: () => import('@/views/policyMatch/create'),
         hidden: true,
         name: 'PolicyCreate',
-        meta: { title: '发布政策匹配',roles:['policyMatch.create'] }
-    },{
+        meta: { title: '发布政策匹配', roles: ['policyMatch.create'] }
+    }, {
         path: 'edit',
         component: () => import('@/views/policyMatch/create'),
         hidden: true,
         name: 'PolicyEdit',
-        meta: { title: '编辑政策匹配',roles:['policyMatch.edit'] }
+        meta: { title: '编辑政策匹配', roles: ['policyMatch.edit'] }
     }]
 }
 
