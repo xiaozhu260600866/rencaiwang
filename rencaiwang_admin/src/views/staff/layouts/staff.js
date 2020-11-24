@@ -25,7 +25,7 @@ export default {
           { 'prop': 'phone', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '电话' },
           { 'prop': 'rolename', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '角色' },
           { 'prop': 'unitname', 'minWidth': '80', 'width': '', 'append_table_': 0, 'label': '单位' },
-          { 'prop': 'wechat', 'minWidth': '', 'width': '120', 'append_table_wechat': 1, 'label': '绑定微信' },
+          { 'prop': 'wechat', 'minWidth': '', 'width': '220', 'append_table_wechat': 1, 'label': '绑定微信' },
 
           { 'prop': 'created_at', 'minWidth': '', 'width': '160', 'append_table_': 0, 'label': '创建时间' }
        ],

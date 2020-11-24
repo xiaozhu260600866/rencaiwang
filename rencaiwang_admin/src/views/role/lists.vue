@@ -1,16 +1,17 @@
 <template>
   <div>
 
-    <dx-table :data="data" :global-data="globalData" :operate-width="160" @submitBeforeCallBack="submitBeforeCallBack">
+    <dx-table :data="data" :global-data="globalData" :operate-width="160" @submitBeforeCallBack="submitBeforeCallBack" @createBeforeCallBack="createBeforeCallBack">
       <div slot="append_form_role_menus" slot-scope="scope">
-
+        <el-button type="primary" @click="checkAllMethods(checkAll)">{{ !checkAll ? '全选' : '取消全选' }}</el-button>
         <el-tree
+          v-if="treeShow"
           ref="tree"
           :data="routes"
           show-checkbox
           :default-expand-all="true"
           node-key="value"
-          :default-checked-keys="getKeys(scope.row)"
+          :default-checked-keys="checkedKeys"
         />
       </div>
 
@@ -30,7 +31,11 @@
         data: this.formatData(this),
         siteName: this.getSiteName(),
         globalData: globalData,
-        routes: []
+        routes: [],
+        checkAll: false,
+        treeShow: true,
+        checkedKeys: []
+
       }
     },
     watch: {
@@ -44,9 +49,43 @@
        this.ajax()
     },
     methods: {
+      createBeforeCallBack(row) {
+           this.checkedKeys = row.role_menus.split(',')
+      },
+      checkAllMethods(row) {
+        this.checkAll = !this.checkAll
+        if (this.checkAll) {
+          var res = []// 定义一个不不赋值的变量
+          var data = this.routes
+          var find = function(data) {
+              data.forEach((item) => { // 利用foreach循环遍历
+                   res.push(item.value)
+                   if (item.children && item.children.length > 0) // 判断chlidren是否有数据
+                    {
+                        find(item.children) // 递归调用
+                    }
+              })
+          }
+          find(data)
+           this.treeShow = false
+          this.checkedKeys = res
+          setTimeout(() => {
+            this.treeShow = true
+          }, 50)
+        } else {
+          this.treeShow = false
+            this.checkedKeys = []
+          setTimeout(() => {
+            this.treeShow = true
+          }, 50)
+        }
+      },
       getKeys(row) {
           if (row.role_menus) {
             return row.role_menus.split(',')
+
+            return false
+            // return row.role_menus.split(',')
           }
       },
       initRoutes(arr, routes) {

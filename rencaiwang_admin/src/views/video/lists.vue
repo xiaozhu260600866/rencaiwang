@@ -7,6 +7,9 @@
           <el-button type="primary" size="mini" @click="goto('/video/edit?id='+scope.row.id)">编辑</el-button>
         </div>
       </div>
+      <div slot="append_table_playUrl" slot-scope="scope">
+        {{ siteName + '/h5/#/pages/video/lists/index?fid='+JSON.parse(scope.row.class_value)[0]+ '&video_id='+scope.row.id }}
+      </div>
       <div slot="headerR">
         <el-button v-if="checkPermission(['video.create'])" type="primary" @click="goto('/video/create')">新建</el-button>
       </div>

@@ -3,7 +3,7 @@
 		<!-- <page :parentData="data" :formAction="formAction"></page> -->
 		<view v-if="data.show">
 			<!-- 头部 -->
-			<top-header></top-header>
+			<top-header :title="row.title"></top-header>
 			
 			<!-- 置顶视频 -->
 			<view v-if="data.lists.data">
@@ -14,7 +14,7 @@
 				<!-- 类 -->
 				<view class="tips-info flex-between flex-middle fs-14 fc-7 plr30 ptb12">
 					<view class="item">{{row.unit_name}}</view>
-					<view class="item">{{getClassName(row.fclassname)}}</view>
+					<view class="item">{{row.fclassname}}</view>
 					<view class="item Arial">{{row.published_at}}</view>
 				</view>
 				
@@ -89,7 +89,16 @@
 			ajax() {
 				this.getAjax(this).then(msg => {
 						if(msg.lists.data.length){
-							this.showVideo(msg.lists.data[0]);		
+							if(this.data.query.video_id){
+								msg.lists.data.forEach(item=>{
+									 if(item.id == this.data.query.video_id){
+										 this.showVideo(item);		
+									 }
+								})
+							}else{
+								this.showVideo(msg.lists.data[0]);		
+							}
+							
 						}
 				});
 			}

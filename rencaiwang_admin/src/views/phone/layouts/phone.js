@@ -29,7 +29,7 @@ export default {
        ],
         'formFields': [
           { prop: 'name', datatype: 'require', type: 'text', label: '名称' },
-          { prop: 'phone', datatype: 'require|phone', type: 'text', label: '电话号码' },
+          { prop: 'phone', datatype: 'require', type: 'text', label: '电话号码' },
           { prop: 'sort', datatype: 'require|integer', type: 'text', label: '排序' }
         ]
     }

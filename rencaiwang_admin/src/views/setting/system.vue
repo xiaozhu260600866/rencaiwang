@@ -9,7 +9,7 @@
               <el-form ref="ruleForm" :model="ruleForm" label-width="150px" class="demo-ruleForm pt20" style="margin: 0;width:100%;min-width:600px;">
                 <el-tabs v-model="activeName2">
                   <el-tab-pane label="导航栏" name="first">
-                    <category :lists="data.category" action-prefix="admin/system" action-url="/admin/system" url="1" type="1" :canupload="false" :has-son="false" />
+                    <category :lists="data.category" action-prefix="admin/system" action-url="/admin/system" url="1" type="1" :canupload="false" :has-son="true" />
                   </el-tab-pane>
                   <el-tab-pane label="单位" name="sixth">
                     <category :lists="data.category" action-prefix="admin/system" action-url="/admin/system" type="0" :canupload="false" :has-son="false" />

@@ -3,6 +3,7 @@
 		<page :parentData="data" :formAction="formAction" ref="page"></page>
 		<view v-if="data.show"> 
 			<top-header></top-header>
+			{{data.user.nickname}}
 			<view class="index-user-info" v-if="data.user.nickname">
 				<dx-list-msg :imgSrc="data.user.headimgurl" :name="data.user.nickname" nameColor="#757575" last padding="30rpx 40rpx">
 					

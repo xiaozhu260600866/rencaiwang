@@ -4,7 +4,7 @@
 		<view v-if="data.show">
 			<view class="bg-f" style="position: relative;z-index: 12;">
 				<!-- 头部 -->
-				<top-header></top-header>
+				<top-header :title="data.parent.name"></top-header>
 
 				<!-- 搜索 -->
 				<search @callBack="searchCallBack"></search>
@@ -37,13 +37,13 @@
 							<view class="name fs-12 fw-bold fc-4">{{ v.unit_name }}</view>
 						</view>
 						<view class="news_info flex-start ptb10">
-							<view class="content fc-7 fs-14" :class="v.firstCover?'wrap4':'wrap3'" v-html="v.content"></view>
+							<view class="content fc-7 fs-14" :class="v.firstCover?'wrap4':'wrap3'" v-text="v.content.replace(/<[^>]+>/g,'')"></view>
 							<view class="img" v-if="v.firstCover">
 								<image class="img" :src="v.firstCover" mode="aspectFill"></image>
 							</view>
 						</view>
 						<view class="bottom flex-middle flex-between fs-14 fc-7">
-							<view class="date">{{v.create_at}}</view>
+							<view class="date">{{v.published_at}}</view>
 							<!-- <view class="more"><text class="dxi-icon dxi-icon-ellipsis-row"></text></view> -->
 						</view>
 					</view>

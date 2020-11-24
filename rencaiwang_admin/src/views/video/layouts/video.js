@@ -70,6 +70,14 @@ export default {
                 "append_table_": 0,
                 "label": "分类"
             },
+            {
+                "name": "",
+                "prop": "playUrl",
+                "minWidth": "",
+                "width": "180",
+                "append_table_playUrl": 1,
+                "label": "访问url"
+            },
              { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/video/editField', 'append_table_': 0, 'label': '隐藏/显示' },
             {
                 "name": "",

@@ -3,6 +3,7 @@
 		<view class="head_left icon" @click="back">
 			<image class="img" src="../static/images/return-icon.png"></image>
 		</view>
+		<span style="color: white;">{{title}}</span>
 		<view class="head_right icon" @click="goto('/pages/index/index',1)">
 			<image class="img" src="../static/images/home-icon.png"></image>
 		</view>
@@ -11,9 +12,7 @@
 
 <script>
 	export default {
-		props:{
-			
-		},
+		props:['title'],
 		data() {
 			return {
 				currentPageTitle:''

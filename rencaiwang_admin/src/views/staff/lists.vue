@@ -2,7 +2,11 @@
   <div>
     <dx-table :data="data" :global-data="globalData" :operate-width="160" @submitBeforeCallBack="submitBeforeCallBack">
       <div slot="append_table_wechat" slot-scope="scope">
-        <span v-if="scope.row.admin_openid" @click="cancel(scope.row)"><el-button>已绑定</el-button></span>
+        <span v-if="scope.row.admin_openid" @click="cancel(scope.row)">
+
+          <div class="flex flex-middle mt20">  <img :src="scope.row.headimgurl" alt="" style="width:30px;margin-right: 5px;">{{ scope.row.nickname }}<el-button>取消绑定</el-button></div>
+
+        </span>
         <span v-else><el-button>未绑定</el-button></span>
       </div>
     </dx-table>

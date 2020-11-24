@@ -7,7 +7,7 @@
 				<view class="show-top fc-4 pb10">
 					<view class="show-title">{{data.detail.title}}</view>
 					<view class="row">
-						<view class="fs-13 fc-7">{{getClassName(data.detail.fclassname)}}</view>
+						<view class="fs-13 fc-7">{{data.detail.fclassname}}</view>
 					</view>
 					<view class="row fs-14">
 						<view>{{data.detail.unit_name}}</view>

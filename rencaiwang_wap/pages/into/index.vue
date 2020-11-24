@@ -5,7 +5,7 @@
 			<view class="index-bg">
 				<image class="img" src="../../static/images/index-bg.jpg" mode="aspectFill"></image>
 			</view>
-			<view class="into" @click="goto('/pages/index/index',1)">
+			<view class="into" @click="toIn">
 				<dx-button type="danger" myclass="plr30" round>点击进入</dx-button>
 			</view>
 		</view>
@@ -20,6 +20,7 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
+				timer:''
 			}
 		},
 		onReachBottom() {
@@ -36,6 +37,25 @@
 			this.ajax();
 		},
 		methods: {
+			toIn(){
+				let num = 3;
+				this.timer = setInterval(()=>{
+					
+					if(num<=0){
+						clearInterval(this.timer);
+						return this.goto('/pages/index/index',1);
+					}else{
+						uni.showToast({
+						    title: ''+num,
+						    duration: 1000,
+							icon:'none'
+						});
+						num-=1;
+					}
+					
+				},1000)
+				
+			},
 			ajax() {
 				
 			}

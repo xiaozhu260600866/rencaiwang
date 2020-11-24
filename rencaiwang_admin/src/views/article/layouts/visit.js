@@ -4,6 +4,7 @@ export default {
         'pageSize': 15,
         'canCreate': 0,
         'canEdit': 0,
+        "canDel":false,
         'tableName': 'visits',
         'createAction': '/admin/phone/create',
         'editAction': '/admin/phone/edit',
@@ -29,8 +30,8 @@ export default {
         }],
         'tableFields': [
           { 'prop': 'getTitle', 'minWidth': '100','width':'', 'append_table_': 0, 'label': '标题' },
-          { 'prop': 'user_name', 'minWidth': '','width':'120', 'append_table_': 0, 'label': '微信呢称' },
-          { 'prop': 'created_at', 'minWidth': '','width':'160', 'append_table_': 0, 'label': '访问时间' }
+          { 'prop': 'count(*)', 'minWidth': '','width':'120', 'append_table_': 0, 'label': '访问量' },
+          // { 'prop': 'created_at', 'minWidth': '','width':'160', 'append_table_': 0, 'label': '访问时间' }
        ],
         'formFields': [
           { prop: 'name', datatype: 'require', type: 'text', label: '名称' },
