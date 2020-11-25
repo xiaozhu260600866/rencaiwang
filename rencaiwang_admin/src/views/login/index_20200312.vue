@@ -21,8 +21,8 @@
             </div>
           </div>
           <div class="bottom">
-            <p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市东信技术有限公司</a></p>
-            <p align="center"><a href="http://www.beian.miit.gov.cn/" target="_blank">备案编号：粤ICP备14075094号-1</a></p>
+          <!--  <p align="center"><a href="http://www.doxincn.com" target="_blank">技术支持：江门市东信技术有限公司</a></p>
+            <p align="center"><a href="http://www.beian.miit.gov.cn/" target="_blank">备案编号：粤ICP备14075094号-1</a></p> -->
           </div>
         </div>
       </div>

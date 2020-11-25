@@ -78,9 +78,9 @@ uni.getProvider({
 			 	uni.setStorageSync("unionid", getOptions('unionid'));
 			 	uni.setStorageSync("source", 'wap');
 			}
-			if(getCookie('openid') && getCookie('nickname') && gotoWechat){
+			if(getCookie('openid') && gotoWechat){
 			 	let userInfo = {
-			 		nickName:getCookie('nickname'),
+			 		nickName:getOptions('nickname'),
 			 		avatarUrl:getCookie('headimgurl'),
 					openid:getCookie('openid'),
 			 	}

@@ -3,7 +3,7 @@
 		<div class="flex-between w-b100">
 			<div  v-for="(v,key) in lists" class="parentDiv">
 				<div  class="parentDiv_">
-					<button data-v-8688deb0="" class="dxi-btn dxi-btn-primary" @click="toggle(lists,v)">	{{v.label}}</button>
+					<button style="padding: 12px 20px !important" data-v-8688deb0="" class="dxi-btn dxi-btn-primary" @click="toggle(lists,v)">	{{v.label}}</button>
 					<div class="children w-b100" v-if="v.children && v.children.length" :style="{top:'-'+ 50 * v.children.length+'px'}">
 						<button @click="goto(children.url,1)" style="padding: 0!important; height: 40px;text-align: center;line-height: 40px;" data-v-8688deb0="" class="dxi-btn dxi-btn-primary children-btn" v-if="children.show" v-for="children  in v.children">
 							<span class="fs-12">{{children.label}}</span>

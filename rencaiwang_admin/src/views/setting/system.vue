@@ -14,6 +14,9 @@
                   <el-tab-pane label="单位" name="sixth">
                     <category :lists="data.category" action-prefix="admin/system" action-url="/admin/system" type="0" :canupload="false" :has-son="false" />
                   </el-tab-pane>
+                  <el-tab-pane label="测试" name="third">
+                      <newClass></newClass>
+                  </el-tab-pane>
                 </el-tabs>
                 </el-tabs>
                 <el-form-item>
@@ -50,10 +53,12 @@
 <script>
 	import chooseLocation from 'xiaozhu/vue/components/admin/chooseLocation'
   import category from 'xiaozhu/elementAdmin/components/category.vue'
+  import newClass from 'xiaozhu/elementAdmin/components/2020new_class';
 	export default {
 		components: {
 			chooseLocation,
-      category
+      category,
+      newClass
 
 		},
 		data() {
@@ -65,7 +70,7 @@
 					is_siginin: false
 				},
 				formAction: '/admin/system/config',
-				activeName2: 'first',
+				activeName2: 'third',
 				dialogVisible: false,
 				getSiteName: this.getSiteName(),
 				data: this.formatData(this)

@@ -16,12 +16,12 @@ export default {
             'type': 'text',
             'label': '标题'
         },
-        {
-            'name': '',
-            'prop': 'user_name',
-            'type': 'text',
-            'label': '微信呢称'
-        },
+        // {
+        //     'name': '',
+        //     'prop': 'user_name',
+        //     'type': 'text',
+        //     'label': '微信呢称'
+        // },
         {
             'name': '',
             'prop': 'created_at',
