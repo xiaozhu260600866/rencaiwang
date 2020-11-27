@@ -11,6 +11,7 @@ export default {
         classAction:'/admin/redirectArticle/',
         "checkAll": true,
         classChildrenHidden:true,
+          canupload:false,
         classno:true,
         "searchFields": [
             {

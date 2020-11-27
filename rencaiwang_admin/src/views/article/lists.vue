@@ -1,7 +1,9 @@
 <template>
   <div>
     <dx-table :data="data" :global-data="globalData" :operate-width="180" @submitBeforeCallBack="submitBeforeCallBack">
-
+      <div slot="append_class_table_id" slot-scope="scope">
+        {{ scope.row.id }}
+      </div>
       <div slot="operate" slot-scope="scope">
         <div>
           <el-button v-if="checkPermission(['article.edit'])" type="primary" size="mini" @click="goto('/article/edit?id='+scope.row.id)">编辑</el-button>
@@ -50,9 +52,9 @@
             },
             ajax() {
                 this.getAjax(this, {}, msg => {
-                  // this.$nextTick(()=>{
-                  //   this.$refs.createEdit.ajax('',this.data,this.globalData.data.formFields);
-                  // })
+                    // this.$nextTick(()=>{
+                    //   this.$refs.createEdit.ajax('',this.data,this.globalData.data.formFields);
+                    // })
                 })
             }
         }

@@ -1,43 +1,44 @@
 <template>
   <div class="app-container">
     <el-row>
-      <el-col :span="24">
+      <el-col v-if="data.show" :span="24">
         <div class="dx-container">
           <tyt-page-header content="网站配置开始" />
           <div class="dx-main">
             <div class="list-box">
-              <el-form
-                ref="ruleForm"
-                :model="ruleForm"
-                label-width="150px"
-                class="demo-ruleForm pt20"
-                style="margin: 0;width:100%;min-width:600px;"
-              >
+              <el-form ref="ruleForm" :model="ruleForm" label-width="150px" class="demo-ruleForm pt20" style="margin: 0;width:100%;min-width:600px;">
                 <el-tabs v-model="activeName2">
                   <el-tab-pane label="导航栏" name="first">
-                    <category
-                      :lists="data.category"
-                      action-prefix="admin/system"
-                      action-url="/admin/system"
-                      url="1"
+                    <newClass
+                      :data="data.category"
+                      :fields="
+                        [{label: '排序',prop: 'sort',width: 100,type: 'text',defaultValue: 100,datatype: 'require|integer'},
+                         {label: '名称',prop: 'name',type: 'text',width: 200,datatype: 'require'},
+                         {label: '页面路径',prop: 'url',type: 'text',width: 200,append_class_table_url:0,datatype: 'require'},
+                         {label: '隐藏/显示',prop: 'can_show',type: 'switch',width: 100,defaultValue:1,},
+                         {label: '编号',prop: 'id',width: 100},]
+                      "
                       type="1"
-                      :canupload="false"
-                      :has-son="true"
-                    />
+                      form-action="/admin/system/"
+                      :class-children-hidden="false"
+                      :add-lev="2"
+                    >
+                      <!-- <div slot="append_class_table_url" slot-scope="scope">
+
+                     </div> -->
+
+                    </newClass>
                   </el-tab-pane>
                   <el-tab-pane label="单位" name="sixth">
-                    <category
-                      :lists="data.category"
-                      action-prefix="admin/system"
-                      action-url="/admin/system"
-                      type="0"
-                      :canupload="false"
-                      :has-son="false"
-                    />
+                    <newClass :data="data.category" type="0" form-action="/admin/system/" :class-children-hidden="true" :canupload="false">
+                      <!-- <div slot="append_class_table_url" slot-scope="scope">
+
+                        </div> -->
+
+                    </newClass>
+
                   </el-tab-pane>
-                  <el-tab-pane label="测试" name="third">
-                    <newClass />
-                  </el-tab-pane>
+
                 </el-tabs>
                 </el-tabs>
                 <el-form-item>
@@ -55,21 +56,7 @@
 
 </template>
 <style type="text/css">
-    .CinputWidth {
-        width: 500px;
-    }
 
-    .CinputWidth .el-input__inner {
-        border-color: #dcdfe6 !important;
-    }
-
-    .OinputWidth {
-        width: 100px;
-    }
-
-    .OinputWidth .el-input__inner {
-        border-color: #dcdfe6 !important;
-    }
 </style>
 <script>
     import chooseLocation from 'xiaozhu/vue/components/admin/chooseLocation'
@@ -91,7 +78,7 @@
                     is_siginin: false
                 },
                 formAction: '/admin/system/config',
-                activeName2: 'third',
+                activeName2: 'first',
                 dialogVisible: false,
                 getSiteName: this.getSiteName(),
                 data: this.formatData(this)

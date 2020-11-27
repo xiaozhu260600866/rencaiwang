@@ -8,6 +8,7 @@ export default {
 		'tableName': 'activitys',
 		classChildrenHidden: true,
 		classno: true,
+        canupload:false,
 		'createAction': '/admin/activity/create',
 		'editAction': '/admin/activity/edit',
 		classAction: '/admin/activity/',
