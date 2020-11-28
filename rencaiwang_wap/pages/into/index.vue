@@ -5,7 +5,7 @@
 			<view class="index-bg">
 				<image class="img" src="../../static/images/index-bg.jpg" mode="aspectFill"></image>
 			</view>
-			<view class="into" @click="toIn">
+			<view class="into" @click="goto('/pages/index/index',1)">
 				<dx-button type="danger" myclass="plr30" round>点击进入</dx-button>
 			</view>
 		</view>
@@ -34,6 +34,7 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
+			this.toIn();
 			this.ajax();
 		},
 		methods: {
@@ -45,11 +46,11 @@
 						clearInterval(this.timer);
 						return this.goto('/pages/index/index',1);
 					}else{
-						uni.showToast({
-						    title: ''+num,
-						    duration: 1000,
-							icon:'none'
-						});
+						// uni.showToast({
+						//     title: ''+num,
+						//     duration: 1000,
+						// 	icon:'none'
+						// });
 						num-=1;
 					}
 					

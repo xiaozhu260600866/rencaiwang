@@ -3,8 +3,13 @@ myfun.install = (Vue, options) => {
 	Vue.prototype.getClassName = (getClassName)=>{
 		let res = "";
 		if(getClassName.length){
-			getClassName.forEach(v=>{
-				res+=v[v.length-1]+',';
+			getClassName.forEach((v,key)=>{
+				if(key==getClassName.length -1 ){
+					res+=v[v.length-1];	
+				}else{
+					res+=v[v.length-1]+',';
+				}
+				
 			})
 		}
 		return res;

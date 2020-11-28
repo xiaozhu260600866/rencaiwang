@@ -3,7 +3,7 @@
 		<view class="head_left icon" @click="back">
 			<image class="img" src="../static/images/return-icon.png"></image>
 		</view>
-		<span style="color: white;">{{title}}</span>
+		<span style="color: white;">{{title2}}</span>
 		<view class="head_right icon" @click="goto('/pages/index/index',1)">
 			<image class="img" src="../static/images/home-icon.png"></image>
 		</view>
@@ -15,7 +15,14 @@
 		props:['title'],
 		data() {
 			return {
-				currentPageTitle:''
+				currentPageTitle:'',
+				title2:''
+			}
+		},
+		watch:{
+			title(value){
+				
+				
 			}
 		},
 		created(){
@@ -23,7 +30,16 @@
 			var page = pages[pages.length - 1];  
 			var currentPageTitle = page.$holder.navigationBarTitleText;
 			this.currentPageTitle = currentPageTitle;
+			setTimeout(()=>{
+				if(this.title && this.title.length >15){
+					
+					this.title2	 = this.title.substring(0, 12) + '...';
+					
+				}
+			},50)
+			
 		},
+		
 		methods: {
 			
 		}

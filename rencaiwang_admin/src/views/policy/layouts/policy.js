@@ -114,7 +114,7 @@ export default {
                "datatype": "require",
                datakey:"unit",
                "type": "select",
-               column:2,
+
                "append_form_": 0,
                "label": "单位"
            },
@@ -132,9 +132,10 @@ export default {
                "prop": "start_at",
                "datatype": "require",
                "type": "dateTime",
+                column:2,
                "append_form_": 0,
 
-               "label": "开始时间"
+               "label": "生效开始时间"
            },
         {
             "name": "",
@@ -143,7 +144,7 @@ export default {
             "type": "dateTime",
             "append_form_": 0,
 
-            "label": "结束时间"
+            "label": "生效结束时间"
         },
         {
             "name": "",

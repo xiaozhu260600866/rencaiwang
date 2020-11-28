@@ -22,6 +22,7 @@
 						<view slot="right" class="fc-7 Arial fs-14">{{item.created_at}}</view>
 					</dx-list-cell>
 				</view>
+				<hasMore :parentData="data" message="未提交意见"></hasMore>
 			</view>
 			
 			<!-- 脚部 -->

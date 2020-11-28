@@ -1,8 +1,8 @@
 <template>
 	<view>
 		 <page :parentData="data" :formAction="formAction"></page>
-		<view>
-			<top-header></top-header>
+		<view v-if="data.show">
+			<top-header :title="data.detail.title"></top-header>
 			<view class="news-show p30">
 				<view class="show-top">
 					<view class="show-title">{{data.detail.title}}</view>
@@ -11,7 +11,7 @@
 						<view class="Arial">{{data.detail.getTime}}</view>
 					</view>
 					<view class="row fs-12 fc-7">
-						<view class="class">{{getClassName(data.detail.fclassname)}}</view>
+						<view class="class">{{data.detail.fclassname}}</view>
 						<view class="area">{{getClassName(data.detail.townname)}}</view>
 					</view>
 					<view class="row fs-12 fc-7">

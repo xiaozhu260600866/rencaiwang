@@ -30,7 +30,7 @@
 					<dx-list-cell :name="item.title" padding="30rpx" v-for="item in data.lists.data" @click="goto('/pages/policy/show/index?id='+item.id,1)">
 						<view slot="right">
 							<view class="right-box flex-baseline">
-								<view class="area fs-12">{{ getClassName(item.townname) }}</view>
+								<view class="area fs-12">{{ item.townname.length >1 ?item.townname[0] + '等' : item.townname[0]}}</view>
 								<view class="time Arial fs-13">{{ item.published_at }}</view>
 							</view>
 						</view>

@@ -3,7 +3,7 @@
 		<view class="search" :style="{padding:padding}">
 			<view class="search-box">
 				<view class="dxi-icon dxi-icon-search2"></view>
-				<input class="input" type="text" :placeholder="placeholder" v-model="searchVal" @confirm="callBack"/>
+				<input class="input"  type="text" :placeholder="placeholder" v-model="searchVal" @confirm="callBack"/>
 				<slot></slot>
 				<view class="area flex" v-if="areaShow" >
 					<picker :value="actIndex" class="order-picker fs12 font_grey" :range="selectAreaArr"  range-key="label" @change="selectRes">
@@ -39,7 +39,7 @@
 		props:{
 			placeholder:{
 				type: String,
-				default: ''
+				default: '请输入搜索关键字'
 			},
 			padding:{
 				type:String,

@@ -20,7 +20,8 @@ export default {
                 "name": "",
                 "prop": "title",
                 "type": "text",
-                "label": "文章名称"
+                "label": "文章名称",
+                placeholder:'请输入搜索关键字'
             },
             {
                 "prop": "fclass",

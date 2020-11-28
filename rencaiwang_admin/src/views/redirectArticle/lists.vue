@@ -34,9 +34,7 @@
             },
             ajax() {
                 this.getAjax(this, {}, msg => {
-                  // this.$nextTick(()=>{
-                  //   this.$refs.createEdit.ajax('',this.data,this.globalData.data.formFields);
-                  // })
+
                 })
             }
         }

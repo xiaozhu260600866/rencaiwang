@@ -16,9 +16,8 @@
       </div>
     </dx-table>
     <qrcode ref="qrcode" />
-
-    <my-class ref="category1" top="2%" type="0" form-action="/admin/policy/" :sizearr="300" :class-children-hidden="true" :canupload="false" no="true" />
-    <my-class ref="category2" top="2%" type="1" form-action="/admin/policy/" :sizearr="300" :class-children-hidden="true" :canupload="false" no="true" />
+    <new-class ref="category1" :diag="true" :add-lev="2" no="1" type="0" form-action="/admin/policy/" :class-children-hidden="true" :canupload="false" />
+    <new-class ref="category2" :diag="true" :add-lev="2" no="1" type="1" form-action="/admin/policy/" :class-children-hidden="true" :canupload="false" />
   </div>
 </template>
 <script type="text/javascript">
@@ -26,7 +25,7 @@
     export default {
         components: {
             'dx-table': resolve => require(['xiaozhu/elementAdmin/components/dx_table.vue'], resolve),
-             'my-class': resolve => require(['xiaozhu/elementAdmin/components/class.vue'], resolve)
+              'new-class': resolve => require(['xiaozhu/elementAdmin/components/new_class/2020new_class.vue'], resolve)
         },
         data() {
             return {
