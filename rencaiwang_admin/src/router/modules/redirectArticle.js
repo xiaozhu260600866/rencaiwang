@@ -36,7 +36,26 @@ const redirectArticleRouter = {
                meta: { title: '删除跳转', icon: '', roles: ['redirectArticle.lists.del'] }
              }
          ]
-     }
+     },
+     {
+         path: 'visit',
+         component: () => import('@/views/redirectArticle/visit'),
+          name: 'SettingPhone',
+          meta: { title: '访问量', icon: '', params: { table_name: 'redirect_articles' }, roles: ['redirectArticle.visit', 'admin'] },
+          children: [
+              {
+                path: 'lists-show',
+                hidden: true,
+                meta: { title: '查看', icon: '', roles: ['redirectArticle.visit.show'] }
+              },
+     
+              {
+                path: 'lists-del',
+                hidden: true,
+                meta: { title: '删除', icon: '', roles: ['redirectArticle.visit.del'] }
+              }
+          ]
+      }
    ]
 }
 

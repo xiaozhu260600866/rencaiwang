@@ -72,6 +72,7 @@ export default {
                 "label": "分类"
             },
              { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/redirectArticle/editField', 'append_table_': 0, 'label': '隐藏/显示' },
+            	{ 'prop': 'sort', 'minWidth': '', 'width': '85', 'align': 'center', 'type': 'sort', 'url': '/admin/redirectArticle/editField', 'append_table': 0, 'label': '排序' },
             {
                 "name": "",
                 "prop": "created_at",

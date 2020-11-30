@@ -11,7 +11,6 @@
       <el-form-item label="提示语：" prop="title">
         <el-input v-model="ruleForm.title" style="width:60%" maxlength="32" :disabled="in_array(ruleForm.title,['姓名','联系电话','邮箱'] )" />
       </el-form-item>
-      {{ ruleForm.isRequire ? true :false }}
       <input v-model="ruleForm.isRequire" type="checkbox" :checked="ruleForm.isRequire ==1 ? true :false">设为必填项
       <!-- <el-checkbox v-model="ruleForm.isRequire" :checked="ruleForm.isRequire ==1 ? true :false">设为必填项</el-checkbox> -->
     </el-form>

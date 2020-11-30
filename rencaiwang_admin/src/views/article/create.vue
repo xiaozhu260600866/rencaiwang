@@ -18,7 +18,8 @@
                 formAction: '/admin/article/create',
                 data: this.formatData(this),
                 siteName: this.getSiteName(),
-                globalData: globalData
+                globalData: globalData,
+                newfields2: ''
             }
         },
         watch: {
@@ -39,7 +40,7 @@
             ajax() {
                 this.getAjax(this, {}, msg => {
                   this.$nextTick(() => {
-                    this.$refs.createEdit.ajax(msg.detail ? msg.detail : '', this.data, this.globalData.data.formFields)
+                    this.$refs.createEdit.ajax(msg.detail ? msg.detail : '', this.data, JSON.parse(JSON.stringify(this.globalData.data.formFields)))
                   })
                 })
             }

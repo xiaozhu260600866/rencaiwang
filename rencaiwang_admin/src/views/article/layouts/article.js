@@ -98,7 +98,8 @@ export default {
                 "datatype": "require",
                 "type": "text",
                 "append_form_": 0,
-                "label": "文章标题"
+                "label": "文章标题",
+                'editDisabled':true
             },
             {
                 "name": "",

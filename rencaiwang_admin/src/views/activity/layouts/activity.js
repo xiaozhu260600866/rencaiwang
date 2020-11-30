@@ -33,7 +33,8 @@ export default {
 				{ 'name': '', 'prop': 'start_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '开始时间' },
 				{ 'name': '', 'prop': 'activity_unit', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '活动举办单位' },
 				{ 'name': '', 'prop': 'end_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '结束时间' },
-				{ 'prop': 'show', 'minWidth': '', 'width': '85', 'align': 'center', 'type': 'editField', 'url': '/admin/activity/editField', 'append_table': 0, 'label': '隐藏/显示' }
+				{ 'prop': 'show', 'minWidth': '', 'width': '85', 'align': 'center', 'type': 'editField', 'url': '/admin/activity/editField', 'append_table': 0, 'label': '隐藏/显示' },
+				{ 'prop': 'sort', 'minWidth': '', 'width': '85', 'align': 'center', 'type': 'sort', 'url': '/admin/activity/editField', 'append_table': 0, 'label': '排序' }
 
 		],
 		'formFields': [
