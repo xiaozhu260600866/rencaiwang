@@ -17,11 +17,7 @@
 				
 				<!-- 导航 -->
 				<view class="index-nav plr20">
-					<dx-nav-class :data="[
-						{url:'/pages/policy/town/index?class_id=2',type:1,name:'扶持政策匹配',cover:'https://rencaiwang.doxinsoft.com/images/wap/matching01.png'},
-						{url:'/pages/policy/town/index?class_id=3',type:1,name:'身份学历匹配',cover:'https://rencaiwang.doxinsoft.com/images/wap/matching02.png'},
-						{url:'/pages/policy/town/index?class_id=7',type:1,name:'企业政策匹配',cover:'https://rencaiwang.doxinsoft.com/images/wap/matching03.png'},
-					]" @click="checkAuth" :imgWidth="70" :imgHeight="70" :namePTop="5" nameColor="#404040" :nameSize="14" :num="3" :lrPadding="0"
+					<dx-nav-class :data="data.policyMatchClass" @click="checkAuth" :imgWidth="70" :imgHeight="70" :namePTop="5" nameColor="#404040" :nameSize="14" :num="3" :lrPadding="0"
 					:tbPadding="0"></dx-nav-class>
 				</view>
 				

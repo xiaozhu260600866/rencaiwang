@@ -83,6 +83,7 @@
 				this.ajax();
 			},
 			gotoUrl(item){
+				this.postAjax('/redirectArticle/show',item);
 				window.location.href=item.url;
 			},
 			ajax() {

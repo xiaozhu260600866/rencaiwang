@@ -22,11 +22,11 @@
 				<view class="activity">
 					<view class="main_activity" v-for="(v,key) in data.lists.data" v-if="key == 0" @click="goto('/pages/activity/show/index?id='+v.id,1)">
 						<view class="title fc-4 fs-15 fw-bold nowrap">{{ v.title }}</view>
-						<view class="sign-date fs-14 fc-5 pb15">报名日期：<text class="Arial">{{v.start_at}}</text></view>
+						<view class="sign-date fs-14 fc-5 pb15">报名日期：<text class="Arial">{{v.start_at}}~{{v.end_at}}</text></view>
 						<view class="cover ptb15" v-if="v.firstCover">
 							<image class="img w-b100" :src="v.firstCover" mode="aspectFill"></image>
 						</view>
-						<view class="content fc-7 fs-14 wrap3" v-html="v.content"></view>
+						<view class="content fc-7 fs-14 wrap3" v-text="v.content.replace(/<[^>]+>/g,'')"></view>
 						<view class="flex-between flex-middle fs-12 fc-7 pt15">
 							<view class="name">{{ v.unit_name }}</view>
 							<view class="date Arial">{{ v.created_at }}</view>
@@ -35,13 +35,13 @@
 					<view class="activity_lists" v-for="(v,key) in  data.lists.data" v-if="key > 0" @click="goto('/pages/activity/show/index?id='+v.id,1)">
 						<view class="lists_box">
 							<view class="title fc-4 fs-15 fw-bold nowrap">{{ v.title }}</view>
-							<view class="sign-date fs-14 fc-5">报名日期：<text class="Arial">{{v.start_at}}</text></view>
+							<view class="sign-date fs-14 fc-5">报名日期：<text class="Arial">{{v.start_at}} ~ {{v.end_at}}</text></view>
 							<view class="fb-info flex-middle">
 							<!-- 	<image class="head" :src="v.firstCover"></image> -->
 								<view class="name fs-12 fw-bold fc-4">{{ v.unit_name }}</view>
 							</view>
 							<view class="activity_info flex-start ptb10">
-								<view class="content fc-7 fs-13 wrap4">{{v.content}}</view>
+								<view class="content fc-7 fs-13 wrap4"  v-text="v.content.replace(/<[^>]+>/g,'')"></view>
 								<view class="cover" v-if="v.firstCover">
 									<image class="img" :src="v.firstCover" mode="aspectFill"></image>
 								</view>

@@ -5,10 +5,11 @@
 			<top-header></top-header>
 			<view class="opinion plr30">
 				<view v-for="(v,key) in data.detail.getAttribute">
+					<weui-input :disabled="data.detail.order ? true : false"  v-model="ruleform['field_'+key]" :label="v.title"  type="textarea" :name="'field_'+key" :datatype="v.isRequire ? 'require' : ''" v-if="v.type == '多行文本'"></weui-input>
 					<weui-input :disabled="data.detail.order ? true : false"  v-model="ruleform['field_'+key]" :label="v.title"  type="text" :name="'field_'+key" :datatype="v.isRequire ? 'require' : ''" v-if="v.type == '文本'"></weui-input>
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :label="v.title" :name="'field_'+key" changeField="label" :datatype="v.isRequire ? 'require' : ''" :type="!data.detail.order ? 'select' :'text'" :dataKey="'arr'+key"  v-if="v.type == '下拉框'"></weui-input>
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key" changeField="label" :datatype="v.isRequire ? 'require' : ''" :type="!data.detail.order ? 'radio' :'text'" :dataKey="'arr'+key"  v-if="v.type == '单项选择'"></weui-input>
-					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key" changeField="label" :datatype="v.isRequire ? 'require' : ''" :type="!data.detail.order ? 'checkbox' :'text'"  :dataKey="'arr'+key"  v-if="v.type == '多项选择'"></weui-input>
+					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key" changeField="label" :datatype="v.isRequire ? 'array' : ''" :type="!data.detail.order ? 'checkbox' :'text'"  :dataKey="'arr'+key"  v-if="v.type == '多项选择'"></weui-input>
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key"  :datatype="v.isRequire ? 'require' : ''" :type="!data.detail.order ? 'time' :'text'"  v-if="v.type == '时间'"></weui-input>
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key"  :datatype="v.isRequire ? 'require' : ''" :type="!data.detail.order ? 'date' :'text'"   v-if="v.type == '日期'"></weui-input>
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key"  upurl='activity' :allowUpLoadNum="v.allowUploadNum" :datatype="v.isRequire ? 'require' : ''" type="upload"  v-if="v.type == '上传图片'"></weui-input>
@@ -93,6 +94,9 @@
 				})
 			},
 			submit(){
+				console.log(this.vaildate);
+				 console.log(this.ruleform);
+				 //return
 				this.vaildForm(this, res => {
 					if(res){
 						this.ruleform.activity =  this.data.detail;

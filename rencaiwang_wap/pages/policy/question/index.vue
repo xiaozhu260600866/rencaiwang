@@ -89,6 +89,8 @@
 				if(nextQuestion.length >0){
 					this.question = nextQuestion
 				}else{
+					
+					
 					uni.setStorageSync('question', this.question_copy);
 					uni.setStorageSync('answerResult', this.answerResult);
 					this.postAjax('/policyMatch/visit',{id:this.data.lists.data[0].id}).then(msg=>{

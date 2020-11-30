@@ -40,7 +40,7 @@
 					</dx-list-cell>
 				</view>
 				<view class="rp-list p15 pr0">
-					<dx-list-cell arrow :name="item.title" noborder padding="10rpx 0" nameColor="#737373" :nameSize="14" v-for="item in policyArr"></dx-list-cell>
+					<dx-list-cell arrow @click="goto('/pages/policy/show/index?id='+item.id,1)" :name="item.title" noborder padding="10rpx 0" nameColor="#737373" :nameSize="14" v-for="item in policyArr"></dx-list-cell>
 				</view>
 			</view>
 			<view class="shadow-block">
@@ -53,7 +53,7 @@
 			
 			<view class="consult">
 				<view class="item">
-					<weui-input v-model="ruleform.phone" placeholder="联系方式" type="text" name="phone" datatype="require|phone"></weui-input>
+					<weui-input v-model="ruleform.phone" placeholder="联系方式" type="text" name="phone" datatype="require"></weui-input>
 				</view>
 				<view class="item">
 					<weui-input v-model="ruleform.remark" placeholder="咨询内容" type="textarea" name="remark" datatype="require"></weui-input>
@@ -117,11 +117,13 @@
 			this.answerResult.forEach(question=>{
 				if(question.children){
 					question.children.forEach(answer=>{
-						 if(answer.benefitArr.length){
-							 answer.benefitArr.forEach(benfit=>{
-								 policyArr.push(benfit.policy_id);
-								 benefitArr.push({show:false,benefitCategory:benfit.benefitCategory,benefitTitle:benfit.benefitTitle,benefitContent:benfit.benefitContent,benfitNum:benfit.policyNum});
-							 });
+						 if(answer.checked){
+							 if(answer.benefitArr.length){
+								 answer.benefitArr.forEach(benfit=>{
+									 policyArr.push(benfit.policy_id);
+									 benefitArr.push({show:false,benefitCategory:benfit.benefitCategory,benefitTitle:benfit.benefitTitle,benefitContent:benfit.benefitContent,benfitNum:benfit.policyNum});
+								 });
+							 }
 						 }
 					})
 				}
@@ -144,12 +146,12 @@
 			submit(){
 				this.vaildForm(this, res => {
 					if(res){
-						// this.postAjax("/policyMatch/order", this.ruleform).then(msg => {
-						// 	if (msg.data.status == 2) {
-						// 		this.back();
-						// 	}
-						// });
-						this.submitSuccess = true;
+						this.postAjax("/policyMatch/order", this.ruleform).then(msg => {
+							if (msg.data.status == 2) {
+								this.ruleform = {};
+							}
+						});
+						
 					}
 				})
 			}
