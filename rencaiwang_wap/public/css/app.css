@@ -1,5 +1,5 @@
 /* app.wxss */
-page{background: #fff;font-size: 32upx;padding: 168upx 0 202upx;}
+page{background: #fff;font-size: 32upx;padding: 100upx 0 130upx;}
 view,sroll-view,swiper,icon,text,progress,button,checkbox,form,input,label,input,picker,radio,slider,switch,action-sheet,modal,toast,loading,navigator,audio,image,video,map,canvas,div,span,p,section,scroll-view {box-sizing: border-box;}
 
 
@@ -25,6 +25,7 @@ view,sroll-view,swiper,icon,text,progress,button,checkbox,form,input,label,input
 .show-top{color: #404040;padding-bottom: 20upx;}
 .show-top .row{display: flex;align-items: center;justify-content: space-between;padding-top: 8upx;}
 .show-title{font-size: 36upx;color: #404040;font-weight: bold;line-height: 1.6;margin-bottom: 8upx;}
+.content image,.content img,.explain .detail image,.explain .detail img{max-width: 100%;display: flex;justify-content: center;}
 
 
 /* 附件下载 */

@@ -3,6 +3,6 @@
 .que-item .topic{text-align: justify;border-bottom: 1upx #e6e6e6 solid;padding-bottom: 20upx;}
 
 .answer{padding: 20upx 0;}
-.radio-group .radio-item{display: flex;align-items: center;flex: 1;width: 100%;justify-content: center;margin: 24upx 0;}
+.radio-group .radio-item{display: flex;align-items: center;flex: 1;width: 100%;margin: 24upx 0;}
 .radio-group >>>uni-radio{display: flex;}
 .radio-group >>>.uni-radio-input{width: 32upx;height: 32upx;display: flex;}

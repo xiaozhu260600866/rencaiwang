@@ -1,4 +1,4 @@
 .content{border-top: 2upx #e6e6e6 solid;}
-.content image{width: 100%;display: flex;}
+.content image,.content img{max-width: 100%;display: flex;}
 .content .p{font-size: 28upx;color: #777;text-align: justify;text-indent: 2em;line-height: 1.6;margin-bottom: 30upx;}
 

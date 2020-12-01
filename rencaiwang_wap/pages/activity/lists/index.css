@@ -18,6 +18,6 @@
 .activity_lists .title{line-height: 44upx;}
 .activity_lists .sign-date{padding-bottom: 20upx;}
 .activity_lists .fb-info .head{width: 40upx;height: 40upx;display: flex;border-radius: 50%;}
-.activity_lists .fb-info .name{font-size: 24upx;font-weight: bold;color: #444;margin-left: 16upx;}
+.activity_lists .fb-info .name{font-size: 24upx;font-weight: bold;color: #444;}
 .activity_lists .content{font-size: 36upx;color: #777;line-height: 1.5;flex: 1;text-align: justify;}
 .activity_lists .img{width: 200upx;height: 150upx;display: flex;margin-left: 20upx;}
