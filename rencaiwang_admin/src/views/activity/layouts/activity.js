@@ -8,7 +8,7 @@ export default {
 		'tableName': 'activitys',
 		classChildrenHidden: true,
 		classno: true,
-        canupload:false,
+        canupload: false,
 		'createAction': '/admin/activity/create',
 		'editAction': '/admin/activity/edit',
 		classAction: '/admin/activity/',
@@ -41,11 +41,11 @@ export default {
 			{ 'name': '', 'prop': 'title', 'datatype': 'require', 'type': 'text', 'append_form_': 0, 'label': '文章标题' },
 			{ 'name': '', 'prop': 'class_value', 'datatype': 'require', datakey: 'fclass', 'type': 'manyselect', multiple: true, 'append_form_': 0, 'label': '分类' },
 			{ 'name': '', 'prop': 'unit', 'datatype': 'require', datakey: 'unit', 'type': 'select', 'append_form_': 0, 'label': '单位' },
-			{ 'name': '', 'prop': 'cover', allowUpLoadNum: 1, upurl: 'article', 'type': 'upload', 'append_form_': 0, 'label': '图片' },
+			{ 'name': '', 'prop': 'cover', allowUpLoadNum: 1, upurl: 'article', 'type': 'upload', 'append_form_': 0, 'uploadMessage': '最佳尺寸：750*563像素', 'label': '图片' },
 			{ 'prop': 'upload_file', allowUpLoadNum: 1, upurl: 'article', 'type': 'uploadFile', 'append_form_': 0,
 						action: '/admin/article/upload-file',
 						allowSuffix: ['.doc', '.docx', '.xls', '.xlsx', '.et', '.pdf', '.jpg', '.png', '.zip', '.rar'],
-						accept: 'image/*', 'label': '上传附件'
+						accept: '', 'label': '上传附件'
 			},
 			{ 'name': '', 'prop': 'published_at', 'datatype': 'require', 'type': 'date', 'append_form_': 0, 'label': '发布日期' },
 			{ 'name': '', 'prop': 'content', 'datatype': 'require', 'type': 'editor', 'append_form_': 0, 'label': '' }
