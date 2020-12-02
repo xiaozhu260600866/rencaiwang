@@ -37,6 +37,7 @@
         },
         methods: {
             cancel(row) {
+                delete row.api_token
               this.getConfirm('是否取消绑定', () => {
                   this.postAjax('/admin/staff/cancelWechat', row).then(msg => {
                        if (msg.data.status == 2) {

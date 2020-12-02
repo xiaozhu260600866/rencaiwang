@@ -164,7 +164,7 @@ export default {
             'append_form_': 0,
              action: '/admin/article/upload-file',
              allowSuffix: ['.doc', '.docx', '.xls', '.xlsx', '.et', '.pdf', '.jpg', '.png', '.zip', '.rar'],
-             accept: 'image/*',
+             accept: '',
             'label': '上传附件'
         }
         // {

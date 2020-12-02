@@ -64,7 +64,7 @@ uni.getProvider({
 		//uni.clearStorageSync();
 		if (res.provider.length == 0) {
 			 let site_name = uni.getStorageSync('siteName');
-			 let gotoWechat = uni.getStorageSync("gotoWechat17");
+			 let gotoWechat = uni.getStorageSync("gotoWechat18");
 			 let userInfo = uni.getStorageSync('userInfo');
 			 if(getOptions('openid') && getOptions('new2') && gotoWechat){
 			 	let userInfo = {
@@ -118,7 +118,7 @@ uni.getProvider({
 				let newUrl_ = url.replace("/?from=singlemessage#","");
 				console.log(newUrl_);
 				
-				uni.setStorageSync("gotoWechat17",1);
+				uni.setStorageSync("gotoWechat18",1);
 				window.location.href=newUrl_;
 				
 			 }

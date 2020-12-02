@@ -11,8 +11,8 @@
         <el-input v-model="ruleForm2.activity_unit" />
       </el-form-item>
       <el-form-item label="起止时间" prop="start_at" :rules="[{ required: true, message: '活动名称不能为空'},]">
-        <el-date-picker v-model="ruleForm2.start_at" type="datetime" placeholder="选择日期时间" format="yyyy-MM-dd/HH-mm-ss" />
-        <el-date-picker v-model="ruleForm2.end_at" type="datetime" placeholder="选择结速时间" format="yyyy-MM-dd/HH-mm-ss" />
+        <el-date-picker v-model="ruleForm2.start_at" type="datetime" placeholder="选择开始时间" format="yyyy-MM-dd/HH-mm-ss" />
+        <el-date-picker v-model="ruleForm2.end_at" type="datetime" placeholder="选择结束时间" format="yyyy-MM-dd/HH-mm-ss" />
       </el-form-item>
 
       <el-form-item label="分类" prop="fclass" :rules="[{ required: true, message: '分类名称不能为空'},]">

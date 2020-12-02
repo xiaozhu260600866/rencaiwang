@@ -13,7 +13,7 @@ export default {
         'searchFields': [
             {
             'name': '',
-            'prop': 'title',
+            'prop': 'content',
             'type': 'text',
             'label': '政策名称'
             },

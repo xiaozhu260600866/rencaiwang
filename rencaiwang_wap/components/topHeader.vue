@@ -35,6 +35,8 @@
 					
 					this.title2	 = this.title.substring(0, 12) + '...';
 					
+				}else{
+					this.title2 = this.title;
 				}
 			},50)
 			

@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<!-- <page :parentData="data" :formAction="formAction"></page> -->
-		<view v-if="data.show">
+		<view v-if="show">
 			<!-- 头部 -->
-			<top-header :title="row.title"></top-header>
+			<top-header :title="row.title" ref="header"></top-header>
 			
 			<!-- 置顶视频 -->
 			<view v-if="data.lists.data">
@@ -46,6 +46,7 @@
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
+				show:false,
 				row:'',
 				videoLists: [{
 					cover:"/static/images/index-ad.jpg",
@@ -84,6 +85,8 @@
 				this.postAjax("/video/show",row,"notloading").then(msg=>{
 					row.play_url = msg.data.video.url;
 					this.row = row;
+					this.show = true;
+					this.$refs.header.title2 = row.title;
 				});
 			},
 			ajax() {

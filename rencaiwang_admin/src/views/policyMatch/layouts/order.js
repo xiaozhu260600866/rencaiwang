@@ -12,6 +12,18 @@ export default {
         'searchFields': [
             {
             'name': '',
+            'prop': 'name',
+            'type': 'text',
+            'label': '呢称'
+            },
+            {
+            'name': '',
+            'prop': 'remark',
+            'type': 'text',
+            'label': '内容'
+            },
+            {
+            'name': '',
             'prop': 'phone',
             'type': 'text',
             'label': '电话'

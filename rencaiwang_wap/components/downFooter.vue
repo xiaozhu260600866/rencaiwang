@@ -35,6 +35,7 @@
 		},
 		methods: {
 			gotoUrl(url){
+				this.toHidden();
 				console.log(url)
 				this.bgShow= false;
 				window.location.href=url;

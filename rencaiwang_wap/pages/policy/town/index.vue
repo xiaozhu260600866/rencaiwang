@@ -85,8 +85,16 @@
 				})
 			},
 			ajax() {
+				this.selectAreaArr = [];
 				this.getAjax(this).then(msg => {
-					this.selectAreaArr = msg.town	
+					if(msg.town.length){
+						msg.town.forEach(v=>{
+							if(v.value!=0){
+								this.selectAreaArr.push(v)
+							}
+						})
+					}
+					
 				});
 			}
 		}

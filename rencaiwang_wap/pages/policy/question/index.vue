@@ -12,7 +12,7 @@
 			
 			<view class="question">
 				<view class="que-item shadow-block pb0" v-for='(v,questionKey) in question'>
-					<view class="topic"><text class="Arial">{{questionKey+1}}</text>、{{v.label}}</view>
+					<view class="topic"><text class="Arial">{{questionKey+1}}</text>、<span v-html="getTitle(v.label)"></span></view>
 					<view class="answer">
 						<radio-group class="radio-group" @change="radioChange">
 							<label class="radio-item" v-for="(item, answerKey) in v.children" :key="answerKey">
@@ -24,10 +24,12 @@
 						</radio-group>
 					</view>
 				</view>
-				<view class="pt10 text-center" @click="submit">
+				<hasMore :parentData="data" message="没有找到符合条件的政策"></hasMore>
+				<view class="pt10 text-center" @click="submit" v-if="data.lists.data.length">
 					<dx-button type="danger" myclass="plr50" round >提 交</dx-button>
 				</view>
 			</view>
+		
 			
 			<!-- 脚部 -->
 			<down-footer></down-footer>
@@ -67,6 +69,9 @@
 			this.ajax();
 		},
 		methods: {
+			getTitle(title){
+				return title.replace(/\n/g,"</br>");
+			},
 			submit(){
 				let nextQuestion = [];
 				for (let question of this.question) {
@@ -94,7 +99,7 @@
 					uni.setStorageSync('question', this.question_copy);
 					uni.setStorageSync('answerResult', this.answerResult);
 					this.postAjax('/policyMatch/visit',{id:this.data.lists.data[0].id}).then(msg=>{
-						this.goto('/pages/policy/result/index',1);
+						this.goto('/pages/policy/result/index');
 					});
 					
 					

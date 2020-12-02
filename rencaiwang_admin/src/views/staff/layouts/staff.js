@@ -32,7 +32,7 @@ export default {
         'formFields': [
           { prop: 'name', datatype: 'require', type: 'text', label: '用户名', column: 2 },
           { prop: 'username', datatype: 'require', type: 'text', label: '登录帐号' },
-          { prop: 'phone', datatype: 'require|phone', type: 'text', label: '电话号码' },
+          { prop: 'phone', datatype: 'require', type: 'text', label: '电话号码' },
           { prop: 'password', datatype: 'require', type: 'password', label: '登录密码', column: 2 },
           { prop: 'role_id', datatype: 'require', type: 'select', datakey: 'roleArr', label: '角色' },
           { prop: 'unit_id', multiple: true, datatype: 'require', type: 'select', datakey: 'unitArr', label: '单位', column: 2 },

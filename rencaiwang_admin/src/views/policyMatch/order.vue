@@ -2,10 +2,10 @@
   <div>
     <dx-table :data="data" :global-data="globalData" :operate-width="180">
       <div slot="operate" slot-scope="scope">
-        <div>
+        <!-- <div>
           <el-button v-if="data.query.status == 0" type="primary" size="mini" @click="handel(scope.row,1)">处理</el-button>
           <el-button v-if="data.query.status == 1" type="primary" size="mini" @click="handel(scope.row,0)">设为未处理</el-button>
-        </div>
+        </div> -->
       </div>
     </dx-table>
     <qrcode ref="qrcode" />

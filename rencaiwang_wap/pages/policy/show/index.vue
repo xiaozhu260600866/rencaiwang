@@ -21,7 +21,7 @@
 				<view class="content ptb20">
 					<view v-html="data.detail.content"></view>
 				</view>
-				<view class="attachment">
+				<view class="attachment" v-if="getFileArr(data.detail.upload_file_name).length">
 					<view class="title">附件下载</view>
 					<view class="lists">
 						<dx-list-cell @click="downLoad(item,key)" :name="item.name" padding="0" nameColor="#777" :nameSize="13" slotLeft  v-for="(item,key) in getFileArr(data.detail.upload_file_name)" noborder>

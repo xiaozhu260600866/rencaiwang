@@ -81,7 +81,7 @@ export default {
 				'type': 'text',
 				'append_form_': 0,
 				'label': '文章标题',
-				'editDisabled': true
+			
 			},
 			{
 				'name': '',

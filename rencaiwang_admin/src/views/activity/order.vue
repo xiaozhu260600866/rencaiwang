@@ -45,17 +45,18 @@
             getValue(row, attribute) {
               if (attribute.type != '上传图片') {
                     const value = JSON.parse(row)
-                    return value.value
+                    if (value) return value.value
               } else {
                 const value = JSON.parse(row)
-                  return this.siteName + '/upload/images/activity/' + value.value
+                  if (value) return this.siteName + '/upload/images/activity/' + value.value
               }
             },
             ajax() {
                 this.globalData.data.searchFields = []
                 this.globalData.data.tableFields = []
                 this.globalData.data.tableFields.push(
-                  { label: '活动名称', prop: 'activity_name' }
+                  { label: '活动名称', prop: 'activity_name' },
+                  { label: '活动举办单位', prop: 'activity_unit' },
                 )
                 this.getAjax(this, {}, msg => {
                     msg.activity.getAttribute.forEach((attribute, attributeKey) => {

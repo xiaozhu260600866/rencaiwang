@@ -17,7 +17,10 @@ myfun.install = (Vue, options) => {
 	Vue.prototype.getFileArr = (fileString)=>{
 		let res = []
 		fileString.split(",").forEach(file=>{
-			name:res.push({name:file});
+			if(file){
+				name:res.push({name:file});
+			}
+			
 		})
 		console.log(res)
 		return res;
