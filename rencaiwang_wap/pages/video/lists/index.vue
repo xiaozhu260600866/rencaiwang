@@ -19,7 +19,7 @@
 				</view>
 				
 				<!-- 搜索 -->
-				<search padding="10rpx 40rpx 40rpx" @callBack="searchCallBack"></search>
+				<search padding="10rpx 40rpx 40rpx" typeShow @callBack="searchCallBack"></search>
 				
 				<!-- 视频新闻列表 -->
 				<view class="video-lists plr20">

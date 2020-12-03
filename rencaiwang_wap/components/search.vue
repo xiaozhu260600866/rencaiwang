@@ -1,13 +1,18 @@
 <template>
 	<view>
 		<view class="search" :style="{padding:padding}">
-			<view class="search-box">
+			<view class="search-box" :class="areaShow && typeShow ? 'twoSelect':''">
 				<view class="dxi-icon dxi-icon-search2"></view>
 				<input class="input"  type="text" :placeholder="placeholder" v-model="searchVal" @confirm="callBack"/>
 				<slot></slot>
 				<view class="area flex" v-if="areaShow" >
-					<picker :value="actIndex" class="order-picker fs12 font_grey" :range="selectAreaArr"  range-key="label" @change="selectRes">
+					<picker :value="actIndex" class="order-picker" :range="selectAreaArr" range-key="label" @change="selectRes">
 						{{  actIndex == -1 ? '市区县' : selectAreaArr[actIndex].label }}</picker>
+					<text class="dxi-icon dxi-icon-down"></text>
+				</view>
+				<view class="area flex" v-if="typeShow" >
+					<picker :value="actIndex" class="order-picker" :range="selectTypeArr" range-key="label" @change="selectType">
+						{{  curIndex == -1 ? '分类' : selectTypeArr[curIndex].label }}</picker>
 					<text class="dxi-icon dxi-icon-down"></text>
 				</view>
 			</view>
@@ -52,6 +57,10 @@
 			areaShow:{
 				type: Boolean,
 				default: false
+			},
+			typeShow:{
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -59,15 +68,20 @@
 				selectArea: false,
 				searchVal:'',
 				actIndex:-1,
+				curIndex:-1,
 				ruleform:{},
 				
 			}
 		},
 		methods: {
 			selectRes(event) {
-			    	this.actIndex = event.mp.detail.value;
-			    	this.$emit('callBackTown',this.selectAreaArr[this.actIndex]);
-			    },
+				this.actIndex = event.mp.detail.value;
+				this.$emit('callBackTown',this.selectAreaArr[this.actIndex]);
+			},
+			selectType(event) {
+				this.curIndex = event.mp.detail.value;
+				this.$emit('callBackTown',this.selectTypeArr[this.curIndex]);
+			},
 			callBack(){
 				this.$emit("callBack",this.searchVal);
 			}
@@ -81,6 +95,11 @@
 .search-box .area{padding-left: 30upx;position: relative;font-size: 28upx;color: #737373;}
 .search-box .area .dxi-icon{font-size: 24upx;padding-left: 30upx;}
 .search-box .area::before{content: '';display: block;position: absolute;left: 0;top: 50%;margin-top: -24upx;height: 48upx;width: 2upx;background-color: #bfbfbf;}
+
+.twoSelect{padding-right: 0;}
+.twoSelect .area{padding-left: 16upx;}
+.twoSelect .area .dxi-icon{padding: 0 16upx;}
+.twoSelect .input{font-size: 30upx;}
 
 
 /* 选择区域 */

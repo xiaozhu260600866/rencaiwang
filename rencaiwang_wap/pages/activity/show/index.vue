@@ -11,6 +11,7 @@
 					<view class="show-title">{{data.detail.title}}</view>
 					<view class="fs-15">报名开始时间：<text class="Arial">{{data.detail.start_at}}</text></view>
 					<view class="fs-15">报名截止时间：<text class="Arial">{{data.detail.end_at}}</text></view>
+					<view class="fs-15">举办单位：<text class="Arial">{{data.detail.activity_unit}}</text></view>
 					<view class="mtb12">
 						<dx-button type="primary" block v-if="!data.detail.order" @click="canSignUp">我要报名</dx-button>
 						<dx-button type="danger" block v-else @click="goto('/pages/activity/signup/index?id='+data.detail.id+'&order_id='+data.detail.order.id)">取消报名</dx-button>

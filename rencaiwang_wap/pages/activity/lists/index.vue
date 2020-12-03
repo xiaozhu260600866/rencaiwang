@@ -6,7 +6,7 @@
 			<top-header></top-header>
 			
 			<!-- 搜索 -->
-			<search areaShow  :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle"></search>
+			<search areaShow typeShow :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle"></search>
 			
 			<view v-if="step == true">
 				<!-- 切换 -->

@@ -11,7 +11,7 @@
 			</view>
 			
 			<!-- 搜索 -->
-			<search @callBack="searchTitle"></search>
+			<search @callBack="searchTitle" typeShow></search>
 			
 			<view class="skip">
 				<view class="shadow-block skip-item" v-for="item in data.lists.data" >
