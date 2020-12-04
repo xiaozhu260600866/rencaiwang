@@ -11,7 +11,7 @@
 			</view>
 			
 			<!-- 搜索 -->
-			<search areaShow typeShow :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle"></search>
+			<search areaShow typeShow :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle" :fclass="data.class" @callBackClass="callBackClass"></search>
 			
 			<view class="step1" >
 				
@@ -78,6 +78,10 @@
 			this.ajax();
 		},
 		methods: {
+			callBackClass(val){
+				this.data.query.fclass = val.value;
+				this.ajax();
+			},
 			searchTown(res){
 				this.data.query.town = res.value;
 				this.ajax();

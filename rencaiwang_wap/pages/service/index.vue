@@ -11,7 +11,7 @@
 			</view>
 			
 			<!-- 搜索 -->
-			<search @callBack="searchTitle" typeShow></search>
+			<search @callBack="searchTitle" typeShow :fclass="data.class" @callBackClass="callBackClass"></search>
 			
 			<view class="skip">
 				<view class="shadow-block skip-item" v-for="item in data.lists.data" >
@@ -78,6 +78,10 @@
 			this.ajax();
 		},
 		methods: {
+			callBackClass(val){
+				this.data.query.fclass = val.value;
+				this.ajax();
+			},
 			searchTitle(res){
 				this.data.query.title = res;
 				this.ajax();

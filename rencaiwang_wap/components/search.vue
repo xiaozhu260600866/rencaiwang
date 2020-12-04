@@ -11,8 +11,8 @@
 					<text class="dxi-icon dxi-icon-down"></text>
 				</view>
 				<view class="area flex" v-if="typeShow" >
-					<picker :value="actIndex" class="order-picker" :range="selectTypeArr" range-key="label" @change="selectType">
-						{{  curIndex == -1 ? '分类' : selectTypeArr[curIndex].label }}</picker>
+					<picker :value="curIndex" class="order-picker" :range="fclass" range-key="label" @change="selectType">
+						{{  curIndex == -1 ? '分类' : fclass[curIndex].label }}</picker>
 					<text class="dxi-icon dxi-icon-down"></text>
 				</view>
 			</view>
@@ -50,6 +50,10 @@
 				type:String,
 				default:'60rpx 40rpx 40rpx'
 			},
+			fclass:{
+				type:Array,
+				default:[]
+			},
 			selectAreaArr:{
 				type:Array,
 				default:[]
@@ -80,7 +84,7 @@
 			},
 			selectType(event) {
 				this.curIndex = event.mp.detail.value;
-				this.$emit('callBackTown',this.selectTypeArr[this.curIndex]);
+				this.$emit('callBackClass',this.fclass[this.curIndex]);
 			},
 			callBack(){
 				this.$emit("callBack",this.searchVal);

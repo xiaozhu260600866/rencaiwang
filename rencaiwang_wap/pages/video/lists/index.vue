@@ -19,7 +19,7 @@
 				</view>
 				
 				<!-- 搜索 -->
-				<search padding="10rpx 40rpx 40rpx" typeShow @callBack="searchCallBack"></search>
+				<search padding="10rpx 40rpx 40rpx" typeShow @callBack="searchCallBack" :fclass="data.fclass" @callBackClass="callBackClass"></search>
 				
 				<!-- 视频新闻列表 -->
 				<view class="video-lists plr20">
@@ -77,6 +77,10 @@
 			this.ajax();
 		},
 		methods: {
+			callBackClass(val){
+				this.data.query.fclass = val.value;
+				this.ajax();
+			},
 			searchCallBack(val){
 				this.data.query.title=val;
 				this.ajax();

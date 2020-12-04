@@ -152,22 +152,30 @@
 					<div class='el-tree-right'>
 						<div class='question-title'><span>[问题]</span> {node.label}</div>
 						<div class='tree-btn'>
-							<el-button type='text' on-click={ () => this.copyQuestion(data) }>复制问题</el-button>
-							<el-button type='text' on-click={ () => this.editQuestion(data) }>修改问题</el-button>
-							<el-button type='text' on-click={ () => this.appendAnswer(node, data) }>新增答案</el-button>
-							<el-button type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
+                            <div class='row'>
+                                <el-button type='text' icon='el-icon-document-copy' on-click={ () => this.copyQuestion(data) }>复制问题</el-button>
+                                <el-button type='text' icon='el-icon-edit' on-click={ () => this.editQuestion(data) }>修改问题</el-button>
+                            </div>
+                            <div class='row'>
+                                <el-button type='text' icon='el-icon-document-add' on-click={ () => this.appendAnswer(node, data) }>新增答案</el-button>
+                                <el-button type='text' icon='el-icon-delete' on-click={ () => this.remove(node, data) }>删除</el-button>
+                            </div>
 						</div>
 					</div>
 				)
 			} else if (data.type == 'answer') {
 				return (
 					<div class='el-tree-right'>
-						<div class='answer-title'><span>[答案]</span> {node.label}</div>
+						<div class='answer-title'><span>[答案]</span><i class='el-icon-present'></i> {node.label}</div>
 						<div class='tree-btn'>
-							<el-button type='text' on-click={ () => this.editAnswer(data, node) }>修改答案</el-button>
-							<el-button type='text' on-click={ () => this.appendQuestion(data) }>后续问题</el-button>
-							<el-button type='text' on-click={ () => this.stickQuestion(data, 0) }>粘贴问题</el-button>
-							<el-button type='text' on-click={ () => this.remove(node, data) }>删除</el-button>
+                            <div class='row'>
+                                <el-button type='text' icon='el-icon-edit' on-click={ () => this.editAnswer(data, node) }>修改答案</el-button>
+                                <el-button type='text' icon='el-icon-chat-line-square' on-click={ () => this.appendQuestion(data) }>后续问题</el-button>
+                            </div>
+                            <div class='row'>
+                                <el-button type='text' icon='el-icon-copy-document' on-click={ () => this.stickQuestion(data, 0) }>粘贴问题</el-button>
+                                <el-button type='text' icon='el-icon-delete' on-click={ () => this.remove(node, data) }>删除</el-button>
+                            </div>
 						</div>
 					</div>
 				)
@@ -180,9 +188,27 @@
 .question_tree>.el-tree-node{border-bottom:1px solid #ccc;}
 .question_tree .el-tree-node__content{height:56px;border:1px solid #ccc;border-bottom: 0;}
 #shou-feng-qin-xiao-guo{margin: 20px 0;font-size: 15px;color: #333;}
-.el-tree-right{flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 20px; padding-right: 8px;overflow: hidden;}
+.el-tree-right{flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 20px; padding-right: 8px;height: 100%;position: relative;}
 .question-title{flex: 1;padding-right: 15px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 .answer-title{flex: 1;padding-right: 15px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;color: green;}
 .question-title span,.answer-title span{font-weight:bold;}
-.tree-btn .el-button:last-child{color: red;}
+.answer-title i{margin-left: 3px;font-size: 16px;}
+.tree-btn .el-button{margin-left: 15px;padding: 5px 0;color: #666;}
+.tree-btn .el-button span{font-size: 13px;}
+/* .tree-btn .row:last-child .el-button:last-child{color: red;} */
+
+/* 图标 */
+.el-tree-node__expand-icon{position: relative;z-index: 2;}
+.el-tree-node__expand-icon::before{background-color: #fff;}
+.el-tree-node__expand-icon.is-leaf::before{background-color: transparent;}
+
+/* .el-tree-right::before{content: '';display: block;width: 2px;position: absolute;left: -12px;top: 0;bottom: 0;background-color: #000;z-index: 1;} */
+// .el-tree-right::after{content: '';display: block;width: 12px;height: 2px;position: absolute;left: -12px;top: 50%;margin-top: -1px;background-color: #000;z-index: 1;}
+// .el-tree-node:first-child .el-tree-right::after{display: none;}
+// .el-tree>.el-tree-node>.el-tree-node__content{position: relative;}
+// .el-tree>.el-tree-node>.el-tree-node__content::before{content: '';display: block;width: 2px;position: absolute;left: 12px;top: 32px;bottom: 0;background-color: #000;z-index: 1;}
+// .el-tree>.el-tree-node>.el-tree-node__children{position: relative;}
+// .el-tree>.el-tree-node>.el-tree-node__children::before{content: '';display: block;width: 2px;position: absolute;left: 12.5px;top: 0;bottom: 24px;background-color: #000;z-index: 1;}
+
+/* .el-tree-node__children{border: 1px #FF0000 solid;} */
 </style>

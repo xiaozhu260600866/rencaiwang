@@ -6,7 +6,7 @@
 			<top-header></top-header>
 			
 			<!-- 搜索 -->
-			<search areaShow typeShow :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle"></search>
+			<search areaShow typeShow :selectAreaArr="selectAreaArr" @callBackTown="searchTown" @callBack="searchTitle" :fclass="data.class" @callBackClass="callBackClass"></search>
 			
 			<view v-if="step == true">
 				<!-- 切换 -->
@@ -130,6 +130,10 @@
 			this.ajax();
 		},
 		methods: {
+			callBackClass(val){
+				this.data.query.fclass = val.value;
+				this.ajax();
+			},
 			searchTown(res){
 				this.data.query.town = res.value;
 				this.ajax();

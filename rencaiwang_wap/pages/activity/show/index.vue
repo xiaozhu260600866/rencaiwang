@@ -18,7 +18,7 @@
 					</view>
 					<view class="row fs-13">
 						<view>{{data.detail.unit_name}}</view>
-						<view class="Arial">{{data.detail.created_at}}</view>
+						<view class="Arial">{{data.detail.getDate}}</view>
 					</view>
 				</view>
 				<view class="explain">
