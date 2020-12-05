@@ -15,6 +15,12 @@ export default {
 		'checkAll': true,
 		'searchFields': [
 			{ 'name': '', 'prop': 'title', 'type': 'text', 'label': '活动名称' },
+			{ 'name': '', 'prop': 'status', 'type': 'select', 'label': '报名状态',data:[
+                {label:'全部',value:0},
+                {label:'未开始',value:1},
+                {label:'进行中',value:2},
+                {label:'已结束',value:3},
+            ] },
 			{ 'prop': 'fclass', 'type': 'manyselect', 'datakey': 'fclass', 'label': '分类' }
 		],
 		// "tarbars": {
@@ -30,8 +36,9 @@ export default {
 				{ 'name': '', 'prop': 'unit_name', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '单位' },
 				{ 'name': '', 'prop': 'getTown', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '涉及区县' },
 				{ 'name': '', 'prop': 'fclassname', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '分类' },
+                				{ 'name': '', 'prop': 'activity_unit', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '活动举办单位' },
 				{ 'name': '', 'prop': 'start_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '开始时间' },
-				{ 'name': '', 'prop': 'activity_unit', 'minWidth': '', 'width': '120', 'append_table_': 0, 'label': '活动举办单位' },
+
 				{ 'name': '', 'prop': 'end_at', 'minWidth': '', 'width': '100', 'append_table_': 0, 'label': '结束时间' },
 				{ 'prop': 'show', 'minWidth': '', 'width': '85', 'align': 'center', 'type': 'editField', 'url': '/admin/activity/editField', 'append_table': 0, 'label': '隐藏/显示' },
 				{ 'prop': 'sort', 'minWidth': '', 'width': '85', 'align': 'center', 'type': 'sort', 'url': '/admin/activity/editField', 'append_table': 0, 'label': '排序' }

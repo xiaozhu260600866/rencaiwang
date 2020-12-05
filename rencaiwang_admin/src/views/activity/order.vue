@@ -5,7 +5,9 @@
       <div v-for="(v,attributeKey) in data.activity.getAttribute" :slot="'append_table_field_'+attributeKey" slot-scope="scope">
         <span v-if="v.type!='上传图片'">{{ getValue(scope.row['field_'+attributeKey],v) }}</span>
         <span v-if="v.type =='上传图片'">
-          <img :src="getValue(scope.row['field_'+attributeKey],v)" alt="" width="50">
+
+          <div v-for="img in getValue(scope.row['field_'+attributeKey],v)"> <a href="javascript:;" :href="img"><img :src="img" alt="" width="50"></a></div>
+
         </span>
       </div>
     </dx-table>
@@ -48,7 +50,13 @@
                     if (value) return value.value
               } else {
                 const value = JSON.parse(row)
-                  if (value) return this.siteName + '/upload/images/activity/' + value.value
+                if (value) {
+                    const res = []
+                    value.value.split(',').forEach(img => {
+                        res.push(this.siteName + '/upload/images/activity/' + img)
+                    })
+                   return res
+                }
               }
             },
             ajax() {
@@ -56,7 +64,7 @@
                 this.globalData.data.tableFields = []
                 this.globalData.data.tableFields.push(
                   { label: '活动名称', prop: 'activity_name' },
-                  { label: '活动举办单位', prop: 'activity_unit' },
+                  { label: '提交时间', prop: 'created_at' },
                 )
                 this.getAjax(this, {}, msg => {
                     msg.activity.getAttribute.forEach((attribute, attributeKey) => {
@@ -72,7 +80,9 @@
                                 data[resKey].value = res.label
                               })
                             }
-                            console.log(data)
+                            data.unshift({
+                               value: 0, label: '全部'
+                            })
                             this.globalData.data.searchFields.push(
                                { type: 'select', label: attribute.title, prop: 'field_' + attributeKey, data: data }
                             )

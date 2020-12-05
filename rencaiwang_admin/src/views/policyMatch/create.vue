@@ -164,28 +164,46 @@
 					</div>
 				)
 			} else if (data.type == 'answer') {
-				return (
-					<div class='el-tree-right'>
-						<div class='answer-title'><span>[答案]</span><i class='el-icon-present'></i> {node.label}</div>
-						<div class='tree-btn'>
-                            <div class='row'>
-                                <el-button type='text' icon='el-icon-edit' on-click={ () => this.editAnswer(data, node) }>修改答案</el-button>
-                                <el-button type='text' icon='el-icon-chat-line-square' on-click={ () => this.appendQuestion(data) }>后续问题</el-button>
-                            </div>
-                            <div class='row'>
-                                <el-button type='text' icon='el-icon-copy-document' on-click={ () => this.stickQuestion(data, 0) }>粘贴问题</el-button>
-                                <el-button type='text' icon='el-icon-delete' on-click={ () => this.remove(node, data) }>删除</el-button>
-                            </div>
-						</div>
-					</div>
-				)
+                if (data.benefitArr && data.benefitArr.length) {
+                    return (
+                    	<div class='el-tree-right'>
+                    		<div class='answer-title'><span>[答案]</span><i class='el-icon-present'></i> {node.label}</div>
+                    		<div class='tree-btn'>
+                                <div class='row'>
+                                    <el-button type='text' icon='el-icon-edit' on-click={ () => this.editAnswer(data, node) }>修改答案</el-button>
+                                    <el-button type='text' icon='el-icon-chat-line-square' on-click={ () => this.appendQuestion(data) }>后续问题</el-button>
+                                </div>
+                                <div class='row'>
+                                    <el-button type='text' icon='el-icon-copy-document' on-click={ () => this.stickQuestion(data, 0) }>粘贴问题</el-button>
+                                    <el-button type='text' icon='el-icon-delete' on-click={ () => this.remove(node, data) }>删除</el-button>
+                                </div>
+                    		</div>
+                    	</div>
+                    )
+                } else {
+                   return (
+                   	<div class='el-tree-right'>
+                   		<div class='answer-title'><span>[答案]</span> {node.label}</div>
+                   		<div class='tree-btn'>
+                               <div class='row'>
+                                   <el-button type='text' icon='el-icon-edit' on-click={ () => this.editAnswer(data, node) }>修改答案</el-button>
+                                   <el-button type='text' icon='el-icon-chat-line-square' on-click={ () => this.appendQuestion(data) }>后续问题</el-button>
+                               </div>
+                               <div class='row'>
+                                   <el-button type='text' icon='el-icon-copy-document' on-click={ () => this.stickQuestion(data, 0) }>粘贴问题</el-button>
+                                   <el-button type='text' icon='el-icon-delete' on-click={ () => this.remove(node, data) }>删除</el-button>
+                               </div>
+                   		</div>
+                   	</div>
+                   )
+                }
 			}
 		}
 	}
 	}
 </script>
-<style>
-.question_tree>.el-tree-node{border-bottom:1px solid #ccc;}
+<style >
+.question_tree .el-tree-node>.el-tree-node__children{overflow: inherit;}
 .question_tree .el-tree-node__content{height:56px;border:1px solid #ccc;border-bottom: 0;}
 #shou-feng-qin-xiao-guo{margin: 20px 0;font-size: 15px;color: #333;}
 .el-tree-right{flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 20px; padding-right: 8px;height: 100%;position: relative;}
@@ -193,22 +211,24 @@
 .answer-title{flex: 1;padding-right: 15px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;color: green;}
 .question-title span,.answer-title span{font-weight:bold;}
 .answer-title i{margin-left: 3px;font-size: 16px;}
-.tree-btn .el-button{margin-left: 15px;padding: 5px 0;color: #666;}
-.tree-btn .el-button span{font-size: 13px;}
+.question_tree .tree-btn .el-button{margin-left: 15px;padding: 5px 0;color: #666;}
+.question_tree .tree-btn .el-button span{font-size: 13px;}
 /* .tree-btn .row:last-child .el-button:last-child{color: red;} */
 
 /* 图标 */
-.el-tree-node__expand-icon{position: relative;z-index: 2;}
-.el-tree-node__expand-icon::before{background-color: #fff;}
-.el-tree-node__expand-icon.is-leaf::before{background-color: transparent;}
+.question_tree .el-tree-node__expand-icon{position: relative;z-index: 2;}
+.question_tree .el-tree-node__expand-icon::before{background-color: #fff;}
+.question_tree .el-tree-node__expand-icon.is-leaf::before{background-color: transparent;}
 
-/* .el-tree-right::before{content: '';display: block;width: 2px;position: absolute;left: -12px;top: 0;bottom: 0;background-color: #000;z-index: 1;} */
-// .el-tree-right::after{content: '';display: block;width: 12px;height: 2px;position: absolute;left: -12px;top: 50%;margin-top: -1px;background-color: #000;z-index: 1;}
-// .el-tree-node:first-child .el-tree-right::after{display: none;}
-// .el-tree>.el-tree-node>.el-tree-node__content{position: relative;}
-// .el-tree>.el-tree-node>.el-tree-node__content::before{content: '';display: block;width: 2px;position: absolute;left: 12px;top: 32px;bottom: 0;background-color: #000;z-index: 1;}
-// .el-tree>.el-tree-node>.el-tree-node__children{position: relative;}
-// .el-tree>.el-tree-node>.el-tree-node__children::before{content: '';display: block;width: 2px;position: absolute;left: 12.5px;top: 0;bottom: 24px;background-color: #000;z-index: 1;}
+/* 定义线条 */
+.question_tree .el-tree-node__content{padding-left: 0!important;border: 0!important;position: relative;}
+.question_tree .el-tree-node__content::before{content: '';display: block;position: absolute;bottom: 0;border-bottom: 1px #ddd solid;right: 0;left: 24px;}
 
-/* .el-tree-node__children{border: 1px #FF0000 solid;} */
+/* 阶层 */
+.question_tree .el-tree-node{position: relative;padding: 0 0 0 15px;}
+.question_tree .el-tree-node::before{position: absolute;content: '';top: -26px;left: 12px;width: 20px;height: 56px;border-style: none none dotted dotted;border-width: 1px;border-color: block;}
+.question_tree .el-tree-node:not(:last-child)::after {position: absolute;content: '';top: -26px;left: 12px;bottom: 0;border-style: none none none dotted;border-width: 1px;border-color: block;z-index: 1;}
+.question_tree>.el-tree-node{padding: 0;}
+.question_tree>.el-tree-node::before{display: none;}
+.question_tree>.el-tree-node::after{display: none;}
 </style>
