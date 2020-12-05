@@ -79,7 +79,7 @@
 		},
 		methods: {
 			callBackClass(val){
-				this.data.query.fclass = val.value;
+				this.data.query.fclass = '['+val.value+']';
 				this.ajax();
 			},
 			searchTown(res){

@@ -17,8 +17,8 @@
 						<dx-button type="danger" block v-else @click="goto('/pages/activity/signup/index?id='+data.detail.id+'&order_id='+data.detail.order.id)">取消报名</dx-button>
 					</view>
 					<view class="row fs-13">
-						<view>{{data.detail.unit_name}}</view>
-						<view class="Arial">{{data.detail.getDate}}</view>
+						<view>发布单位：{{data.detail.unit_name}}</view>
+						<view class="Arial">发布时间：{{data.detail.getDate}}</view>
 					</view>
 				</view>
 				<view class="explain">

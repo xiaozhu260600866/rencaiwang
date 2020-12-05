@@ -19,7 +19,7 @@
 								<view>
 									<radio :value="questionKey + ':' + answerKey" :checked="item.checked" :data-answerkey="answerKey" :data-questionkey="questionKey"/>
 								</view>
-								<view>{{item.label}}</view>
+								<view v-html="getTitle(item.label)"></view>
 							</label>
 						</radio-group>
 					</view>
