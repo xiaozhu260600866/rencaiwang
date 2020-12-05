@@ -20,7 +20,7 @@
 				<view class="attachment" v-if="getFileArr(data.detail.upload_file_name).length">
 					<view class="title">附件下载</view>
 					<view class="lists">
-						<dx-list-cell @click="downLoad(item,key)" :name="item.name" padding="0" nameColor="#777" :nameSize="13" slotLeft  v-for="(item,key) in getFileArr(data.detail.upload_file_name)" noborder>
+						<dx-list-cell @click="downLoad(item,key)" :name="item.name+''" padding="0" nameColor="#777" slotLeft v-for="(item,key) in getFileArr(data.detail.upload_file_name)" noborder>
 							<view slot="left" class="dot"></view>
 						</dx-list-cell>
 					</view>

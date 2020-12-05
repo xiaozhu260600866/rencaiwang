@@ -80,7 +80,7 @@
 <style scoped>
 .share-bg{position: fixed;top: 0px;right: 0;bottom: 0;left: 0;width: 100%;height: 800px;background: #000;filter: alpha(opacity=40);-moz-opacity: 0.4;opacity: 0.4;}
 .down_footer{display: flex;justify-content: space-between;padding: 12upx 10upx;background-color: #fff;position: fixed;bottom: 0;left: 0;width: 100%;z-index: 999;}
-.down_footer .dxi-btn{display: flex;line-height: 1;white-space: nowrap;cursor: pointer;background: #fff;border: 1px solid #dcdfe6;color: #606266;text-align: center;box-sizing: border-box;outline: none;margin: 0;transition: .1s;font-weight: 500;padding: 24upx 40upx;font-size: 15px;border-radius: 8upx;background-color: #419cf5;color: #fff;}
+.down_footer .dxi-btn{display: flex;line-height: 1;white-space: nowrap;cursor: pointer;background: #fff;border: 1px solid #dcdfe6;color: #606266;text-align: center;box-sizing: border-box;outline: none;margin: 0;transition: .1s;font-weight: 500;padding: 24upx 40upx;font-size: 15px;border-radius: 8upx;background-color: #419cf5;color: #fff;justify-content: center;}
 .down_footer .dxi-btn::after{display: none;}
 .down_footer .parentDiv {width: 32%;margin: 0 0.5%;position: relative;}
 .down_footer .children{position: absolute;}

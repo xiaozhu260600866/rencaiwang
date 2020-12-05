@@ -32,6 +32,6 @@ view,sroll-view,swiper,icon,text,progress,button,checkbox,form,input,label,input
 .attachment{padding: 40upx 0;border-top: 1upx #E6E6E6 solid;}
 .attachment .title{font-weight: bold;font-size: 30upx;color: #404040;margin-bottom: 10upx;}
 .attachment .dxi-list-cell{min-height: auto!important;padding: 10upx 0!important;align-items: flex-start!important;text-align: justify;}
-.attachment .cell-left{padding-top: 14upx;}
+.attachment .cell-left{padding-top: 16upx;}
 .attachment .cell-right{padding: 0!important;}
 .attachment .dot{width: 12upx;height: 12upx;border-radius: 50%;background-color: #FF0000;}

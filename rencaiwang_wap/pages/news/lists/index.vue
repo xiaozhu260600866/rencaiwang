@@ -25,7 +25,7 @@
 					</scroll-view>
 				</view>
 			</view> -->
-			<dx-tabs-scroll :tabs="children" selectedColor="#419cf5" sliderBgColor="#419cf5" @change="change" v-model="data.query.fid"
+			<dx-tabs-scroll :tabs="children" :nameSize="15" selectedColor="#419cf5" sliderBgColor="#419cf5" @change="change" v-model="data.query.fid"
 			 :padding="0"></dx-tabs-scroll>
 
 			<!-- 列表 -->

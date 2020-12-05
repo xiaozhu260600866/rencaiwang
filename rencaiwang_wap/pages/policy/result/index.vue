@@ -30,7 +30,7 @@
 						</view>
 					</view>
 				</view>
-				
+				<view class="p15 text-center fs-14 fc-9" v-if="benefit.children == 0">没有找到符合条件的{{benefit.name}}</view>
 			</view>
 			
 			<view class="shadow-block r-policy" >
@@ -39,9 +39,10 @@
 						<view slot="left"><view class="circle"></view></view>
 					</dx-list-cell>
 				</view>
-				<view class="rp-list p15 pr0">
+				<view class="rp-list p15 pr0" v-if="policyArr.length > 0">
 					<dx-list-cell arrow @click="goto('/pages/policy/show/index?id='+item.id,1)" :name="item.title" noborder padding="10rpx 0" nameColor="#737373" :nameSize="14" v-for="item in policyArr"></dx-list-cell>
 				</view>
+				<view class="p15 text-center fs-14 fc-9" v-if="policyArr.length == 0">没有找到符合条件的政策</view>
 			</view>
 			<view class="shadow-block">
 				<view class="title tit-blue">
@@ -60,7 +61,7 @@
 				</view>
 			</view>
 			
-			<view class="pt10 flex-center plr15">
+			<view class="ptb10 flex-center plr15">
 				<view class="w-b100 mr5">
 					<dx-button type="success" myclass="plr50" round block @click="goto('/pages/policy/result/record',1)">咨询记录</dx-button>
 				</view>

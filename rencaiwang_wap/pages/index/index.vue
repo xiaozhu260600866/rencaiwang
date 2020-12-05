@@ -19,7 +19,7 @@
 						{url:'/pages/activity/lists/index',type:1,name:'活动报名',cover:'https://rencaiwang.doxinsoft.com/images/wap/index05.png'},
 						{url:'/pages/feedback/lists/index',type:1,name:'意见征集',cover:'https://rencaiwang.doxinsoft.com/images/wap/index06.png'},
 						{url:'/pages/service/index',type:1,name:'服务大厅',cover:'https://rencaiwang.doxinsoft.com/images/wap/index01.png'},
-					]" @click="checkAuth" :namePTop="0" nameColor="#707070" :nameSize="12" :num="4"></dx-nav-class>
+					]" @click="checkAuth" :namePTop="0" nameColor="#707070" :nameSize="13" :num="4"></dx-nav-class>
 				</view>
 			</view>
 			<view class="index-ad">
