@@ -77,7 +77,16 @@
 				}
 				this.postAjax(this.data.query.id ? '/admin/policyMatch/edit' : '/admin/policyMatch/create', this.ruleForm).then(msg => {
 					if (msg.data.status == 2) {
-							return this.goto('/policyMatch/lists')
+                        if (this.$route.fullPath.indexOf('edit') || this.$route.fullPath.indexOf('create')) {
+                           if (this.$store.state.tagsView.visitedViews.length > 1) {
+                               this.$store.state.tagsView.visitedViews.forEach((route, routeIndex) => {
+                                    if (route.fullPath == this.$route.fullPath) {
+                                         this.$store.state.tagsView.visitedViews.splice(routeIndex, 1)
+                                    }
+                               })
+                           }
+                        }
+						return this.goto('/policyMatch/lists')
 					}
 				})
 			},

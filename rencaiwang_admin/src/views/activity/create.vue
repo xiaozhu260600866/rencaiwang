@@ -145,13 +145,22 @@
                         }
                         this.ruleForm2.attribute = this.lists
                         if (typeof this.ruleForm2.start_at === 'object') {
-                              this.ruleForm2.start_at = this.dateToString(this.ruleForm2.start_at, 1)
+                            this.ruleForm2.start_at = this.dateToString(this.ruleForm2.start_at, 1)
                         }
                         if (typeof this.ruleForm2.end_at === 'object') {
-                              this.ruleForm2.end_at = this.dateToString(this.ruleForm2.end_at, 1)
+                            this.ruleForm2.end_at = this.dateToString(this.ruleForm2.end_at, 1)
                         }
                         this.postAjax(this.formAction, this.ruleForm2, msg => {
                             if (msg.data.status == 2) {
+                                if (this.$route.fullPath.indexOf('edit') || this.$route.fullPath.indexOf('create')) {
+                                   if (this.$store.state.tagsView.visitedViews.length > 1) {
+                                       this.$store.state.tagsView.visitedViews.forEach((route, routeIndex) => {
+                                            if (route.fullPath == this.$route.fullPath) {
+                                                 this.$store.state.tagsView.visitedViews.splice(routeIndex, 1)
+                                            }
+                                       })
+                                   }
+                                }
                                 this.goto('/activity/lists')
                             }
                         })
