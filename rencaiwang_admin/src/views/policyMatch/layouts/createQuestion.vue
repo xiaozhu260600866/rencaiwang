@@ -44,9 +44,10 @@
 							if (this.type == 'create') {
 								this.appendQuestionData.push({
 									 label: this.ruleForm.label,
-									 type: 'question'
+									 type: 'question',
+                                      uid: Math.ceil(Math.random() * 100)
 								})
-						 }
+                            }
 							this.questionDiag = false
 				}
 			}

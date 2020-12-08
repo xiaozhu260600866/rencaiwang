@@ -182,34 +182,35 @@
                     }
                 }
                 if (this.type == 'create') {
-                    const res = this.getChildren(this.questions, this.question.label)
+                    const res = this.getChildren(this.questions, this.question.uid)
                     if (!res.children) {
                         this.$set(res, 'children', [])
                     }
                     res.children.push({
                         label: this.ruleForm.label,
                         type: 'answer',
-                        benefitArr: this.ruleForm.benefitArr
+                        benefitArr: this.ruleForm.benefitArr,
+                        uid: Math.ceil(Math.random() * 100)
                     })
                 }
                 this.answerDiag = false
             },
-            getChildren(data, label) {
+            getChildren(data, uid) {
                 var res // 定义一个不不赋值的变量
-                var find = function(data, label) {
+                var find = function(data, uid) {
                     data.forEach((item) => { // 利用foreach循环遍历
-                        if (item.label == label) // 判断递归结束条件
+                        if (item.uid == uid) // 判断递归结束条件
                         {
-                            console.log(item.label)
+                            console.log(item.uid)
                             res = item
                             return item
                         } else if (item.children && item.children.length > 0) // 判断chlidren是否有数据
                         {
-                            find(item.children, label) // 递归调用
+                            find(item.children, uid) // 递归调用
                         }
                     })
                 }
-                find(data, label)
+                find(data, uid)
                 return res
             }
         }

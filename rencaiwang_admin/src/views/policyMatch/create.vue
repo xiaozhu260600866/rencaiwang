@@ -75,6 +75,7 @@
 				if (this.data.query.id) {
 						this.ruleForm.id = this.data.query.id
 				}
+
 				this.postAjax(this.data.query.id ? '/admin/policyMatch/edit' : '/admin/policyMatch/create', this.ruleForm).then(msg => {
 					if (msg.data.status == 2) {
                         if (this.$route.fullPath.indexOf('edit') || this.$route.fullPath.indexOf('create')) {
