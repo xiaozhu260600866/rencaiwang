@@ -137,11 +137,16 @@
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {
-					this.data.lists.data[0].getQuestions.forEach(msg=>{
-						let content =this.reSetData(JSON.parse(msg.content));
-						this.question.push(content);
-						this.question_copy.push(content);
+					this.data.lists.data.forEach(v=>{
+						if(v.getQuestions && v.getQuestions.length){
+							v.getQuestions.forEach(msg=>{
+								let content =this.reSetData(JSON.parse(msg.content));
+								this.question.push(content);
+								this.question_copy.push(content);
+							})
+						}
 					})
+					
 				});
 			}
 		}
