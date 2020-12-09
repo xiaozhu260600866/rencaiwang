@@ -30,7 +30,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="p15 text-center fs-14 fc-9" v-if="benefit.children == 0">没有找到符合条件的{{benefit.name}}</view>
+				<view class="p15 text-center fs-14 fc-9" v-if="benefit.children.length == 0">没有找到符合条件的{{benefit.name}}</view>
 			</view>
 			
 			<view class="shadow-block r-policy" >

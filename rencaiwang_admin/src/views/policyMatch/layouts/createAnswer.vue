@@ -190,7 +190,7 @@
                         label: this.ruleForm.label,
                         type: 'answer',
                         benefitArr: this.ruleForm.benefitArr,
-                        uid: Math.ceil(Math.random() * 100)
+                        uid: Math.ceil(Math.random() * 1000)
                     })
                 }
                 this.answerDiag = false

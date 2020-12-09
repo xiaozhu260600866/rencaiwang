@@ -16,7 +16,7 @@
     </el-form>
     <h3 id="shou-feng-qin-xiao-guo">问题与答案</h3>
     <el-tree class="question_tree" :data="questions" :props="defaultProps" node-key="id" default-expand-all :expand-on-click-node="false" :render-content="renderContent" />
-    <el-button class="mt20" type="primary" size="small" @click="createQuestion(questions)">新建1级问题</el-button>
+    <el-button class="mt20" type="primary" size="small" @click="createQuestion(questions,1)">新建1级问题</el-button>
     <createQuestion ref="createQuestion" :rule-form="ruleForm" :append-question-data="appendQuestionData" :questions="questions" />
     <createAnswer ref="createAnswer" :policy-arr="data.policy" :benefit-arr="data.benefitFclass" :rule-form="ruleForm" :append-question-data="appendQuestionData" :question="question" :questions="questions" />
     <el-button type="primary" size="small" @click="stickQuestion(questions,1)">粘贴问题</el-button>
@@ -113,23 +113,24 @@
 			remove(node, data) {
 				const parent = node.parent
 				const children = parent.data.children || parent.data
-				const index = children.findIndex(d => d.id === data.id)
+				const index = children.findIndex(d => d.uid === data.uid)
+
 				children.splice(index, 1)
 			},
 
-			createQuestion(appendQuestionData) {
+			createQuestion(appendQuestionData, isHeadLev) {
 				console.log(appendQuestionData)
 				this.ruleForm.question = ''
 				this.appendQuestionData = appendQuestionData
 
-				this.$refs.createQuestion.create(this.appendQuestionData)
+				this.$refs.createQuestion.create(this.appendQuestionData, isHeadLev)
 			},
 			appendQuestion(appendQuestionData) {
 					if (!appendQuestionData.children) {
 						this.$set(appendQuestionData, 'children', [])
 					}
 
-					this.createQuestion(appendQuestionData.children)
+					this.createQuestion(appendQuestionData.children, 0)
 			},
 			editQuestion(row) {
 					console.log(row)

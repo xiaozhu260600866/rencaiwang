@@ -74,12 +74,17 @@
 			},
 			submit(){
 				let nextQuestion = [];
+				console.log(this.question);
 				for (let question of this.question) {
 					let canVaild = false;
 					for (let answer of question.children) {
 						if(answer.checked){
 							canVaild = true;
-							this.answerResult.push(question);
+							if(!answer.append){
+								this.answerResult.push(question);
+								answer.append = true;
+							}
+						
 							if(answer.children){
 								answer.children.forEach(children=>{
 									nextQuestion.push(children);
@@ -114,7 +119,15 @@
 			},
 			radioChange: function(evt) {
 				let res = evt.detail.value.split(":");
-				this.$set(this.question[res[0]].children[res[1]],"checked",true);
+				this.question[res[0]].children.forEach((v,key)=>{
+					if(res[1] == key){
+						this.$set(v,"checked",true);
+						
+					}else{
+						this.$set(v,"checked",false);
+					}
+				})
+				
 			},
 			reSetDataCopy(content,uid){
 				content.forEach(v=>{
@@ -135,6 +148,31 @@
 			    }
 				return content;
 			},
+			reSort(data){
+				let res = [];
+				for (var i = 0; i < data.length; i++) {
+						//console.log(data[i].sort);
+					  for (var j = i+1; j < data.length; j++) {
+					  	  if(parseInt(data[i].sort) < parseInt(data[j].sort)){
+							  let temp = data[i];
+							  data[i] = data[j];
+							  data[j] = temp;
+						  }
+					  }
+				}
+				// let arr =[100,300,200,50,70];
+				// for (var i = 0; i < arr.length; i++) {
+				// 	  for (var j = i+1; j < arr.length; j++) {
+				// 	  	  if(arr[i] < arr[j]){
+				// 			  let temp = arr[i];
+				// 			  arr[i] = arr[j];
+				// 			  arr[j] = temp;
+				// 		  }
+				// 	  }
+				// }
+				// console.log(arr);
+				
+			},
 			ajax() {
 				this.getAjax(this).then(msg => {
 					this.data.lists.data.forEach(v=>{
@@ -146,6 +184,7 @@
 							})
 						}
 					})
+					this.reSort(this.question);
 					
 				});
 			}
