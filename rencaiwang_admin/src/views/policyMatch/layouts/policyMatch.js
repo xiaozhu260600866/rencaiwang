@@ -55,7 +55,7 @@ export default {
                 'append_table_': 0,
                 'label': '区县'
             },
-             { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/article/editField', 'append_table_': 0, 'label': '隐藏/显示' },
+             { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/policyMatch/editField', 'append_table_': 0, 'label': '隐藏/显示' },
             {
                 'name': '',
                 'prop': 'created_at',

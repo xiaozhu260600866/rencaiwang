@@ -54,172 +54,254 @@
         </el-button>
       </div>
     </searchAll>
+    <createEdit
+      ref="createEdit"
+      create-action="/admin/policy/create"
+      edit-action="/admin/policy/edit"
+      :fields="formFields"
+      :data="data"
+      create-edit-label="120px"
+    >
+      <div slot="content" slot-scope="scope">
+        <slot :name="scope.field" :row="scope.row" />
+      </div>
+    </createEdit>
   </el-dialog>
 
 </template>
 
 <script>
-    import searchAll from 'xiaozhu/elementAdmin/components/searchAll'
-    export default {
-        components: {
-            searchAll
-        },
-        props: ['appendQuestionData', 'question', 'questions', 'benefitArr', 'policyArr'],
-        data() {
-            return {
-                answerDiag: false,
-                type: '',
-                benefitKey: 0,
-                ruleForm: {
-                    label: ''
-                }
-            }
-        },
-        methods: {
-            openPolicy(row) {
-                window.open(this.getSiteName() + '/templateadmin/#/policy/edit?id=' + row.id)
-            },
-            createBenefit() {
-                this.ruleForm.benefitArr.push({
+	import searchAll from 'xiaozhu/elementAdmin/components/searchAll'
+	import createEdit from 'xiaozhu/elementAdmin/components/create_edit'
+	export default {
+		components: {
+			searchAll,
+			createEdit
 
-                })
-            },
-            edit(row) {
-                this.answerDiag = true
-                this.type = 'edit'
-                this.ruleForm = row
-            },
-            create(row) {
-                this.answerDiag = true
-                this.ruleForm = {
-                    benefitArr: []
-                }
-                this.type = 'create'
-            },
-            searchCallBack(row) {
-                if (row.length > 1) {
-                    this.getError('只能选择一项')
-                    return false
-                }
-                if (row.length) {
-                    this.$set(this.ruleForm.benefitArr[this.benefitKey], 'policy_name', row[0]['title'])
-                    this.$set(this.ruleForm.benefitArr[this.benefitKey], 'policy_id', row[0].id)
-                    console.log(this.ruleForm)
-                } else {
-                    this.getError('您还没有选择')
-                    return false
-                }
-            },
-            searchPolicy(benefitKey) {
-                this.benefitKey = benefitKey
-                const row = {
-                    url: '/admin/policy/lists',
-                    searchClass: true,
-                    searchFields: [{
-                        name: '',
-                        prop: 'content',
-                        type: 'text',
-                        label: '政策名称'
-                    }],
-                    'tableFields': [{
-                            'name': '',
-                            'prop': 'title',
-                            'minWidth': '180',
-                            'width': '',
-                            'append_table_': 0,
-                            'label': '政策名称'
-                        },
-                        {
-                            'name': '',
-                            'prop': 'unit_name',
-                            'minWidth': '',
-                            'width': '100',
-                            'append_table_': 0,
-                            'label': '单位'
-                        },
-                        {
-                            'name': '',
-                            'prop': 'fclassname',
-                            'minWidth': '',
-                            'width': '100',
-                            'append_table_': 0,
-                            'label': '分类'
-                        },
+		},
+		props: ['appendQuestionData', 'question', 'questions', 'benefitArr', 'policyArr'],
+		data() {
+			return {
+				answerDiag: false,
+				type: '',
+				data: {},
+				'formFields': [{
+						'name': '',
+						'prop': 'title',
+						'datatype': 'require',
+						'type': 'text',
+						'editDisabled': 1,
+						'label': '标题'
+					},
 
-                        {
-                            'name': '',
-                            'prop': 'published_at',
-                            'minWidth': '',
-                            'width': '100',
-                            'append_table_': 0,
-                            'label': '发布日期'
-                        },
-                        {
-                            'name': '',
-                            'prop': 'open',
-                            'minWidth': '',
-                            'width': '150',
-                            'append_searchAll_open': 1,
-                            'label': '操作'
-                        }
-                    ]
-                }
-                this.$refs.searchAll.ajax(row, this.ruleForm.policy)
-            },
-            answerCreateSubmit() {
-                if (!this.ruleForm.label) {
-                    return this.getError('你还没有填写答案')
-                }
-                for (const v of this.ruleForm.benefitArr) {
-                    if (!v.benefitCategory) {
-                        return this.getError('福利分类还没有选择')
-                    }
-                    if (!v.benefitTitle) {
-                        return this.getError('福利标题还没有选择')
-                    }
-                    if (!v.benefitContent) {
-                        return this.getError('福利内容还没有选择')
-                    }
-                }
-                if (this.type == 'create') {
-                    const res = this.getChildren(this.questions, this.question.uid)
-                    if (!res.children) {
-                        this.$set(res, 'children', [])
-                    }
-                    res.children.push({
-                        label: this.ruleForm.label,
-                        type: 'answer',
-                        benefitArr: this.ruleForm.benefitArr,
-                        uid: Math.ceil(Math.random() * 1000)
-                    })
-                }
-                this.answerDiag = false
-            },
-            getChildren(data, uid) {
-                var res // 定义一个不不赋值的变量
-                var find = function(data, uid) {
-                    data.forEach((item) => { // 利用foreach循环遍历
-                        if (item.uid == uid) // 判断递归结束条件
-                        {
-                            console.log(item.uid)
-                            res = item
-                            return item
-                        } else if (item.children && item.children.length > 0) // 判断chlidren是否有数据
-                        {
-                            find(item.children, uid) // 递归调用
-                        }
-                    })
-                }
-                find(data, uid)
-                return res
-            }
-        }
-    }
+					{
+						'name': '',
+						'prop': 'start_at',
+						'datatype': 'require',
+						'type': 'dateTime',
+
+						 editDisabled: 1,
+
+						'label': '生效开始时间'
+					},
+					{
+						'name': '',
+						'prop': 'end_at',
+						'datatype': 'require',
+						'type': 'dateTime',
+						 editDisabled: 1,
+
+						'label': '生效结束时间'
+					},
+					{
+						'name': '',
+						'prop': 'keywords',
+						'datatype': 'require',
+						'type': 'text',
+						 editDisabled: 1,
+
+						'label': '关键字'
+					},
+					{
+						'name': '',
+						'prop': 'published_at',
+						'datatype': 'require',
+						'type': 'date',
+						 editDisabled: 1,
+						'label': '发布时间'
+					},
+
+					{
+						'name': '',
+						'prop': 'content',
+						'datatype': 'require',
+						'type': 'editor',
+						 editDisabled: 1,
+						'label': ''
+					}
+
+					// {
+					//     "prop": "pic",
+					//     "datatype": "array",
+					//     "type": "upload",
+					//     "append_form_": 0,
+					//     "label": "pic",
+					//     "allowUpLoadNum": "1",
+					//     "upurl": "coupon"
+					// },
+				],
+				benefitKey: 0,
+				ruleForm: {
+					label: ''
+				}
+			}
+		},
+		methods: {
+			openPolicy(row) {
+				console.log(1)
+				this.$refs.createEdit.ajax(row, this.data, this.formFields, true)
+			},
+			createBenefit() {
+				this.ruleForm.benefitArr.push({
+
+				})
+			},
+			edit(row) {
+				this.answerDiag = true
+				this.type = 'edit'
+				this.ruleForm = row
+			},
+			create(row) {
+				this.answerDiag = true
+				this.ruleForm = {
+					benefitArr: []
+				}
+				this.type = 'create'
+			},
+			searchCallBack(row) {
+				if (row.length > 1) {
+					this.getError('只能选择一项')
+					return false
+				}
+				if (row.length) {
+					this.$set(this.ruleForm.benefitArr[this.benefitKey], 'policy_name', row[0]['title'])
+					this.$set(this.ruleForm.benefitArr[this.benefitKey], 'policy_id', row[0].id)
+					console.log(this.ruleForm)
+				} else {
+					this.getError('您还没有选择')
+					return false
+				}
+			},
+			searchPolicy(benefitKey) {
+				this.benefitKey = benefitKey
+				const row = {
+					url: '/admin/policy/lists',
+					searchClass: true,
+					searchFields: [{
+						name: '',
+						prop: 'content',
+						type: 'text',
+						label: '政策名称'
+					}],
+					'tableFields': [{
+							'name': '',
+							'prop': 'title',
+							'minWidth': '180',
+							'width': '',
+							'append_table_': 0,
+							'label': '政策名称'
+						},
+						{
+							'name': '',
+							'prop': 'unit_name',
+							'minWidth': '',
+							'width': '100',
+							'append_table_': 0,
+							'label': '单位'
+						},
+						{
+							'name': '',
+							'prop': 'fclassname',
+							'minWidth': '',
+							'width': '100',
+							'append_table_': 0,
+							'label': '分类'
+						},
+
+						{
+							'name': '',
+							'prop': 'published_at',
+							'minWidth': '',
+							'width': '100',
+							'append_table_': 0,
+							'label': '发布日期'
+						},
+						{
+							'name': '',
+							'prop': 'open',
+							'minWidth': '',
+							'width': '150',
+							'append_searchAll_open': 1,
+							'label': '操作'
+						}
+					]
+				}
+				this.$refs.searchAll.ajax(row, this.ruleForm.policy)
+			},
+			answerCreateSubmit() {
+				if (!this.ruleForm.label) {
+					return this.getError('你还没有填写答案')
+				}
+				for (const v of this.ruleForm.benefitArr) {
+					if (!v.benefitCategory) {
+						return this.getError('福利分类还没有选择')
+					}
+					if (!v.benefitTitle) {
+						return this.getError('福利标题还没有选择')
+					}
+					if (!v.benefitContent) {
+						return this.getError('福利内容还没有选择')
+					}
+				}
+				if (this.type == 'create') {
+					const res = this.getChildren(this.questions, this.question.uid)
+					if (!res.children) {
+						this.$set(res, 'children', [])
+					}
+					res.children.push({
+						label: this.ruleForm.label,
+						type: 'answer',
+						benefitArr: this.ruleForm.benefitArr,
+						uid: Math.ceil(Math.random() * 1000)
+					})
+				}
+				this.answerDiag = false
+			},
+			getChildren(data, uid) {
+				var res // 定义一个不不赋值的变量
+				var find = function(data, uid) {
+					data.forEach((item) => { // 利用foreach循环遍历
+						if (item.uid == uid) // 判断递归结束条件
+						{
+							console.log(item.uid)
+							res = item
+							return item
+						} else if (item.children && item.children.length > 0) // 判断chlidren是否有数据
+						{
+							find(item.children, uid) // 递归调用
+						}
+					})
+				}
+				find(data, uid)
+				return res
+			}
+		}
+	}
 </script>
 
 <style>
-    .policy-tag .el-tag {
-        white-space: normal;
-        height: auto;
-    }
+	.policy-tag .el-tag {
+		white-space: normal;
+		height: auto;
+	}
 </style>

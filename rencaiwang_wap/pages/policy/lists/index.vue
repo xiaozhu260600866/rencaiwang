@@ -79,7 +79,12 @@
 		},
 		methods: {
 			callBackClass(val){
-				this.data.query.fclass = '['+val.value+']';
+				if(val.value !=0){
+					this.data.query.fclass = '['+val.value+']';
+				}else{
+					this.data.query.fclass = val.value;
+				}
+				
 				this.ajax();
 			},
 			searchTown(res){

@@ -12,7 +12,7 @@
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key" changeField="label" :datatype="v.isRequire ? 'array' : ''" :type="!data.detail.order ? 'checkbox' :'text'"  :dataKey="'arr'+key"  v-if="v.type == '多项选择'"></weui-input>
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key"  :datatype="v.isRequire ? 'require' : ''" :type="!data.detail.order ? 'time' :'text'"  v-if="v.type == '时间'"></weui-input>
 					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key"  :datatype="v.isRequire ? 'require' : ''" :type="!data.detail.order ? 'date' :'text'"   v-if="v.type == '日期'"></weui-input>
-					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key"  upurl='activity' :allowUpLoadNum="v.allowUploadNum" :datatype="v.isRequire ? 'require' : ''" type="upload"  v-if="v.type == '上传图片'"></weui-input>
+					<weui-input  :disabled="data.detail.order ? true : false" v-model="ruleform['field_'+key]" :row="true" :label="v.title" :name="'field_'+key"  upurl='activity' :allowUpLoadNum="v.allowUploadNum" :datatype="v.isRequire ? 'array' : ''" type="upload"  v-if="v.type == '上传图片'"></weui-input>
 				</view>
 				<!-- <weui-input v-model="ruleform.title" placeholder="请填写标题" type="text" name="title" datatype="require"></weui-input>
 				<view class="date fs-15 fc-3">提交时间：<text class="Arial">{{ruleform.id ? ruleform.date :data.date}}</text></view>

@@ -54,7 +54,7 @@ export default {
             },
             {
                 'name': '',
-                'prop': 'unit',
+                'prop': 'unit_name',
                 'minWidth': '180',
                 'width': '',
                 'append_table_': 0,
@@ -64,6 +64,7 @@ export default {
                 'name': '',
                 'prop': 'fclassname',
                 'minWidth': '',
+				sortable:true,
                 'width': '180',
                 'append_table_': 0,
                 'label': '分类'
@@ -74,6 +75,7 @@ export default {
                 'prop': 'published_at',
                 'minWidth': '',
                 'width': '120',
+				sortable:true,
                 'append_table_': 0,
                 'label': '发布日期'
             }
