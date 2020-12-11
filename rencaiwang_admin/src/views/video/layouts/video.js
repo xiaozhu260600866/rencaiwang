@@ -110,7 +110,7 @@ export default {
            {
                'name': '',
                'prop': 'unit',
-               'datatype': 'require',
+               //'datatype': 'require',
                datakey: 'unit',
                'type': 'select',
                'append_form_': 0,
@@ -153,14 +153,14 @@ export default {
             'append_form_': 0,
             'label': '发布日期'
         },
-        {
-            'name': '',
-            'prop': 'content',
-            'datatype': 'require',
-            'type': 'editor',
-            'append_form_': 0,
-            'label': ''
-        }
+        // {
+        //     'name': '',
+        //     'prop': 'content',
+        //     'datatype': 'require',
+        //     'type': 'editor',
+        //     'append_form_': 0,
+        //     'label': ''
+        // }
         // {
         //     "prop": "pic",
         //     "datatype": "array",

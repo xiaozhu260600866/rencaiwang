@@ -7,16 +7,16 @@
 				<view class="show-top">
 					<view class="show-title">{{data.detail.title}}</view>
 					<view class="row fs-14">
-						<view>{{data.detail.unit_name}}</view>
+						<view>{{data.detail.no}}</view>
 						<view class="Arial">{{data.detail.getTime}}</view>
 					</view>
 					<view class="row fs-12 fc-7">
 						<view class="class">{{data.detail.fclassname}}</view>
 						<view class="area">{{getClassName(data.detail.townname)}}</view>
 					</view>
-					<view class="row fs-12 fc-7">
+					<!-- <view class="row fs-12 fc-7">
 						<view>有效期限：<text class="Arial">{{data.detail.start_at}} ~ {{data.detail.end_at}}</text></view>
-					</view>
+					</view> -->
 				</view>
 				<view class="content ptb20">
 					<view v-html="data.detail.content"></view>

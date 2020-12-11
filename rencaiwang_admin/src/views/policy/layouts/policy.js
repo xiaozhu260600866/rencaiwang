@@ -7,6 +7,7 @@ export default {
         'canEdit': 0,
         classno: true,
         'tableName': 'policys',
+		"exportUrl":'/admin/policy/lists?excel=1',
         'createAction': '/admin/policy/create',
         'editAction': '/admin/policy/edit',
         'checkAll': true,
@@ -17,6 +18,12 @@ export default {
             'type': 'text',
             'label': '政策名称'
             },
+			{
+			'name': '',
+			'prop': 'no',
+			'type': 'text',
+			'label': '文号'
+			},
             {
             'prop': 'fclass',
             'type': 'manyselect',
@@ -60,6 +67,14 @@ export default {
                 'append_table_': 0,
                 'label': '单位'
             },
+			{
+			    'name': '',
+			    'prop': 'no',
+			    'minWidth': '180',
+			    'width': '',
+			    'append_table_': 0,
+			    'label': '文号'
+			},
             {
                 'name': '',
                 'prop': 'fclassname',
@@ -71,6 +86,23 @@ export default {
             },
              { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/policy/editField', 'append_table_': 0, 'label': '隐藏/显示' },
             {
+                'name': '',
+                'prop': 'sort',
+                'minWidth': '',
+                'width': '120',
+            	sortable:true,
+                'append_table_': 0,
+                'label': '排序'
+            },
+			{
+			    'name': '',
+			    'prop': 'visitNum',
+			    'minWidth': '',
+			    'width': '120',
+			    'append_table_': 0,
+			    'label': '访问量'
+			},
+			{
                 'name': '',
                 'prop': 'published_at',
                 'minWidth': '',
@@ -113,13 +145,21 @@ export default {
            {
                'name': '',
                'prop': 'unit',
-               'datatype': 'require',
+               //'datatype': 'require',
                datakey: 'unit',
                'type': 'select',
-
+				 column: 2,
                'append_form_': 0,
                'label': '单位'
            },
+		   {
+		       'name': '',
+		       'prop': 'no',
+		       'datatype': 'require',
+		       'type': 'text',
+		       'append_form_': 0,
+		       'label': '文号'
+		   },
 
            // {
            //     "name": "",
@@ -131,7 +171,7 @@ export default {
            {
                'name': '',
                'prop': 'start_at',
-               'datatype': 'require',
+               //'datatype': 'require',
                'type': 'dateTime',
                 column: 2,
                'append_form_': 0,
@@ -141,12 +181,13 @@ export default {
         {
             'name': '',
             'prop': 'end_at',
-            'datatype': 'require',
+            //'datatype': 'require',
             'type': 'dateTime',
             'append_form_': 0,
 
             'label': '生效结束时间'
         },
+		
         {
             'name': '',
             'prop': 'keywords',
@@ -170,9 +211,19 @@ export default {
             allowUpLoadNum: 1,
             upurl: 'policy',
             'type': 'upload',
+			   column: 2,
             'append_form_': 0,
             'label': '图片'
         },
+		{
+		    'name': '',
+		    'prop': 'sort',
+		    'datatype': 'require|integer',
+		    'type': 'text',	
+			defaultValue:0,
+		    'append_form_': 0,
+		    'label': '排序'
+		},
         {
             'prop': 'upload_file',
             allowUpLoadNum: 1,

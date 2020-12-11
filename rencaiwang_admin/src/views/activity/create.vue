@@ -25,7 +25,7 @@
           <el-option v-for="item in data.townFclass" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
-      <el-form-item label="单位" prop="unit" :rules="[{ required: true, message: '分类名称不能为空'},]">
+      <el-form-item label="单位" prop="unit">
         <el-select v-model="ruleForm2.unit" placeholder="请选择">
           <el-option v-for="item in data.unit" :label="item.label" :value="item.value" />
         </el-select>

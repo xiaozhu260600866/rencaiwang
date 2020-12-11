@@ -35,7 +35,7 @@ export default {
           { prop: 'phone', datatype: 'require', type: 'text', label: '电话号码' },
           { prop: 'password', datatype: 'require', type: 'password', label: '登录密码', column: 2 },
           { prop: 'role_id', datatype: 'require', type: 'select', datakey: 'roleArr', label: '角色' },
-          { prop: 'unit_id', multiple: true, datatype: 'require', type: 'select', datakey: 'unitArr', label: '单位', column: 2 },
+          { prop: 'unit_id', multiple: true, type: 'select', datakey: 'unitArr', label: '单位', column: 2 },
           { prop: 'status', datatype: 'require', type: 'select', label: '启用', defaultValue: 1, data: [
               { label: '是', value: 1 },
               { label: '否', value: 0 }

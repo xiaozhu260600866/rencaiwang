@@ -123,14 +123,14 @@
 		{
 			"path": "pages/feedback/lists/index",
 			"style": {
-				"navigationBarTitleText": "意见往集",
+				"navigationBarTitleText": "意见征集",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/feedback/create_edit/index",
 			"style": {
-				"navigationBarTitleText": "意见往集",
+				"navigationBarTitleText": "意见征集",
 				"navigationStyle": "custom"
 			}
 		},

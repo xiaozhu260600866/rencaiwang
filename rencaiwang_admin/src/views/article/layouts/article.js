@@ -96,7 +96,7 @@ export default {
 			{
 				'name': '',
 				'prop': 'unit',
-				'datatype': 'require',
+				//'datatype': 'require',
 				'datakey': 'unit',
 				'type': 'select',
 				'append_form_': 0,
