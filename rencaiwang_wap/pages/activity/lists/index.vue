@@ -28,7 +28,7 @@
 						</view>
 						<view class="content fc-7 fs-14 wrap3" v-text="v.content.replace(/<[^>]+>/g,'')"></view>
 						<view class="flex-between flex-middle fs-12 fc-7 pt15">
-							<view class="name">发布单位：{{ v.unit_name }}</view>
+							<view class="name" v-if="v.unit_name">发布单位：{{ v.unit_name }}</view>
 							<view class="date Arial">{{ v.getDate }}</view>
 						</view>
 					</view>
@@ -38,10 +38,10 @@
 							<view class="sign-date fs-14 fc-5">报名起止时间：<text class="Arial">{{v.start_at}} ~ {{v.end_at}}</text></view>
 							<view class="fb-info flex-middle">
 							<!-- 	<image class="head" :src="v.firstCover"></image> -->
-								<view class="name fs-12 fw-bold fc-4">发布单位：{{ v.unit_name }}</view>
+								<view class="name fs-12 fw-bold fc-4" v-if="v.unit_name">发布单位：{{ v.unit_name }}</view>
 							</view>
 							<view class="activity_info flex-start ptb10">
-								<view class="content fc-7 fs-13 wrap4"  v-text="v.content.replace(/<[^>]+>/g,'')"></view>
+								<view class="content fc-7 fs-13 wrap4"  v-html="v.content.replace(/<[^>]+>/g,'')"></view>
 								<view class="cover" v-if="v.firstCover">
 									<image class="img" :src="v.firstCover" mode="aspectFill"></image>
 								</view>

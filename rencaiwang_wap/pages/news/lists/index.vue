@@ -35,10 +35,10 @@
 						<view class="title fc-4 fs-15 fw-bold nowrap">{{ v.title }}</view>
 						<view class="fb-info flex-middle">
 							<!-- <image class="head" :src="v.getUser.headerPic"></image> -->
-							<view class="name fs-12 fw-bold fc-4">{{ v.unit_name }}</view>
+							<view class="name fs-12 fw-bold fc-4" v-if="v.unit_name">{{ v.unit_name }}</view>
 						</view>
 						<view class="news_info flex-start ptb10">
-							<view class="content fc-7 fs-14" :class="v.firstCover?'wrap4':'wrap3'">{{v.content.replace(/<.*?>/g,"")}}</view>
+							<view class="content fc-7 fs-14" :class="v.firstCover?'wrap4':'wrap3'" v-html="v.content.replace(/<.*?>/g,'')"></view>
 							<view class="img" v-if="v.firstCover">
 								<image class="img" :src="v.firstCover" mode="aspectFill"></image>
 							</view>

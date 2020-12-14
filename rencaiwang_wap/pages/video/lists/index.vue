@@ -13,7 +13,7 @@
 				
 				<!-- 类 -->
 				<view class="tips-info flex-between flex-middle fs-14 fc-7 plr30 ptb12">
-					<view class="item">{{row.unit_name}}</view>
+					<view class="item" v-if="row.unit_name">{{row.unit_name}}</view>
 					<!-- <view class="item">{{row.fclassname}}</view> -->
 					<view class="item Arial">{{row.published_at}}</view>
 				</view>
