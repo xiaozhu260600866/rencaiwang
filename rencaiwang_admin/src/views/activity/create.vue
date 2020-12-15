@@ -26,11 +26,11 @@
         </el-select>
       </el-form-item>
       <el-form-item label="单位" prop="unit">
-        <el-select v-model="ruleForm2.unit" placeholder="请选择">
+        <el-select v-model="ruleForm2.unit" placeholder="请选择" clearable>
           <el-option v-for="item in data.unit" :label="item.label" :value="item.value" />
         </el-select>
       </el-form-item>
-      <el-form-item label="封面图" prop="cover" :rules="[{ required: true, message: '分类名称不能为空'},]">
+      <el-form-item label="封面图" prop="cover">
         <my-upload upurl="activity" upload-length="1" :file-list="ruleForm2.cover" :sizearr="300" />
       </el-form-item>
     </el-form>

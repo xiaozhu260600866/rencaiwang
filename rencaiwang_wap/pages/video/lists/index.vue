@@ -12,17 +12,17 @@
 				</view>
 				
 				<!-- 类 -->
-				<view class="tips-info flex-between flex-middle fs-14 fc-7 plr30 ptb12">
+				<!-- <view class="tips-info flex-between flex-middle fs-14 fc-7 plr30 ptb12">
 					<view class="item" v-if="row.unit_name">{{row.unit_name}}</view>
-					<!-- <view class="item">{{row.fclassname}}</view> -->
+					
 					<view class="item Arial">{{row.published_at}}</view>
-				</view>
+				</view> -->
 				
 				<!-- 搜索 -->
-				<search padding="10rpx 40rpx 40rpx" typeShow @callBack="searchCallBack" :fclass="data.fclass" @callBackClass="callBackClass"></search>
+				<search padding="30rpx 40rpx 40rpx" typeShow @callBack="searchCallBack" :fclass="data.fclass" @callBackClass="callBackClass"></search>
 				
 				<!-- 视频新闻列表 -->
-				<view class="video-lists plr20">
+				<view class="video-lists plr20 xiaozhu">
 					<dx-news-lists :img="item.firstCover" :title="item.title" :time="item.published_at" v-for="(item,key) in data.lists.data"
 					 padding="30rpx 0" :imgWidth="140" @click="showVideo(item)"></dx-news-lists>
 				</view>
@@ -114,4 +114,5 @@
 </script>
 <style scoped="">
 @import url("./index.css");
+
 </style>
