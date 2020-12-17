@@ -15,7 +15,7 @@
 						{url:'/pages/news/lists/index?fid=101',type:1,name:'权威发布',cover:'https://rencaiwang.doxinsoft.com/images/wap/index01.png'},
 						{url:'/pages/policy/lists/index',type:1,name:'政策发布',cover:'https://rencaiwang.doxinsoft.com/images/wap/index02.png'},
 						{url:'/pages/video/lists/index?fid=1',type:1,name:'视频图解',cover:'https://rencaiwang.doxinsoft.com/images/wap/index03.png'},
-						{url:'/pages/policy/lists/index',type:1,name:'政策解读',cover:'https://rencaiwang.doxinsoft.com/images/wap/index04.png'},
+						{url:'/pages/news/lists/index?fid=135',type:1,name:'载体平台',cover:'https://rencaiwang.doxinsoft.com/images/wap/index04.png'},
 						{url:'/pages/activity/lists/index',type:1,name:'活动报名',cover:'https://rencaiwang.doxinsoft.com/images/wap/index05.png'},
 						{url:'/pages/feedback/lists/index',type:1,name:'意见征集',cover:'https://rencaiwang.doxinsoft.com/images/wap/index06.png'},
 						{url:'/pages/service/index',type:1,name:'服务大厅',cover:'https://rencaiwang.doxinsoft.com/images/wap/index01.png'},
