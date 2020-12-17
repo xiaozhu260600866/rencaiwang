@@ -29,23 +29,14 @@
 			 :padding="0"></dx-tabs-scroll>
 
 			<!-- 列表 -->
+			
+			
 			<view class="news">
 				<view class="news_lists" v-for="v in data.lists.data" @click="goto('/pages/news/show/index?id='+v.id,1)">
 					<view class="lists_box">
-						<view class="title fc-4 fs-15 fw-bold nowrap">{{ v.title }}</view>
-						<view class="fb-info flex-middle">
-							<!-- <image class="head" :src="v.getUser.headerPic"></image> -->
-							<view class="name fs-12 fw-bold fc-4" v-if="v.unit_name">{{ v.unit_name }}</view>
-						</view>
-						<view class="news_info flex-start ptb10">
-							<view class="content fc-7 fs-14" :class="v.firstCover?'wrap4':'wrap3'" v-html="v.content.replace(/<.*?>/g,'')"></view>
-							<view class="img" v-if="v.firstCover">
-								<image class="img" :src="v.firstCover" mode="aspectFill"></image>
-							</view>
-						</view>
-						<view class="bottom flex-middle flex-between fs-14 fc-7">
-							<view class="date">{{v.published_at}}</view>
-							<!-- <view class="more"><text class="dxi-icon dxi-icon-ellipsis-row"></text></view> -->
+						<view class="title fc-4 fs-15 wrap2">{{ v.title }}</view>
+						<view class="pic" v-if="v.firstCover">
+							<image class="img" :src="v.firstCover" mode="aspectFill"></image>
 						</view>
 					</view>
 				</view>
@@ -63,13 +54,15 @@
 	import search from '@/components/search';
 	import dxTabsScroll from "doxinui/components/tabs/tabs_scroll"
 	import dxTabs from "doxinui/components/tabs/tabs"
+	import dxNewsLists from "doxinui/components/news/lists"
 	export default {
 		components: {
 			topHeader,
 			downFooter,
 			search,
 			dxTabsScroll,
-			dxTabs
+			dxTabs,
+			dxNewsLists
 		},
 		data() {
 			return {
