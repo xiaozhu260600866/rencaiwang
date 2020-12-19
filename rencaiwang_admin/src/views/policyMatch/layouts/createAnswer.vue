@@ -8,11 +8,14 @@
       <el-form-item label="答案" :rules="[{ required: true, message: '答案不能为空'},]">
         <el-input v-model="ruleForm.label" type="textarea" />
       </el-form-item>
-      <div class="flex-center flex-middle mb10" style="height: 50px;" @click="createBenefit">
-        <el-button type="primary" size="samll">新增福利+</el-button>
+      <div class="flex-center flex-middle mb10" style="height: 50px;">
+        <el-button type="primary" size="samll" @click="createBenefit">新增福利+</el-button>
+        <el-button v-if="ruleForm.benefitArr.length" type="primary" size="samll" @click="copy">复制+</el-button>
+        <el-button type="primary" size="samll" @click="history">福利历史+</el-button>
       </div>
       <div v-for="(benefit,benefitKey) in ruleForm.benefitArr" class="p20" style="border:1px solid #ccc;position: relative;margin-bottom: 10px;">
-        <div style="position: absolute;right: 5px;top:5px;cursor: pointer;" @click="ruleForm.benefitArr.splice(benefitKey,1)">
+
+        <div style="position: absolute;right: 5px;top:5px;cursor: pointer;" @click="benefitDel(benefitKey)">
           <i class="el-icon-close fs-20" />
         </div>
         <el-form-item label="福利" :rules="[{ required: true, message: '答案不能为空'},]">
@@ -66,17 +69,20 @@
         <slot :name="scope.field" :row="scope.row" />
       </div>
     </createEdit>
+    <benefitHistory ref="benefitHistory" @callBack="historyCallBack" />
   </el-dialog>
 
 </template>
 
 <script>
 	import searchAll from 'xiaozhu/elementAdmin/components/searchAll'
+	import benefitHistory from './benefitHistory'
 	import createEdit from 'xiaozhu/elementAdmin/components/create_edit'
 	export default {
 		components: {
 			searchAll,
-			createEdit
+			createEdit,
+			benefitHistory
 
 		},
 		props: ['appendQuestionData', 'question', 'questions', 'benefitArr', 'policyArr'],
@@ -157,13 +163,47 @@
 			}
 		},
 		methods: {
+			historyCallBack(row) {
+				if (row.length) {
+					row.forEach(v => {
+						// v.bid = Math.ceil(Math.random() * 100000)
+						this.ruleForm.benefitArr.push(
+							v
+						)
+					})
+				}
+			},
+			history() {
+				this.$refs.benefitHistory.ajax()
+			},
+			benefitDel(benefitKey) {
+				const row = this.ruleForm.benefitArr[benefitKey]
+				console.log(row)
+				this.ruleForm.benefitArr.splice(benefitKey, 1)
+				const benefitArr = localStorage.getItem('benefitArr')
+				if (benefitArr) {
+					const benefitArr_ = JSON.parse(benefitArr)
+					if (benefitArr_.length) {
+						benefitArr_.forEach((v, benefitKey) => {
+							 if (v.bid == row.bid) {
+								 benefitArr_.splice(benefitKey, 1)
+							 }
+						})
+						localStorage.setItem('benefitArr', JSON.stringify(benefitArr_))
+					}
+				}
+			},
+			copy() {
+				const res = this.ruleForm.benefitArr[this.ruleForm.benefitArr.length - 1]
+				this.ruleForm.benefitArr.push(JSON.parse(JSON.stringify(res)))
+			},
 			openPolicy(row) {
 				console.log(1)
 				this.$refs.createEdit.ajax(row, this.data, this.formFields, true)
 			},
 			createBenefit() {
 				this.ruleForm.benefitArr.push({
-
+					// bid: Math.ceil(Math.random() * 100000)
 				})
 			},
 			edit(row) {
@@ -263,6 +303,39 @@
 						return this.getError('福利内容还没有选择')
 					}
 				}
+				for (const v of this.ruleForm.benefitArr) {
+					this.benefitArr.forEach(q => {
+						if (q.value == v.benefitCategory) {
+							v.benefitCategoryName = q.label
+						}
+					})
+					if (!v.bid) {
+						v.bid = Math.ceil(Math.random() * 100000)
+					}
+				}
+				const benefitArr = localStorage.getItem('benefitArr')
+				if (!benefitArr) {
+					localStorage.setItem('benefitArr', JSON.stringify(this.ruleForm.benefitArr))
+				} else {
+					const benefitArr_ = JSON.parse(benefitArr)
+					for (const v of this.ruleForm.benefitArr) {
+						console.log(v)
+						let is_new = true
+						benefitArr_.forEach((benefit_, benefitArrKey) => {
+							if (benefit_.bid == v.bid) {
+								is_new = false
+								benefitArr_[benefitArrKey] = v
+							}
+						})
+						if (is_new) {
+							benefitArr_.push(v)
+						}
+					}
+
+					console.log(benefitArr_)
+					localStorage.setItem('benefitArr', JSON.stringify(benefitArr_))
+				}
+
 				if (this.type == 'create') {
 					const res = this.getChildren(this.questions, this.question.uid)
 					if (!res.children) {
@@ -275,6 +348,7 @@
 						uid: Math.ceil(Math.random() * 1000)
 					})
 				}
+
 				this.answerDiag = false
 			},
 			getChildren(data, uid) {
