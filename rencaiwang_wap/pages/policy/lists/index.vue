@@ -23,11 +23,11 @@
 				
 				<!-- 列表 -->
 				<view class="release-lists pt20">
-					<dx-list-cell :name="item.title" padding="30rpx" v-for="item in data.lists.data" @click="goto('/pages/policy/show/index?id='+item.id,1)">
+					<dx-list-cell :name="item.title" nameSize="14" padding="30rpx" v-for="item in data.lists.data" @click="goto('/pages/policy/show/index?id='+item.id,1)">
 						<view slot="right">
 							<view class="right-box flex-baseline">
 								<view class="area fs-12" v-if="item.townname">{{ item.townname.length >1 ?item.townname[0][0] + '等' : item.townname[0][0]}}</view>
-								<view class="time Arial fs-13">{{ item.published_at }}</view>
+							<!-- 	<view class="time Arial fs-13">{{ item.published_at }}</view> -->
 							</view>
 						</view>
 					</dx-list-cell>

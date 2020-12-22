@@ -93,7 +93,7 @@
 						}
 					}
 					if(!canVaild){
-						return this.getError(question.label+'未填写');
+						//return this.getError(question.label+'未填写');
 					}
 				}
 				if(nextQuestion.length >0){

@@ -5,6 +5,7 @@ export default {
         'pageSize': 15,
         'canCreate': 0,
         'canEdit': 0,
+			exportUrl:'/admin/policyMatch/lists?excel=1',
         'tableName': 'policy_matchs',
         'createAction': '/admin/policyMatch/create',
         'editAction': '/admin/policyMatch/edit',
@@ -38,6 +39,13 @@ export default {
        //      }]
        //  },
         'tableFields': [
+			{
+			    'name': '',
+			    'prop': 'getQuestionString',
+			    'minWidth': '100',
+			    'width': '',
+			    'label': '问题'
+			},
 
             {
                 'name': '',

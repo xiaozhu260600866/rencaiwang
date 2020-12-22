@@ -5,6 +5,7 @@ export default {
 		'canCreate': 0,
 		'canEdit': 0,
 		'classno': true,
+		exportUrl:'/admin/article/lists?excel=1',
 		classFields: [
 			{ label: '排序', prop: 'sort', width: 100, type: 'text', defaultValue: 100, datatype: 'require|integer' },
 			{ label: '名称', prop: 'name', type: 'text', width: 200, datatype: 'require' },

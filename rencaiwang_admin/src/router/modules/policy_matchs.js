@@ -50,6 +50,7 @@ const policyMatchRouter = {
     {
         path: 'order',
         component: () => import('@/views/policyMatch/order'),
+		hidden:true,
         name: 'PolicyOrderLists',
         meta: { title: '政策咨询查看', icon: '', roles: ['policyMatch.order'], params: { status: 0 }},
         children: [

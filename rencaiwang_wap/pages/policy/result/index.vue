@@ -25,14 +25,15 @@
 					</view>
 					<view class="content" v-if="v.show==true">
 						<view class="box">
-							<span class="main-color pr15 fw-bold fs-15">第{{v.benfitNum}}条</span>
+							<span class="main-color pr15 fw-bold fs-15">{{v.benfitNum}}</span>
 								{{v.benefitContent}}
 						</view>
 					</view>
 				</view>
+				
 				<view class="p15 text-center fs-14 fc-9" v-if="benefit.children.length == 0">没有找到符合条件的{{benefit.name}}</view>
 			</view>
-			
+		
 			<view class="shadow-block r-policy" >
 				<view class="title" >
 					<dx-list-cell name="相关政策" slotLeft last>
@@ -44,31 +45,31 @@
 				</view>
 				<view class="p15 text-center fs-14 fc-9" v-if="policyArr.length == 0">没有找到符合条件的政策</view>
 			</view>
-			<view class="shadow-block">
+			<!-- <view class="shadow-block">
 				<view class="title tit-blue">
 					<dx-list-cell name="咨询申报" slotLeft last>
 						<view slot="left"><view class="circle"></view></view>
 					</dx-list-cell>
 				</view>
-			</view>
+			</view> -->
 			
-			<view class="consult">
+			<!-- <view class="consult">
 				<view class="item">
 					<weui-input v-model="ruleform.phone" placeholder="联系方式" type="text" name="phone" datatype="require"></weui-input>
 				</view>
 				<view class="item">
 					<weui-input v-model="ruleform.remark" placeholder="咨询内容" type="textarea" name="remark" datatype="require"></weui-input>
 				</view>
-			</view>
+			</view> -->
 			
-			<view class="ptb10 flex-center plr15">
+		<!-- 	<view class="ptb10 flex-center plr15">
 				<view class="w-b100 mr5">
 					<dx-button type="success" myclass="plr50" round block @click="goto('/pages/policy/result/record',1)">咨询记录</dx-button>
 				</view>
 				<view class="w-b100 ml5">
 					<dx-button type="danger" myclass="plr50" round block @click="submit">提 交</dx-button>
 				</view>
-			</view>
+			</view> -->
 			
 			<!-- 脚部 -->
 			<down-footer></down-footer>

@@ -35,7 +35,7 @@
             <el-tag v-if="benefit.policy_name" type="gray">{{ benefit.policy_name }}</el-tag>
           </div>
         </el-form-item>
-        <el-form-item label="对应第">
+        <el-form-item label="对应">
           <el-input v-model="benefit.policyNum">
             <template slot="append">条款</template>
           </el-input>
@@ -166,7 +166,7 @@
 			historyCallBack(row) {
 				if (row.length) {
 					row.forEach(v => {
-						// v.bid = Math.ceil(Math.random() * 100000)
+						v.bid = Math.ceil(Math.random() * 100000)
 						this.ruleForm.benefitArr.push(
 							v
 						)
@@ -195,7 +195,9 @@
 			},
 			copy() {
 				const res = this.ruleForm.benefitArr[this.ruleForm.benefitArr.length - 1]
-				this.ruleForm.benefitArr.push(JSON.parse(JSON.stringify(res)))
+				const newRes = JSON.parse(JSON.stringify(res))
+				newRes.bid = Math.ceil(Math.random() * 100000)
+				this.ruleForm.benefitArr.push(newRes)
 			},
 			openPolicy(row) {
 				console.log(1)
