@@ -3,7 +3,8 @@
 .search .area::before{content: '';display: block;position: absolute;left: 0;top: 50%;margin-top: -24upx;height: 48upx;width: 2upx;background-color: #bfbfbf;}
 
 /* 政策列表 */
-.release-lists /deep/.cell-name{flex: 14;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.release-lists /deep/.dxi-list-cell{align-items: flex-start;}
+.release-lists /deep/.cell-name{flex: 14;}
 .release-lists /deep/.cell-right{flex: auto;}
 .release-lists .right-box{justify-content: flex-end;}
 .release-lists .area{padding: 4upx 20upx;border: 1upx #969696 solid;border-radius: 12upx;margin-right: 20upx;}
