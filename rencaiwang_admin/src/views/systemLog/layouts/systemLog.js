@@ -4,6 +4,7 @@ export default {
         'pageSize': 15,
         'canCreate': 0,
         'canEdit': 0,
+		canDel:false,
         'tableName': 'system_logs',
 		"exportUrl":'/admin/systemLog/lists?excel=1',
         'checkAll': true,

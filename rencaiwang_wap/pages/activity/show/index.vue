@@ -23,7 +23,7 @@
 				</view>
 				<view class="explain">
 					<view class="title">活动说明：</view>
-					<u-parse class="lh-24" :content="data.detail.content" v-if="data.detail.content"/>
+					<view class="lh-24" :content="data.detail.content"></view>
 				</view>
 			</view>
 			<down-footer></down-footer>

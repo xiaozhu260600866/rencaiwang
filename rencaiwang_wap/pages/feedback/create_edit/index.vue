@@ -13,7 +13,9 @@
 			</view>
 			<view class="flex-middle m30">
 				<view class="w-b100 pr5">
-					<view v-if="showFile" class="fs-15 text-center">请将相关附件发到我们的邮箱：jmtalent@jiangmen.gov.cn</view>
+					<view v-if="showFile" class="fs-15 text-center">
+							<u-parse class="lh-24" content="请将相关附件发到我们的邮箱：jmtalent@jiangmen.gov.cn" />
+						</view>
 					<dx-button type="danger" block @click="showFile=true" v-if="!showFile">{{showFile ? '请将相关附件发到我们的邮箱：jmtalent@jiangmen.gov.cn':'附件'}}</dx-button>
 				</view>
 			</view>
@@ -36,8 +38,9 @@
 <script>
 	import topHeader from '@/components/topHeader';
 	import downFooter from '@/components/downFooter';
+	import uParse from '@/components/gaoyia-parse/parse.vue'
 	export default {
-		components:{topHeader,downFooter},
+		components:{topHeader,downFooter,uParse},
 		data() {
 			return {
 				formAction: '/feedback/create',

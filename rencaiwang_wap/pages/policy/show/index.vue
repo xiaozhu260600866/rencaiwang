@@ -19,7 +19,7 @@
 					</view> -->
 				</view>
 				<view class="content ptb20">
-						<u-parse class="lh-24" :content="data.detail.content" v-if="data.detail.content"/>
+						<view v-html="data.detail.content"></view>
 				</view>
 				<view class="attachment" v-if="getFileArr(data.detail.upload_file_name).length">
 					<view class="title">附件下载</view>
