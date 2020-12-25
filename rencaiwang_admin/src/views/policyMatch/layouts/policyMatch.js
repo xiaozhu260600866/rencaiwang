@@ -63,6 +63,7 @@ export default {
                 'append_table_': 0,
                 'label': '区县'
             },
+			 { 'prop': 'sort',  'width': '90', 'align': 'center', 'type': 'sort', 'url': '/admin/policyMatch/editField',  'label': '排序' },
              { 'prop': 'show', 'minWidth': '', 'width': '90', 'align': 'center', 'type': 'editField', 'url': '/admin/policyMatch/editField', 'append_table_': 0, 'label': '隐藏/显示' },
             {
                 'name': '',

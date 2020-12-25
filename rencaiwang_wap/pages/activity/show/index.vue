@@ -23,7 +23,7 @@
 				</view>
 				<view class="explain">
 					<view class="title">活动说明：</view>
-					<view class="detail" v-html="data.detail.content"></view>
+					<u-parse class="lh-24" :content="data.detail.content" v-if="data.detail.content"/>
 				</view>
 			</view>
 			<down-footer></down-footer>
@@ -35,8 +35,9 @@
 	import topHeader from '@/components/topHeader';
 	import downFooter from '@/components/downFooter';
 	import dxListCell from "doxinui/components/list-cell/list-cell"
+			import uParse from '@/components/gaoyia-parse/parse.vue'
 	export default {
-		components:{topHeader,downFooter,dxListCell},
+		components:{topHeader,downFooter,dxListCell,uParse},
 		data() {
 			return {
 				formAction: '/activity/show',

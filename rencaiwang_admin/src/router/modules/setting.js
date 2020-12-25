@@ -42,6 +42,34 @@ const settingRouter = {
              }
          ]
      },
+	 {
+	      path: 'poster',
+	      component: () => import('@/views/poster/lists'),
+	      name: 'SettingPoster',
+	      meta: { title: '媒体设置', icon: 'dx-sales-order', params: { type: 1 },roles:["setting.poster","admin"]},
+		  children:[
+		      {
+		        path: 'lists-show',
+		        hidden: true,
+		        meta: { title: '查看', icon: 'dx-hr-info',roles:['setting.poster.show']  },
+		      },
+		      {
+		        path: 'lists-create',
+		        hidden: true,
+		        meta: { title: '新建', icon: 'dx-hr-info',roles:['setting.poster.create']  },
+		      },
+		      {
+		        path: 'lists-edit',
+		        hidden: true,
+		        meta: { title: '编辑', icon: 'dx-hr-info',roles:['setting.poster.edit']  },
+		      },
+		      {
+		        path: 'lists-del',
+		        hidden: true,
+		        meta: { title: '删除', icon: 'dx-hr-info',roles:['setting.poster.del']  },
+		      }
+		  ]
+	 }
     
     ]
     //{

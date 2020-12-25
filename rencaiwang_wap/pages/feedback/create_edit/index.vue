@@ -8,11 +8,17 @@
 			<view class="opinion plr30">
 				<weui-input v-model="ruleform.title" placeholder="请填写标题" type="text" name="title" datatype="require"></weui-input>
 				<view class="date fs-15 fc-3">提交时间：<text class="Arial">{{ruleform.id ? ruleform.date :data.date}}</text></view>
-				<weui-input v-model="ruleform.phone" placeholder="请填写联系方式" type="number" name="phone" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.phone" placeholder="请填写联系方式" type="number" name="phone" datatype="require|phone"></weui-input>
 				<weui-input v-model="ruleform.remark" placeholder="请填写您的意见" type="textarea" name="remark" datatype="require"></weui-input>
 			</view>
-			
 			<view class="flex-middle m30">
+				<view class="w-b100 pr5">
+					<view v-if="showFile" class="fs-15 text-center">请将相关附件发到我们的邮箱：jmtalent@jiangmen.gov.cn</view>
+					<dx-button type="danger" block @click="showFile=true" v-if="!showFile">{{showFile ? '请将相关附件发到我们的邮箱：jmtalent@jiangmen.gov.cn':'附件'}}</dx-button>
+				</view>
+			</view>
+			<view class="flex-middle m30">
+				
 				<view class="w-b100 pr5" v-if="!ruleform.id">
 					<dx-button type="success" block @click="submit">提交</dx-button>
 				</view>
@@ -39,6 +45,7 @@
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
 				ruleform:{},
+				showFile:false,
 				vaildate:{}
 			}
 		},

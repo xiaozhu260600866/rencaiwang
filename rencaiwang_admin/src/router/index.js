@@ -18,6 +18,7 @@ import policyRouter from './modules/policy'
 import policyMatchRouter from './modules/policy_matchs'
 import staffRouter from './modules/staff'
 import feedbackRouter from './modules/feedback'
+import systemLogRouter from './modules/systemLog'
 import redirectArticleRouter from './modules/redirectArticle.js'
 
 /**
@@ -110,6 +111,7 @@ export const asyncRoutes = [
   activityRouter,
   feedbackRouter,
   redirectArticleRouter,
+  systemLogRouter,
   // merchantRouter,
   // horseRouter,
   // deliverRouter,

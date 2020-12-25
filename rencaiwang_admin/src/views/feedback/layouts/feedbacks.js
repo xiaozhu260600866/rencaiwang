@@ -7,6 +7,7 @@ export default {
         'tableName': 'feedbacks',
         'createAction': '/admin/feedback/create',
         'editAction': '/admin/feedback/edit',
+		 exportUrl:'/admin/feedback/lists?excel=1',
         'checkAll': true,
         'searchFields': [
 

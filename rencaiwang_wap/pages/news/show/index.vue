@@ -15,7 +15,7 @@
 					</view>
 				</view>
 				<view class="content ptb20">
-					<view v-html="data.detail.content"></view>
+						<u-parse class="lh-24" :content="data.detail.content" v-if="data.detail.content"/>
 				</view>
 				<view class="attachment" v-if="getFileArr(data.detail.upload_file_name).length">
 					<view class="title">附件下载</view>
@@ -37,8 +37,9 @@
 	import downFooter from '@/components/downFooter';
 	import dxListCell from "doxinui/components/list-cell/list-cell"
 	import dxShare from "doxinui/components/share/share"
+	import uParse from '@/components/gaoyia-parse/parse.vue'
 	export default {
-		components:{topHeader,downFooter,dxListCell,dxShare},
+		components:{topHeader,downFooter,dxListCell,dxShare,uParse},
 		data() {
 			return {
 				formAction: '/article/show',

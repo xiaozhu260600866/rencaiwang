@@ -16,15 +16,13 @@
 						{url:'/pages/policy/lists/index',type:1,name:'政策发布',cover:'https://rencaiwang.doxinsoft.com/images/wap/policy.png'},
 						{url:'/pages/video/lists/index?fid=1',type:1,name:'视频图解',cover:'https://rencaiwang.doxinsoft.com/images/wap/video.png'},
 						{url:'/pages/news/lists/index?fid=135',type:1,name:'载体平台',cover:'https://rencaiwang.doxinsoft.com/images/wap/platform.png'},
-						{url:'/pages/news/lists/index?fid=139',type:1,name:'活动报名',cover:'https://rencaiwang.doxinsoft.com/images/wap/activity.png'},
+						{url:'/pages/activity/lists/index',type:1,name:'活动报名',cover:'https://rencaiwang.doxinsoft.com/images/wap/activity.png'},
 						{url:'/pages/feedback/lists/index',type:1,name:'意见征集',cover:'https://rencaiwang.doxinsoft.com/images/wap/feedback.png'},
 						{url:'/pages/service/index',type:1,name:'服务大厅',cover:'https://rencaiwang.doxinsoft.com/images/wap/service.png'},
 					]" @click="checkAuth" :namePTop="0" nameColor="#707070" :nameSize="13" :num="4"></dx-nav-class>
 				</view>
 			</view>
-			<view class="index-ad">
-				<image class="img" src="https://rencaiwang.doxinsoft.com/images/wap/banner-rc.jpg" mode="widthFix"></image>
-			</view>
+			<myswiper :data="data.silders.data"></myswiper>
 			<view class="index-nav2">
 				<dx-nav-class :data="data.policyMatchClass" @click="checkAuth" :imgWidth="70" :imgR="35" :imgHeight="70" :namePTop="5" nameColor="#404040" :nameSize="14" :num="3" :lrPadding="0"
 				:tbPadding="0"></dx-nav-class>

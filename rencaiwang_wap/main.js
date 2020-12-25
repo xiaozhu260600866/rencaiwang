@@ -35,6 +35,12 @@ Vue.component(
 	'page',
 	page
 );
+//全局组件
+import myswiper from 'doxinui/components/swiper/swiper'
+Vue.component(
+	'myswiper',
+	myswiper
+);
 
 Vue.config.productionTip = false
 Vue.use(myfun);
