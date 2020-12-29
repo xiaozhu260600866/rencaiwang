@@ -84,6 +84,7 @@ export default {
 			"type": "upload",
 			"append_form_": 0,
 			"label": "图片",
+			uploadMessage:'最佳尺寸：800*357',
 			"allowUpLoadNum": "1",
 			"upurl": "poster"
 		}]
