@@ -22,7 +22,7 @@
 					]" @click="checkAuth" :namePTop="0" nameColor="#707070" :nameSize="13" :num="4"></dx-nav-class>
 				</view>
 			</view>
-			<myswiper :data="data.silders.data"></myswiper>
+			<myswiper :data="data.silders.data" :lrPadding="20"></myswiper>
 			<view class="index-nav2">
 				<dx-nav-class :data="data.policyMatchClass" @click="checkAuth" :imgWidth="70" :imgR="35" :imgHeight="70" :namePTop="5" nameColor="#404040" :nameSize="14" :num="3" :lrPadding="0"
 				:tbPadding="0"></dx-nav-class>
