@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "人才网",
+				"navigationBarTitleText": "江门人才",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
@@ -11,7 +11,7 @@
 		{
 			"path": "pages/into/index",
 			"style": {
-				"navigationBarTitleText": "人才网",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
@@ -144,7 +144,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "人才网",
+		"navigationBarTitleText": "江门人才",
 		"navigationBarBackgroundColor": "#419cf5",
 		"backgroundColor": "#419cf5"
 	},

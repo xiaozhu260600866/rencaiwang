@@ -76,7 +76,7 @@
         "enable" : false
     },
     "h5" : {
-        "title" : "人才网",
+        "title" : "江门人才",
         "router" : {
             "base" : "/h5/"
         },

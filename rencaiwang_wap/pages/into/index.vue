@@ -1,13 +1,13 @@
 <template>
-	<view>
-		<page :parentData="data" :formAction="formAction"></page> 
+	<view v-if="data.show">
+		<page :parentData="data" :formAction="formAction" ref="page"></page> 
 		<view>
-			<view class="index-bg">
-				<image class="img" src="../../static/images/index-bg.jpg" mode="aspectFill"></image>
+			<view class="index-bg" @click="goto('/pages/index/index',1)">
+				<image class="img" :src="getSiteName + '/upload/images/product/'+data.siteConfig.web_logo" mode="aspectFill"></image>
 			</view>
-			<view class="into" @click="goto('/pages/index/index',1)">
+			<!-- <view class="into" @click="goto('/pages/index/index',1)">
 				<dx-button type="danger" myclass="plr30" round>点击进入</dx-button>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
@@ -16,7 +16,7 @@
 	export default {
 		data() {
 			return {
-				formAction: '/shop/product/class',
+				formAction: '/wapindex',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -58,7 +58,13 @@
 				
 			},
 			ajax() {
-				
+				this.getAjax(this).then(msg => {
+					this.$nextTick(()=>{
+						
+						this.$refs.page.share("123");
+					})
+					
+				});
 			}
 		}
 	}
