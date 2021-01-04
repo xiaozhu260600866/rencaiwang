@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<!-- <page :parentData="data" :formAction="formAction"></page> -->
+		<page :parentData="data" :formAction="formAction" ref="page"></page>
 		<view v-if="show">
 			<!-- 头部 -->
 			<top-header :title="row.title" ref="header"></top-header>
@@ -90,7 +90,9 @@
 					row.play_url = msg.data.video.url;
 					this.row = row;
 					this.show = true;
+					this.rencaiwangShare(this,row.title);
 					this.$refs.header.title2 = row.title;
+				
 				});
 			},
 			ajax() {

@@ -50,12 +50,18 @@
                       <my-upload upurl="product" :upload-length="1" :file-list="ruleForm.web_logo" :sizearr="300" />
                       <div>建议尺寸：758*1383</div>
                     </div>
+                  </el-tab-pane>
+                  <el-tab-pane label="分享logo图" name="shareCover">
+                    <div class="el-form-item">
+                      <label class="el-form-item__label" style="width: 170px">分享图LOGO</label>
+                      <my-upload upurl="product" :upload-length="1" :file-list="ruleForm.wechat_logo" :sizearr="300" />
 
+                    </div>
                   </el-tab-pane>
 
                 </el-tabs>
                 </el-tabs>
-                <el-form-item v-if="activeName2 == 'indexCover'">
+                <el-form-item v-if="activeName2 == 'indexCover' || activeName2 == 'shareCover'">
                   <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
                   <el-button @click="resetForm('ruleForm')">重置</el-button>
                 </el-form-item>

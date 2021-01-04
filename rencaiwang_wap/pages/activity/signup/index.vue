@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<page :parentData="data" :formAction="formAction"></page>
+		<page :parentData="data" :formAction="formAction" ref="page"></page>
 		<view v-if="show">
 			<top-header></top-header>
 			<view class="opinion plr30">
@@ -120,6 +120,7 @@
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {
+					this.rencaiwangShare(this);
 					msg.detail.getAttribute.forEach((v,key)=>{
 						if(v.children){
 							let arr = JSON.parse(v.children);

@@ -1,6 +1,6 @@
 <template>
 	<view>
-	 <page :parentData="data" :formAction="formAction"></page>
+	 <page :parentData="data" :formAction="formAction" ref="page"></page>
 		<view v-if="data.show">
 			<top-header></top-header>
 			<view class="news-class">
@@ -62,7 +62,7 @@
 			ajax() {
 				this.classLists = [];
 				this.getAjax(this).then(msg => {
-						
+						this.rencaiwangShare(this);
 						this.data.children.splice(0,1)
 					
 				});

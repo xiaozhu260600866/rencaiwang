@@ -64,7 +64,7 @@ uni.getProvider({
 		//uni.clearStorageSync();
 		if (res.provider.length == 0) {
 			 let site_name = uni.getStorageSync('siteName');
-			 let gotoWechat = uni.getStorageSync("gotoWechat18");
+			 let gotoWechat = uni.getStorageSync("gotoWechat19");
 			 let userInfo = uni.getStorageSync('userInfo');
 			 if(getOptions('openid') && getOptions('new2') && gotoWechat){
 			 	let userInfo = {
@@ -74,6 +74,7 @@ uni.getProvider({
 					openid:getOptions('openid'),
 			 	}
 			 	uni.setStorageSync("userInfo", userInfo);
+			 	uni.setStorageSync("wechat_logo", getOptions('wechat_logo'));
 				uni.setStorageSync("openid", getOptions('openid'));
 			 	uni.setStorageSync("unionid", getOptions('unionid'));
 			 	uni.setStorageSync("source", 'wap');
@@ -85,6 +86,7 @@ uni.getProvider({
 					openid:getCookie('openid'),
 			 	}
 			 	uni.setStorageSync("userInfo", userInfo);
+			 	uni.setStorageSync("wechat_logo", getCookie('wechat_logo'));
 				uni.setStorageSync("openid", getCookie('openid'));
 			 	uni.setStorageSync("source", 'wap');
 			}
@@ -118,7 +120,7 @@ uni.getProvider({
 				let newUrl_ = url.replace("/?from=singlemessage#","");
 				console.log(newUrl_);
 				
-				uni.setStorageSync("gotoWechat18",1);
+				uni.setStorageSync("gotoWechat19",1);
 				window.location.href=newUrl_;
 				
 			 }

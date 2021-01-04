@@ -18,126 +18,126 @@
 		{
 			"path": "pages/user/index/index",
 			"style": {
-				"navigationBarTitleText": "会员中心",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/news/lists/index",
 			"style": {
-				"navigationBarTitleText": "最新资讯",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/news/class/index",
 			"style": {
-				"navigationBarTitleText": "最新资讯",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/news/show/index",
 			"style": {
-				"navigationBarTitleText": "最新资讯",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/video/lists/index",
 			"style": {
-				"navigationBarTitleText": "视频列表",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/policy/lists/index",
 			"style": {
-				"navigationBarTitleText": "政策发布",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/policy/show/index",
 			"style": {
-				"navigationBarTitleText": "政策发布",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/policy/class/index",
 			"style": {
-				"navigationBarTitleText": "政策分类",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/policy/town/index",
 			"style": {
-				"navigationBarTitleText": "选择区县",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/policy/question/index",
 			"style": {
-				"navigationBarTitleText": "选择问题",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/policy/result/index",
 			"style": {
-				"navigationBarTitleText": "匹配结果",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/policy/result/record",
 			"style": {
-				"navigationBarTitleText": "咨询记录",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/activity/lists/index",
 			"style": {
-				"navigationBarTitleText": "活动报名",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/activity/show/index",
 			"style": {
-				"navigationBarTitleText": "活动报名",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/activity/signup/index",
 			"style": {
-				"navigationBarTitleText": "活动报名",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/feedback/lists/index",
 			"style": {
-				"navigationBarTitleText": "意见征集",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/feedback/create_edit/index",
 			"style": {
-				"navigationBarTitleText": "意见征集",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/service/index",
 			"style": {
-				"navigationBarTitleText": "服务跳转",
+				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
 		}

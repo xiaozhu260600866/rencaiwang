@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<page :parentData="data" :formAction="formAction"></page>
+		<page :parentData="data" :formAction="formAction" ref="page"></page>
 		<view v-if="data.show">
 			<view class="bg-f" style="position: relative;z-index: 12;">
 				<!-- 头部 -->
@@ -142,6 +142,7 @@
 					if (this.children.length == 0) {
 						this.children = msg.children;
 					}
+					this.rencaiwangShare(this);
 
 				});
 			}

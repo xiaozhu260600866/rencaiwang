@@ -1,5 +1,10 @@
 const myfun = function() {};
 myfun.install = (Vue, options) => {
+	Vue.prototype.rencaiwangShare=(that,title)=>{
+		let shareLogo =Vue.prototype.getSiteName() + '/upload/images/product/'+uni.getStorageSync('wechat_logo') ;
+		
+		that.$refs.page.share(title ? title : '江门人才',shareLogo,"点击可查看更多，欢迎关注人才发布");
+	}
 	Vue.prototype.getClassName = (getClassName)=>{
 		let res = "";
 		if(getClassName.length){

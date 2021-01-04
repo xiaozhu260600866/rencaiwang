@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<page :parentData="data" :formAction="formAction"></page>
+		<page :parentData="data" :formAction="formAction" ref="page"></page>
 		<view v-if="data.show">
 			<top-header></top-header>
 			<view class="activity-show p30">
@@ -79,8 +79,8 @@
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {
-					
-					
+					this.rencaiwangShare(this,msg.detail.title);
+				
 				});
 			}
 		}

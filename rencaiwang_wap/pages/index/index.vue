@@ -67,8 +67,7 @@
 			ajax() {
 				this.getAjax(this).then(msg => {
 					this.$nextTick(()=>{
-						
-						this.$refs.page.share("123");
+						this.rencaiwangShare(this);
 					})
 					
 				});
