@@ -24,7 +24,7 @@
 				<!-- 视频新闻列表 -->
 				<view class="video-lists plr20 xiaozhu">
 					<dx-news-lists :img="item.firstCover" :title="item.title" :time="item.published_at" v-for="(item,key) in data.lists.data"
-					 padding="30rpx 0" :imgWidth="140" @click="showVideo(item)"></dx-news-lists>
+					 padding="30rpx 0" :imgWidth="140" @click="toVideo(item)"></dx-news-lists>
 				</view>
 			</view>
 			<!-- 脚部 -->
@@ -84,6 +84,13 @@
 			searchCallBack(val){
 				this.data.query.title=val;
 				this.ajax();
+			},
+			toVideo(row){
+				//http://192.168.0.52:8080/h5/#/pages/video/lists/index?fid=1
+				// let url = this.getSiteName + '/h5/#/pages/video/lists/index?fid='+this.data.query.fid+'&video_id='+row.id;
+				// console.log(url);
+				// return false;
+				window.location.href=this.getSiteName + '/h5/#/pages/video/lists/index?fid='+this.data.query.fid+'&video_id='+row.id
 			},
 			showVideo(row){
 				this.postAjax("/video/show",row,"notloading").then(msg=>{

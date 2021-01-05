@@ -35,6 +35,11 @@ Vue.component(
 	'page',
 	page
 );
+import floatBtn from 'xiaozhu/uniapp/components/floatBtn'
+Vue.component(
+	'floatBtn',
+	floatBtn
+);
 //全局组件
 import myswiper from 'doxinui/components/swiper/swiper'
 Vue.component(

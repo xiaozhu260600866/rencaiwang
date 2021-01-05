@@ -58,10 +58,17 @@
 
                     </div>
                   </el-tab-pane>
+                  <el-tab-pane label="政策/信息图片" name="newsCover">
+                    <div class="el-form-item">
+                      <label class="el-form-item__label" style="width: 170px">分享图政策/信息图片</label>
+                      <my-upload upurl="product" :upload-length="1" :file-list="ruleForm.news_cover" :sizearr="300" />
+
+                    </div>
+                  </el-tab-pane>
 
                 </el-tabs>
                 </el-tabs>
-                <el-form-item v-if="activeName2 == 'indexCover' || activeName2 == 'shareCover'">
+                <el-form-item v-if="activeName2 == 'indexCover' || activeName2 == 'shareCover' || activeName2 == 'newsCover'">
                   <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
                   <el-button @click="resetForm('ruleForm')">重置</el-button>
                 </el-form-item>
@@ -146,7 +153,9 @@
 						this.ruleForm.web_logo = this.ruleForm.web_logo ? this.splitCover(this.ruleForm.web_logo,
 							'product') : []
 						this.ruleForm.wechat_logo = this.ruleForm.wechat_logo ? this.splitCover(this.ruleForm
-							.wechat_logo, 'product') : []
+							.wechat_logo, 'product') : [],
+							this.ruleForm.news_cover = this.ruleForm.news_cover ? this.splitCover(this.ruleForm
+								.news_cover, 'product') : []
 						this.ruleForm.card_user_id_default = parseInt(this.ruleForm.card_user_id_default)
 					}
 				})

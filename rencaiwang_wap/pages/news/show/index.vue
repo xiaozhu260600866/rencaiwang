@@ -1,7 +1,12 @@
 <template>
 	<view>
-		<page :parentData="data" :formAction="formAction" ref="page"></page>
+		<page :parentData="data" :formAction="formAction" ref="page" Fbottom="bottom:10%">
+			<view slot="floatBtn">
+				<view @click="toDown" v-if="scrollHeigth > 800"><floatBtn type="0" icon="dxi-icon dxi-icon-top" myclass="xiaozhu-btn"></floatBtn></view>
+			</view>
+		</page>
 		<view v-if="data.show">
+			
 			<top-header :title="data.detail.title"></top-header>
 			<view class="news-show p30">
 				<view class="show-top fc-4 pb10">
@@ -18,6 +23,9 @@
 						<!-- <u-parse class="lh-24" :content="data.detail.content" v-if="data.detail.content"/> -->
 						<view v-html="data.detail.content"></view>
 				</view>
+				<view>
+					<image class="w-b100" :src="getSiteName+ '/upload/images/product/'+ data.siteConfig.news_cover" mode="widthFix" @click="previewImage(data.siteConfig.news_cover,'product')"></image>
+				</view>
 				<view class="attachment" v-if="getFileArr(data.detail.upload_file_name).length">
 					<view class="title">附件下载</view>
 					<view class="lists">
@@ -27,7 +35,7 @@
 					</view>
 				</view>
 			</view>
-			<down-footer></down-footer>
+			<down-footer v-if="!scrollDown"></down-footer>
 			<dx-share :show="shareDiag"></dx-share>
 		</view>
 	</view>
@@ -47,7 +55,9 @@
 				shareDiag:false,
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
-				getSiteName: this.getSiteName()
+				getSiteName: this.getSiteName(),
+				scrollHeigth:0,
+				scrollDown:false,
 			}
 		},
 		onReachBottom() {
@@ -61,9 +71,24 @@
 			return this.shareSource(this, '人才网');
 		},
 		onLoad(options) {
+			window.onscroll = ()=>{ 
+				let scrollHeigth = document.documentElement.scrollTop || document.body.scrollTop;  
+				if(scrollHeigth > this.scrollHeigth){
+					this.scrollDown  = true
+				}else{
+					this.scrollDown  = false
+				}
+				this.scrollHeigth = scrollHeigth;
+			}
 			this.ajax();
 		},
 		methods: {
+			toDown(){
+				uni.pageScrollTo({
+					scrollTop: 0,
+					duration: 50
+				})
+			},
 			downLoad(item,key){
 				return  window.location.href= this.getSiteName + "/downloadfile?filename="+this.data.detail.upload_file.split(",")[key]+'&folder=article'
 			},

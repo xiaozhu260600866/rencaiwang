@@ -37,3 +37,6 @@ view,sroll-view,swiper,icon,text,progress,button,checkbox,form,input,label,input
 .attachment .cell-right{padding: 0!important;}
 .attachment .dot{width: 12upx;height: 12upx;border-radius: 50%;background-color: #FF0000;}
 
+.xiaozhu-btn{background-color: #419cf5 !important; buttom:10% !important}
+.xiaozhu-btn .nav-icon{color:white !important}
+
