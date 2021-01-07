@@ -2,7 +2,10 @@
 	<view>
 		<page :parentData="data" :formAction="formAction" ref="page" Fbottom="bottom:10%">
 			<view slot="floatBtn">
-				<view @click="toDown" v-if="scrollHeigth > 800"><floatBtn type="0" icon="dxi-icon dxi-icon-top" myclass="xiaozhu-btn"></floatBtn></view>
+				<view @click="toDown" v-if="scrollHeigth > 800">
+				<image mode="widthFix" src="/static/floatBtn.png" style="width:60px"></image>
+			<!-- 	<floatBtn type="0" icon="dxi-icon dxi-icon-top" myclass="xiaozhu-btn"></floatBtn> -->
+				</view>
 			</view>
 		</page>
 		<view v-if="data.show">
@@ -13,10 +16,11 @@
 					<view class="show-title">{{data.detail.title}}</view>
 					<view class="row">
 						<view class="fs-13 fc-7">{{data.detail.fclassname}}</view>
+						<view class="Arial">{{data.detail.getTime}}</view>
 					</view>
 					<view class="row fs-14">
 						<view>{{data.detail.unit_name}}</view>
-						<view class="Arial">{{data.detail.getTime}}</view>
+					
 					</view>
 				</view>
 				<view class="content ptb20">
