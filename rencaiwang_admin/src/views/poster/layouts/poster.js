@@ -21,6 +21,12 @@ export default {
 				"value": "1",
 				"count": 0,
 				"label": "首页幻灯片"
+			},
+			{
+				"name": "",
+				"value": "2",
+				"count": 0,
+				"label": "首页导航"
 			}]
 		},
 		"tableFields": [{
