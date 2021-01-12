@@ -11,7 +11,7 @@
 			<view class="index-nav">
 				<view class="nav-box">
 					<view class="nav-title">常用功能</view>
-					<dx-nav-class :data="[
+				<!-- 	<dx-nav-class :data="[
 						{url:'/pages/news/lists/index?fid=101',type:1,name:'权威发布',cover:'https://rencaiwang.doxinsoft.com/images/wap/news.png'},
 						{url:'/pages/policy/lists/index',type:1,name:'政策发布',cover:'https://rencaiwang.doxinsoft.com/images/wap/policy.png'},
 						{url:'/pages/video/lists/index?fid=1',type:1,name:'视频图解',cover:'https://rencaiwang.doxinsoft.com/images/wap/video.png'},
@@ -19,7 +19,9 @@
 						{url:'/pages/activity/lists/index',type:1,name:'活动发布',cover:'https://rencaiwang.doxinsoft.com/images/wap/activity.png'},
 						{url:'/pages/feedback/lists/index',type:1,name:'意见征集',cover:'https://rencaiwang.doxinsoft.com/images/wap/feedback.png'},
 						{url:'/pages/service/index',type:1,name:'服务大厅',cover:'https://rencaiwang.doxinsoft.com/images/wap/service.png'},
-					]" @click="checkAuth" :namePTop="0" nameColor="#707070" :nameSize="13" :num="4"></dx-nav-class>
+					]" @click="checkAuth" :namePTop="0" nameColor="#707070" :nameSize="13" :num="4"></dx-nav-class> -->
+					
+					<dx-nav-class :data="data.location.data" @click="checkAuth" :namePTop="0" nameColor="#707070" :nameSize="13" :num="4"></dx-nav-class>
 				</view>
 			</view>
 			<myswiper :data="data.silders.data" :lrPadding="20"></myswiper>
@@ -61,8 +63,17 @@
 			this.ajax();
 		},
 		methods: {
-			checkAuth(v){
-				return this.goto(v.url,1);
+			checkAuth(item){
+				if(item.url){
+					if(item.url.indexOf('http') !==-1){
+						window.location.href = item.url;
+					}else{
+						this.goto(item.url,1);
+					}
+					
+				    return false;
+				}
+				
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {

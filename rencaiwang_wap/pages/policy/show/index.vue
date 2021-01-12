@@ -4,7 +4,7 @@
 			<view slot="floatBtn">
 				<view @click="toDown" v-if="scrollHeigth > 800">
 				<!-- <floatBtn type="0" icon="dxi-icon dxi-icon-top" myclass="xiaozhu-btn"></floatBtn> -->
-					<image mode="widthFix" src="/static/floatBtn.png" style="width:60px"></image>
+					<image mode="widthFix" src="/static/floatBtn.png" style="width:50px"></image>
 				</view>
 			</view>
 		</page>
