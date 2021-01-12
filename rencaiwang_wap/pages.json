@@ -140,6 +140,13 @@
 				"navigationBarTitleText": "江门人才",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/innovate/index",
+			"style": {
+				"navigationBarTitleText": "江门人才",
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {

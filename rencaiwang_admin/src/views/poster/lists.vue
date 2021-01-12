@@ -15,8 +15,10 @@
             }
         },
         mounted() {
-
-            this.ajax();
+			setTimeout(()=>{
+				 this.ajax();
+			},500);
+           
         },
         watch: {
             "$route": "ajax"

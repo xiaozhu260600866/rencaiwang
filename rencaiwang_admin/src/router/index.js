@@ -20,6 +20,7 @@ import staffRouter from './modules/staff'
 import feedbackRouter from './modules/feedback'
 import systemLogRouter from './modules/systemLog'
 import redirectArticleRouter from './modules/redirectArticle.js'
+import innovatetArticleRouter from './modules/innovateArticle.js'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -111,6 +112,7 @@ export const asyncRoutes = [
   activityRouter,
   feedbackRouter,
   redirectArticleRouter,
+  innovatetArticleRouter,
   systemLogRouter,
   // merchantRouter,
   // horseRouter,
